@@ -1,19 +1,19 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 import MainMenu from '@/components/MainMenu.vue'
 import TopNavegationFinder from '@/components/TopNavegationFinder.vue';
 import SwitcherTheme from './SwitcherTheme.vue';
 
 const showMenu = () => document.querySelector("#top-navegation-bar__menus-container").classList.toggle('top-navegation-bar__menus-container--show');
-
 </script>
 
 <template>
   <!--block-->
   <header class="top-navegation-bar justify-elements-in-screen">
     <div class="top-navegation-bar__nav justify-elements-in-screen__container">
-      <a class="top-navegation-bar__logo" href="#">
+      <RouterLink to="/" class="top-navegation-bar__logo" >
         <img src="../assets/images/logo-solvedrubik-150.png" alt="logo-solvedrubik">
-      </a>
+      </RouterLink>
       <div class="top-navegation-bar__menus-container" id="top-navegation-bar__menus-container">
         <div class="top-navegation-bar__menu-separator top-navegation-bar__menu-separator--uno">
           <!--block-->
@@ -48,6 +48,10 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
     body.light & {
       background-color: $light-baground-color-z-index-2;
       border-bottom: 1px solid $light-border-box-color;
+    }
+
+    &__logo {
+      cursor: pointer;
     }
 
     &__nav {
@@ -131,6 +135,7 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
     }
 
     &__logo {
+      cursor: pointer;
       &>img {
         width: 120px;
       }
