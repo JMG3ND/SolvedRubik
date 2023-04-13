@@ -11,8 +11,8 @@ defineProps({
 let contentItemActive = false;
 const contentItemActiveClass = ref('');
 const activeItem = () => {
-	contentItemActive = !contentItemActive
-	contentItemActiveClass.value = contentItemActive ? "main-menu-item--active" : "";
+    contentItemActive = !contentItemActive
+    contentItemActiveClass.value = contentItemActive ? "main-menu-item--active" : "";
 }
 
 </script>
@@ -30,7 +30,7 @@ const activeItem = () => {
             <ul class="sub-menu">
                 <!--Block-->
                 <SubMenuItem v-for="element in subMenu" :title="element.title" :description="element.description"
-                    :color="element.color" />
+                    :color="element.color" :link="element.link" />
             </ul>
         </div>
     </div>

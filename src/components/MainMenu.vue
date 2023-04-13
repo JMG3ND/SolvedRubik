@@ -6,24 +6,10 @@ const mainMenuData = [
 		title: 'ALGORITMOS',
 		subMenu: [
 			{
-				title: 'CUBO 2 X 2',
-				description: 'Algoritmos del cubo dos por dos',
-				color: 'red'
-			},
-			{
 				title: 'CUBO 3 X 3',
 				description: 'Algoritmos del cubo tres por tres',
+				link: '/cube-three-by-three',
 				color: 'green'
-			},
-			{
-				title: 'CUBO 4 X 4',
-				description: 'Algoritmos del cubo cuatro por cuatro',
-				color: 'orange'
-			},
-			{
-				title: 'CUBO 5 X 5',
-				description: 'Algoritmos del cubo cinco por cinco',
-				color: 'blue'
 			},
 		]
 	},
