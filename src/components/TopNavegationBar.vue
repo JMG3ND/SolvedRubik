@@ -11,7 +11,7 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
   <!--block-->
   <header class="top-navegation-bar justify-elements-in-screen">
     <div class="top-navegation-bar__nav justify-elements-in-screen__container">
-      <RouterLink to="/" class="top-navegation-bar__logo" >
+      <RouterLink to="/" class="top-navegation-bar__logo">
         <img src="../assets/images/logo-solvedrubik-150.png" alt="logo-solvedrubik">
       </RouterLink>
       <div class="top-navegation-bar__menus-container" id="top-navegation-bar__menus-container">
@@ -136,6 +136,7 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
 
     &__logo {
       cursor: pointer;
+
       &>img {
         width: 120px;
       }
