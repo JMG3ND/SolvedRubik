@@ -12,7 +12,7 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
   <header class="top-navegation-bar justify-elements-in-screen">
     <div class="top-navegation-bar__nav justify-elements-in-screen__container">
       <a class="top-navegation-bar__logo" href="#">
-        <img src="../assets/logo-solvedrubik-150.png" alt="logo-solvedrubik">
+        <img src="../assets/images/logo-solvedrubik-150.png" alt="logo-solvedrubik">
       </a>
       <div class="top-navegation-bar__menus-container" id="top-navegation-bar__menus-container">
         <div class="top-navegation-bar__menu-separator top-navegation-bar__menu-separator--uno">

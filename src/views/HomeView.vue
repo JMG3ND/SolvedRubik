@@ -1,7 +1,9 @@
 <script setup>
-
+import MainFinder from '../components/MainFinder.vue';
+import HomePageInformation from '../components/HomPageInformation.vue'
 </script>
 
 <template>
-    <h1>Home View</h1>
+    <MainFinder />
+    <HomePageInformation />
 </template>
