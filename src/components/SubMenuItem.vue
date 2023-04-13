@@ -73,6 +73,14 @@
       &--blue {
         background-color: #0094c6;
       }
+
+      &--yellow {
+        background-color: #cacc06;
+      }
+
+      &--white {
+        background-color: #dfe9e1;
+      }
     }
 
     &__contain {
