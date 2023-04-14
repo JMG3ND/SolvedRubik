@@ -11,32 +11,28 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 
 const sidebarData = [
     {
-        title: "Cubo tres por tres",
-        data: [
+        name: "Notación de movimientos",
+        articles: null
+    },
+    {
+        name: "Métodos de resolución",
+        articles: [
             {
-                name: "Notación de movimientos",
-                articles: null
+                name: "Principiante",
+                link: '/cube-three-by-three/beginners',
+                sections: null
             },
             {
-                name: "Métodos de resolución",
-                articles: [
-                    {
-                        name: "Principiante",
-                        sections: null
-                    },
-                    {
-                        name: "Fridrich",
-                        sections: [
-                            'Cross',
-                            'F2L',
-                            'PLL',
-                            'OLL'
-                        ]
-                    }
+                name: "Fridrich",
+                link: '/cube-three-by-three/fridrich',
+                sections: [
+                    'Cross',
+                    'F2L',
+                    'PLL',
+                    'OLL'
                 ]
             }
         ]
-
     }
 ]
 
@@ -48,7 +44,7 @@ const sidebarData = [
         <div class="content-divider justify-elements-in-screen__container">
             <div class="content-divider__sidebar-container" :class="changeShow">
                 <div class="content-divider__sidebar-links">
-                    <GlobalSidebar />
+                    <GlobalSidebar title="Cubo de tres por tres" :data="sidebarData" />
                 </div>
                 <div class="content-divider__sidebar-toc">
                     <TocSidebar />
