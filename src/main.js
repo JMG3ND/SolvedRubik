@@ -21,6 +21,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faList } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue'
 import router from './router'
@@ -36,9 +37,10 @@ library.add(faTwitter)
 library.add(faInstagram)
 library.add(faYoutube)
 library.add(faWhatsapp)
+library.add(faList)
 
 const app = createApp(App)
-.component('font-awesome-icon', FontAwesomeIcon)
+    .component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(createPinia())
 app.use(router)
