@@ -20,7 +20,15 @@ const sidebarData = [
             {
                 name: "Principiante",
                 link: '/cube-three-by-three/beginners',
-                sections: null
+                sections: [
+                    'Cruz',
+                    'Esquinas inferiores',
+                    'Segunda capa',
+                    'Cruz superior',
+                    'Esquinas superiores',
+                    'Orientación de esquinas',
+                    'Permutación final de las esquinas'
+                ]
             },
             {
                 name: "Fridrich",
@@ -36,6 +44,13 @@ const sidebarData = [
     }
 ]
 
+const tocSidebar = ref([]);
+
+const changeTocData = (index) => {
+    tocSidebar.value = sidebarData[1].articles[index].sections
+    console.log(tocSidebar.value)
+}
+
 </script>
 
 <template>
@@ -44,10 +59,10 @@ const sidebarData = [
         <div class="content-divider justify-elements-in-screen__container">
             <div class="content-divider__sidebar-container" :class="changeShow">
                 <div class="content-divider__sidebar-links">
-                    <GlobalSidebar title="Cubo de tres por tres" :data="sidebarData" />
+                    <GlobalSidebar @changeDataToc="changeTocData" title="Cubo de tres por tres" :data="sidebarData" />
                 </div>
-                <div class="content-divider__sidebar-toc">
-                    <TocSidebar />
+                <div @click="changeTocData" class="content-divider__sidebar-toc">
+                    <TocSidebar :data="tocSidebar" />
                 </div>
             </div>
             <div class="content-divider__main-container">
