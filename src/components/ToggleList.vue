@@ -58,6 +58,7 @@ const props = defineProps({
 
     &__list {
         list-style-type: none;
+        margin: 1rem 0;
     }
 }
 </style>

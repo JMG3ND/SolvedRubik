@@ -21,41 +21,41 @@ const sidebarData = [
         articles: [
             {
                 name: "Principiante",
-                link: '/cube-three-by-three/beginners',
+                link: '/cube-three-by-three/beginner',
                 articles: [
                     {
                         name: 'Cruz',
-                        link: '/cube-three-by-three/beginners/cross',
+                        link: '/cube-three-by-three/begginer-cross',
                         articles: null
                     },
                     {
                         name: 'Esquinas inferiores',
-                        link: '/cube-three-by-three/beginners/bottom-corners',
+                        link: '/cube-three-by-three/bottom-corners',
                         articles: null
                     },
                     {
                         name: 'Segunda capa',
-                        link: '/cube-three-by-three/beginners/second-layer',
+                        link: '/cube-three-by-three/second-layer',
                         articles: null
                     },
                     {
                         name: 'Cruz superior',
-                        link: '/cube-three-by-three/beginners/upper-cross',
+                        link: '/cube-three-by-three/upper-cross',
                         articles: null
                     },
                     {
                         name: 'Esquinas superiores',
-                        link: '/cube-three-by-three/beginners/top-corners',
+                        link: '/cube-three-by-three/top-corners',
                         articles: null
                     },
                     {
                         name: 'Orientación de esquinas',
-                        link: '/cube-three-by-three/beginners/corner-orientation',
+                        link: '/cube-three-by-three/corner-orientation',
                         articles: null
                     },
                     {
                         name: 'Permutación final de las esquinas',
-                        link: '/cube-three-by-three/beginners/final-permutation-of-the-corners',
+                        link: '/cube-three-by-three/final-permutation-of-the-corners',
                         articles: null
                     },
                 ]
@@ -66,22 +66,22 @@ const sidebarData = [
                 articles: [
                     {
                         name: 'Cross',
-                        link: '/cube-three-by-three/fridrich/cross',
+                        link: '/cube-three-by-three/fridrich-cross',
                         articles: null,
                     },
                     {
                         name: 'F2L',
-                        link: '/cube-three-by-three/fridrich/f2l',
+                        link: '/cube-three-by-three/f2l',
                         articles: null,
                     },
                     {
                         name: 'PLL',
-                        link: '/cube-three-by-three/fridrich/pll',
+                        link: '/cube-three-by-three/pll',
                         articles: null,
                     },
                     {
                         name: 'OLL',
-                        link: '/cube-three-by-three/fridrich/oll',
+                        link: '/cube-three-by-three/oll',
                         articles: null,
                     }
                 ]
