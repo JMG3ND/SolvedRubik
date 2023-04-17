@@ -5,6 +5,7 @@ import Cube3x3View from '../views/Cube3x3View.vue'
 import ResolutionMethodsView from '../views/articles/ResolutionMethodsView.vue';
 import MovementNotationView from '../views/articles/MovementNotationView.vue';
 
+//beginnerViews
 import BeginnerView from '../views/articles/BeginnerView.vue'
 import CrossBeginnerView from '../views/articles/beginnerview/CrossBeginnerView.vue';
 import BottomCornersView from '../views/articles/beginnerview/BottomCornersView.vue';
@@ -50,8 +51,8 @@ const router = createRouter({
           component: BeginnerView
         },
         {
-          path: 'begginer-cross',
-          name: 'begginer-cross',
+          path: 'beginner-cross',
+          name: 'beginner-cross',
           component: CrossBeginnerView
         },
         {

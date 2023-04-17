@@ -25,7 +25,7 @@ const sidebarData = [
                 articles: [
                     {
                         name: 'Cruz',
-                        link: '/cube-three-by-three/begginer-cross',
+                        link: '/cube-three-by-three/beginner-cross',
                         articles: null
                     },
                     {
