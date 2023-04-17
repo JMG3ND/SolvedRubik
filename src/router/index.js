@@ -2,24 +2,24 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Cube3x3View from '../views/Cube3x3View.vue'
 
-import ResolutionMethodsView from '../views/articles/ResolutionMethodsView.vue';
-import MovementNotationView from '../views/articles/MovementNotationView.vue';
+import IntroductionCube3x3View from '../views/articlesCube3x3/IntroductionCube3x3.vue';
+import ResolutionMethodsView from '../views/articlesCube3x3/ResolutionMethodsView.vue';
+import MovementNotationView from '../views/articlesCube3x3/MovementNotationView.vue';
 
-//beginnerViews
-import BeginnerView from '../views/articles/BeginnerView.vue'
-import CrossBeginnerView from '../views/articles/beginnerview/CrossBeginnerView.vue';
-import BottomCornersView from '../views/articles/beginnerview/BottomCornersView.vue';
-import SecondLayerView from '../views/articles/beginnerview/SecondLayerView.vue';
-import UpperCrossView from '../views/articles/beginnerview/UpperCrossView.vue';
-import TopCornersView from '../views/articles/beginnerview/TopCornersView.vue';
-import CornerOrientationView from '../views/articles/beginnerview/CornerOrientationView.vue';
-import FinalPermutationOfTheCornersView from '../views/articles/beginnerview/FinalPermutationOfTheCornersView.vue';
+import BeginnerView from '../views/articlesCube3x3/BeginnerView.vue'
+import CrossBeginnerView from '../views/articlesCube3x3/beginnerview/CrossBeginnerView.vue';
+import BottomCornersView from '../views/articlesCube3x3/beginnerview/BottomCornersView.vue';
+import SecondLayerView from '../views/articlesCube3x3/beginnerview/SecondLayerView.vue';
+import UpperCrossView from '../views/articlesCube3x3/beginnerview/UpperCrossView.vue';
+import TopCornersView from '../views/articlesCube3x3/beginnerview/TopCornersView.vue';
+import CornerOrientationView from '../views/articlesCube3x3/beginnerview/CornerOrientationView.vue';
+import FinalPermutationOfTheCornersView from '../views/articlesCube3x3/beginnerview/FinalPermutationOfTheCornersView.vue';
 
-import FridrichView from '../views/articles/FridrichView.vue'
-import F2LView from '../views/articles/fridrichview/F2LView.vue';
-import OLLView from '../views/articles/fridrichview/OLLView.vue';
-import PLLView from '../views/articles/fridrichview/PLLView.vue';
-import FridrichCrossView from '../views/articles/fridrichview/FridrichCrossView.vue';
+import FridrichView from '../views/articlesCube3x3/FridrichView.vue'
+import F2LView from '../views/articlesCube3x3/fridrichview/F2LView.vue';
+import OLLView from '../views/articlesCube3x3/fridrichview/OLLView.vue';
+import PLLView from '../views/articlesCube3x3/fridrichview/PLLView.vue';
+import FridrichCrossView from '../views/articlesCube3x3/fridrichview/FridrichCrossView.vue';
 
 
 const router = createRouter({
@@ -35,6 +35,11 @@ const router = createRouter({
       name: 'cube3x3',
       component: Cube3x3View,
       children: [
+        {
+          path: '',
+          name: '',
+          component: IntroductionCube3x3View
+        },
         {
           path: 'movement-notation',
           name: 'movement-notation',
