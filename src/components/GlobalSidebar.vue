@@ -23,6 +23,9 @@ defineProps({
 <style lang="scss">
 .global-sidebar {
 
+    overflow-y: auto;
+    height: 88%;
+
     &__title {
         padding: 1rem;
     }
