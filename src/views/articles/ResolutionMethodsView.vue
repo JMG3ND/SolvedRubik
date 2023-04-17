@@ -1,5 +1,7 @@
 <script setup></script>
 
 <template>
-    <h1>Métodos de resolución</h1>
+    <main class="main-article">
+        <h1>Métodos de resolución</h1>
+    </main>
 </template>

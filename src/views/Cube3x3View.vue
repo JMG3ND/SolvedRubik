@@ -181,4 +181,27 @@ const sidebarData = [
         }
     }
 }
+
+.main-article {
+    min-height: 85vh;
+    padding: 0 1rem;
+
+    p {
+        line-height: 1.5rem;
+        margin: 1rem 0 2rem;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+    ol {
+        padding: 0 1rem;
+
+        li {
+            line-height: 1.5rem;
+            margin: 0.5rem 0;
+        }
+    }
+}
 </style>
