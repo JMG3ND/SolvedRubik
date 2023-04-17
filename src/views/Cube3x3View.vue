@@ -12,44 +12,83 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 const sidebarData = [
     {
         name: "Notación de movimientos",
+        link: '/cube-three-by-three/movement-notation',
         articles: null
     },
     {
         name: "Métodos de resolución",
+        link: '/cube-three-by-three/resolution-methods',
         articles: [
             {
                 name: "Principiante",
                 link: '/cube-three-by-three/beginners',
-                sections: [
-                    'Cruz',
-                    'Esquinas inferiores',
-                    'Segunda capa',
-                    'Cruz superior',
-                    'Esquinas superiores',
-                    'Orientación de esquinas',
-                    'Permutación final de las esquinas'
+                articles: [
+                    {
+                        name: 'Cruz',
+                        link: '/cube-three-by-three/beginners/cross',
+                        articles: null
+                    },
+                    {
+                        name: 'Esquinas inferiores',
+                        link: '/cube-three-by-three/beginners/bottom-corners',
+                        articles: null
+                    },
+                    {
+                        name: 'Segunda capa',
+                        link: '/cube-three-by-three/beginners/second-layer',
+                        articles: null
+                    },
+                    {
+                        name: 'Cruz superior',
+                        link: '/cube-three-by-three/beginners/upper-cross',
+                        articles: null
+                    },
+                    {
+                        name: 'Esquinas superiores',
+                        link: '/cube-three-by-three/beginners/top-corners',
+                        articles: null
+                    },
+                    {
+                        name: 'Orientación de esquinas',
+                        link: '/cube-three-by-three/beginners/corner-orientation',
+                        articles: null
+                    },
+                    {
+                        name: 'Permutación final de las esquinas',
+                        link: '/cube-three-by-three/beginners/final-permutation-of-the-corners',
+                        articles: null
+                    },
                 ]
             },
             {
                 name: "Fridrich",
                 link: '/cube-three-by-three/fridrich',
-                sections: [
-                    'Cross',
-                    'F2L',
-                    'PLL',
-                    'OLL'
+                articles: [
+                    {
+                        name: 'Cross',
+                        link: '/cube-three-by-three/fridrich/cross',
+                        articles: null,
+                    },
+                    {
+                        name: 'F2L',
+                        link: '/cube-three-by-three/fridrich/f2l',
+                        articles: null,
+                    },
+                    {
+                        name: 'PLL',
+                        link: '/cube-three-by-three/fridrich/pll',
+                        articles: null,
+                    },
+                    {
+                        name: 'OLL',
+                        link: '/cube-three-by-three/fridrich/oll',
+                        articles: null,
+                    }
                 ]
             }
         ]
     }
 ]
-
-const tocSidebar = ref([]);
-
-const changeTocData = (index) => {
-    tocSidebar.value = sidebarData[1].articles[index].sections
-    console.log(tocSidebar.value)
-}
 
 </script>
 
@@ -59,10 +98,10 @@ const changeTocData = (index) => {
         <div class="content-divider justify-elements-in-screen__container">
             <div class="content-divider__sidebar-container" :class="changeShow">
                 <div class="content-divider__sidebar-links">
-                    <GlobalSidebar @changeDataToc="changeTocData" title="Cubo de tres por tres" :data="sidebarData" />
+                    <GlobalSidebar title="Cubo 3x3" :data="sidebarData" />
                 </div>
                 <div @click="changeTocData" class="content-divider__sidebar-toc">
-                    <TocSidebar :data="tocSidebar" />
+                    <!--<TocSidebar :data="tocSidebar" />-->
                 </div>
             </div>
             <div class="content-divider__main-container">
@@ -84,6 +123,8 @@ const changeTocData = (index) => {
 
         &__sidebar-container {
             display: contents;
+            position: sticky;
+            top: 1000px
         }
 
         &__main-container {
