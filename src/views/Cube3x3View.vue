@@ -174,7 +174,7 @@ const sidebarData = [
             display: flex;
             flex-direction: column-reverse;
             justify-content: start;
-            position: absolute;
+            position: fixed;
             top: 95px;
             bottom: 0;
             left: 0;
