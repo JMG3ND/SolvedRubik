@@ -123,8 +123,6 @@ const sidebarData = [
 
         &__sidebar-container {
             display: contents;
-            position: sticky;
-            top: 1000px
         }
 
         &__main-container {
@@ -144,6 +142,10 @@ const sidebarData = [
         grid-template-columns: 0.6fr 1.4fr;
         padding-top: 4rem;
 
+        &__sidebar-links {
+            height: 100%;
+        }
+
         &__sidebar-container {
             display: flex;
             flex-direction: column-reverse;
@@ -155,6 +157,10 @@ const sidebarData = [
 @media screen and (max-width: 850px) {
     .content-divider {
         display: block;
+
+        &__sidebar-links {
+            height: 100%;
+        }
 
         &__sidebar-container {
             background-color: $dark-baground-color-z-index-2;
@@ -168,7 +174,7 @@ const sidebarData = [
             display: flex;
             flex-direction: column-reverse;
             justify-content: start;
-            position: fixed;
+            position: absolute;
             top: 95px;
             bottom: 0;
             left: 0;
