@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const props = defineProps({
@@ -7,12 +8,21 @@ const props = defineProps({
     list: Array
 })
 
+const iconShow = ref(false);
+const activeIconShow = () => iconShow.value = !iconShow.value
+const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
+
 </script>
 
 <template>
-    <div class="toggle">
+    <div class="toggle" :class="computedIconShow">
         <header class="toggle__header">
-            <RouterLink :to="link" class="toggle__link">{{ title }}</RouterLink>
+            <RouterLink @click="activeIconShow" :to="link" class="toggle__link">
+                {{ title }}
+                <div v-if="list" class="toggle__icon-show">
+                    <font-awesome-icon icon="fa-solid fa-caret-down" />
+                </div>
+            </RouterLink>
         </header>
         <article v-if="list" class="toggle__list-container">
             <ul class="toggle__list">
@@ -31,7 +41,9 @@ const props = defineProps({
     padding-left: 1rem;
 
     &__link {
-        display: inline-block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         text-decoration: none;
         width: 100%;
         padding: 0.5rem;
@@ -59,6 +71,31 @@ const props = defineProps({
     &__list {
         list-style-type: none;
         margin: 1rem 0;
+    }
+
+    &__button {
+        border: none;
+        background-color: transparent;
+    }
+
+    &__icon-show {
+        transform: rotate(-90deg);
+        transition: transform 0.5s;
+    }
+
+    &__list-container {
+        height: 0;
+        overflow: hidden;
+    }
+
+    &--active {
+        >.toggle__header>.toggle__link>.toggle__icon-show {
+            transform: unset;
+        }
+
+        >.toggle__list-container {
+            height: auto;
+        }
     }
 }
 </style>
