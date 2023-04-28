@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router';
 import ToggleList from '../components/ToggleList.vue';
 
 defineProps({

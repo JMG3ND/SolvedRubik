@@ -1,9 +1,9 @@
 <template>
     <div class="toggle" :class="computedIconShow">
         <header class="toggle__header">
-            <RouterLink @click="activeIconShow" :to="link" class="toggle__link">
+            <RouterLink :to="link" class="toggle__link">
                 {{ title }}
-                <div v-if="list" class="toggle__icon-show">
+                <div @click="activeIconShow" v-if="list" class="toggle__icon-show">
                     <font-awesome-icon icon="fa-solid fa-caret-down" />
                 </div>
             </RouterLink>
@@ -28,7 +28,7 @@ const props = defineProps({
     list: Array
 })
 
-const iconShow = ref(false);
+const iconShow = ref(true);
 const activeIconShow = () => iconShow.value = !iconShow.value
 const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
 </script>
