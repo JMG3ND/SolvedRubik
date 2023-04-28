@@ -4,7 +4,7 @@
         <div class="content-divider justify-elements-in-screen__container">
             <div class="content-divider__sidebar-container" :class="changeShow">
                 <div class="content-divider__sidebar-links">
-                    <GlobalSidebar title="Cubos" :data="sidebarData" />
+                    <GlobalSidebar title="Cubo 3 x 3" :data="sidebarData" />
                 </div>
                 <div @click="changeTocData" class="content-divider__sidebar-toc">
                     <!--<TocSidebar :data="tocSidebar" />-->
