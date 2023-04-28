@@ -1,19 +1,3 @@
-<script setup>
-import { ref, computed } from 'vue';
-import { RouterLink } from 'vue-router';
-
-const props = defineProps({
-    title: String,
-    link: String,
-    list: Array
-})
-
-const iconShow = ref(false);
-const activeIconShow = () => iconShow.value = !iconShow.value
-const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
-
-</script>
-
 <template>
     <div class="toggle" :class="computedIconShow">
         <header class="toggle__header">
@@ -33,6 +17,21 @@ const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
         </article>
     </div>
 </template>
+
+<script setup>
+import { ref, computed } from 'vue';
+import { RouterLink } from 'vue-router';
+
+const props = defineProps({
+    title: String,
+    link: String,
+    list: Array
+})
+
+const iconShow = ref(false);
+const activeIconShow = () => iconShow.value = !iconShow.value
+const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
+</script>
 
 <style lang="scss">
 @import '../assets/colors-theme.scss';
@@ -80,7 +79,7 @@ const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
 
     &__icon-show {
         transform: rotate(-90deg);
-        transition: transform 0.5s;
+        transition: transform 0.1s;
     }
 
     &__list-container {
