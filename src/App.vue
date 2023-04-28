@@ -11,5 +11,6 @@ import FooterPrincipal from './components/FooterPrincipal.vue';
 </template>
 
 <style lang="scss">
+//Estilos por defecto de la app
 @import './assets/styale-default.scss';
 </style>
