@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import IntroductionCube3x3View from '../views/articlesCube3x3/IntroductionCube3x3.vue';
-import MovementNotationView from '../views/articlesCube3x3/MovementNotationView.vue'
-
-import FridrichView from '../views/articlesCube3x3/FridrichView.vue'
+import HomeView from '../views/HomeView.vue';
+import Cube3x3View from '../views/Cube3x3View.vue';
+import IntroductionCube3x3 from '../views/articlesCube3x3/IntroductionCube3x3.vue'
+import MovementNotation from '../views/articlesCube3x3/MovementNotationView.vue';
+import FridrichCross from '../views/articlesCube3x3/FridrichView.vue';
 import F2LView from '../views/articlesCube3x3/fridrichview/F2LView.vue';
+import FridrichCrossView from '../views/articlesCube3x3/fridrichview/FridrichCrossView.vue';
 import OLLView from '../views/articlesCube3x3/fridrichview/OLLView.vue';
 import PLLView from '../views/articlesCube3x3/fridrichview/PLLView.vue';
-import FridrichCrossView from '../views/articlesCube3x3/fridrichview/FridrichCrossView.vue';
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,27 +16,27 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: import('../views/HomeView.vue')
+      component: HomeView
     },
     {
       path: '/cube-three-by-three',
       name: 'cube3x3',
-      component: import('../views/Cube3x3View.vue'),
+      component: Cube3x3View,
       children: [
         {
           path: '',
           name: '',
-          component: IntroductionCube3x3View
+          component: IntroductionCube3x3
         },
         {
           path: 'movement-notation',
           name: 'movement-notation',
-          component: MovementNotationView
+          component: MovementNotation
         },
         {
           path: 'fridrich',
           name: 'fridrich',
-          component: FridrichView
+          component: FridrichCross
         },
         {
           path: 'f2l',
