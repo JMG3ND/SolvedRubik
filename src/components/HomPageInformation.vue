@@ -8,8 +8,8 @@
 
         <!--Block-->
         <section class="article-item">
-          <div class="article-item__image-container"><img class="article-item__image" :src="cube3x3Img"
-              alt="Cubo de rubik 2x2"></div>
+          <div class="article-item__image-container"><img class="article-item__image"
+              src="../assets/images/home-page-article/cubo-tres-por-tres.png" alt="Cubo de rubik 2x2"></div>
           <div class="article-item__informataion-container">
             <header class="article-item__title-container">
               <h2 class="article-item__title">CUBO 3X3</h2>
@@ -42,7 +42,7 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-import cube3x3Img from '../assets/images/home-page-article/cubo-tres-por-tres.png'
+//import cube3x3Img from '../assets/images/home-page-article/cubo-tres-por-tres.png'
 </script>
 
 <style lang="scss">
