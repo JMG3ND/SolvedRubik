@@ -4,7 +4,7 @@
         <div class="content-divider justify-elements-in-screen__container">
             <div class="content-divider__sidebar-container" :class="changeShow">
                 <div class="content-divider__sidebar-links">
-                    <GlobalSidebar title="Cubo 3x3" :data="sidebarData3x3" />
+                    <GlobalSidebar title="Cubos" :data="sidebarData" />
                 </div>
                 <div @click="changeTocData" class="content-divider__sidebar-toc">
                     <!--<TocSidebar :data="tocSidebar" />-->
@@ -23,9 +23,9 @@ import { ref, computed } from 'vue';
 import GlobalSidebar from '../components/GlobalSidebar.vue';
 import TocSidebar from '../components/TocSidebar.vue';
 import ArticleActions from '../components/ArticleActions.vue';
-import { sidebarData } from '../composable/sidebarData';
+import { useSidebarData } from '../composable/sidebarData';
 
-const { sidebarData3x3 } = sidebarData();
+const { sidebarData } = useSidebarData();
 const sidebarShow = ref(false)
 const showSidebar = () => sidebarShow.value = !sidebarShow.value
 const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '')
