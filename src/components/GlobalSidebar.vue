@@ -1,8 +1,10 @@
 <script setup>
 import ToggleList from '../components/ToggleList.vue';
+import { RouterLink } from 'vue-router';
 
 defineProps({
     title: String,
+    url: String,
     data: Array
 })
 
@@ -10,7 +12,7 @@ defineProps({
 
 <template>
     <aside class="global-sidebar">
-        <h2 class="global-sidebar__title"> {{ title }} </h2>
+        <RouterLink :to="url" class="global-sidebar__title"> {{ title }} </RouterLink>
         <ul class="global-sidebar__list">
             <li class="global-sidebar__item-container" v-for="element in data">
                 <ToggleList :link="element.link" :title="element.name" :list="element.articles" />
@@ -33,7 +35,9 @@ defineProps({
     overflow-y: auto;
 
     &__title {
+        display: block;
         padding: 1rem;
+        font-size: large;
     }
 
     &__list {
