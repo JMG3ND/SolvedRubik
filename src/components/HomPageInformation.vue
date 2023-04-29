@@ -6,7 +6,7 @@
       </header>
       <article class="home-page-information__item-container">
         <!--Block-->
-        <ArticleItem title="CUBO 3X3" :imageArticle="cube3x3"
+        <ArticleItem title="CUBO 3X3" :imageArticle="cube3x3" url="/cube-three-by-three"
           description="Algoritmos para resolver el cubo tres por tres" />
       </article>
     </div>

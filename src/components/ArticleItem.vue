@@ -10,7 +10,7 @@
                 <p class="article-item__description">{{ description }}</p>
             </article>
             <footer class="article-item__link-container">
-                <RouterLink to="/cube-three-by-three" class="button-link">Ir</RouterLink>
+                <RouterLink v-if="url" :to="url" class="button-link">Ir</RouterLink>
             </footer>
         </div>
     </section>
@@ -22,7 +22,11 @@ import { RouterLink } from 'vue-router';
 defineProps({
     title: String,
     imageArticle: URL,
-    description: String
+    description: String,
+    url: {
+        type: String,
+        default: null
+    }
 });
 </script>
 
