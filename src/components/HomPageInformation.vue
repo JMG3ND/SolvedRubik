@@ -23,7 +23,7 @@
           description="Algoritmos para resolver el cubo dos por dos" />
         <ArticleItem title="CUBO 4X4" :imageArticle="cube4x4"
           description="Algoritmos para resolver el cubo cuatro por cuatro" />
-        <ArticleItem title="CUBO 2X20" :imageArticle="cube5x5"
+        <ArticleItem title="CUBO 5X5" :imageArticle="cube5x5"
           description="Algoritmos para resolver el cubo cinco por cinco" />
       </article>
     </div>
