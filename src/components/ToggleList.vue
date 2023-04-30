@@ -53,14 +53,14 @@ const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
         }
 
         &:hover {
-            color: $yellow;
-            border-left: 2px solid $yellow;
+            color: white;
+            border-left: 2px solid white;
         }
     }
 
     & .router-link-active {
-        border-left: 2px solid $yellow;
-        background-color: $dark-yellow-background;
+        border-left: 2px solid white;
+        background-color: $dark-baground-color-z-index-1;
 
         body.light & {
             background-color: $light-yellow-background;

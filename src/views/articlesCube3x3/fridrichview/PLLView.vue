@@ -1,7 +1,5 @@
 <script setup></script>
 
 <template>
-    <main class="main-article">
-        <h1>PLL</h1>
-    </main>
+    <h1>PLL</h1>
 </template>

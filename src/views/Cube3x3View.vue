@@ -11,7 +11,9 @@
                 </div>
             </div>
             <div class="content-divider__main-container">
-                <RouterView />
+                <main class="main-article">
+                    <RouterView />
+                </main>
             </div>
         </div>
     </div>
