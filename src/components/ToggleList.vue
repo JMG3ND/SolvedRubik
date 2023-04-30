@@ -55,6 +55,11 @@ const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
         &:hover {
             color: white;
             border-left: 2px solid white;
+
+            body.light & {
+                color: black;
+                border-left: 2px solid black;
+            }
         }
     }
 
@@ -63,7 +68,8 @@ const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
         background-color: $dark-baground-color-z-index-1;
 
         body.light & {
-            background-color: $light-yellow-background;
+            border-left: 2px solid black;
+            background-color: $light-baground-color-z-index-1;
         }
     }
 
