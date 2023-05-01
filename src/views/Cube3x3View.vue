@@ -36,6 +36,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 
 <style lang="scss">
 @import '../assets/colors-theme.scss';
+@import '@/assets/main-section.scss';
 
 @media screen and (min-width: 1200px) {
     .content-divider {

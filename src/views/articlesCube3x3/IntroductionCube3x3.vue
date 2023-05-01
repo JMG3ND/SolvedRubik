@@ -34,21 +34,4 @@
 
 <script setup></script>
 
-<style lang="scss">
-@import '@/assets/_colors-theme.scss';
-
-.main-section {
-    background-color: $dark-baground-color-z-index-1;
-
-    body.light & {
-        background-color: $light-baground-color-z-index-1;
-    }
-
-    padding: 1rem;
-    border-radius: 20px;
-
-    &__paragraph {
-        line-height: 1em;
-    }
-}
-</style>
+<style lang="scss"></style>
