@@ -1,19 +1,19 @@
 <script setup></script>
 
 <template>
-    <section>
-        <header>
-            <h1>Método Fridrich</h1>
+    <section class="main-section">
+        <header class="main-section__header">
+            <h1 class="main-section__title">Método Fridrich</h1>
         </header>
-        <article>
-            <p>
+        <article class="main-section__article">
+            <p class="main-section__paragraph">
                 El método de resolución Fridrich es un enfoque eficiente y popular para resolver el cubo de Rubik, que
                 se
                 enfoca en resolver múltiples caras simultáneamente en lugar de abordar cada cara individualmente. Fue
                 desarrollado por la cubera Jessica Fridrich a principios de los años 90 y ha sido utilizado por muchos
                 cuberos profesionales desde entonces. </p>
             <p>El método Fridrich consta de cuatro etapas:</p>
-            <ol>
+            <ol class="main-section__list">
                 <li>Cross o cruz: En esta etapa, el objetivo es formar una cruz en la cara inferior del cubo, utilizando
                     los
                     colores de los centros como guía.</li>
@@ -26,7 +26,8 @@
                     todas
                     las piezas de la última capa para completar la resolución del cubo.</li>
             </ol>
-            <p>El método Fridrich es un método avanzado y requiere mucha práctica y habilidad para llevarlo a cabo con
+            <p class="main-section__paragraph">El método Fridrich es un método avanzado y requiere mucha práctica y
+                habilidad para llevarlo a cabo con
                 éxito. Aunque puede ser difícil de aprender al principio, es uno de los métodos más rápidos para
                 resolver el
                 cubo de Rubik y es utilizado por muchos cuberos profesionales.</p>

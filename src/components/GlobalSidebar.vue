@@ -31,7 +31,7 @@ defineProps({
 
 
 .global-sidebar {
-
+    padding-right: 1rem;
     overflow-y: auto;
 
     &__title {

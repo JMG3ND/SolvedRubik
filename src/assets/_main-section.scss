@@ -1,6 +1,7 @@
 @import '@/assets/_colors-theme.scss';
 
 .main-section {
+    margin-bottom: 1rem;
     background-color: $dark-baground-color-z-index-1;
 
     body.light & {
@@ -12,5 +13,11 @@
 
     &__paragraph {
         line-height: 1em;
+    }
+
+    &__list {
+        >li {
+            margin-left: 1rem;
+        }
     }
 }
