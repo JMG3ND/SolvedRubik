@@ -20,15 +20,15 @@ export const useSidebarData = () => {
                     articles: null,
                 },
                 {
+                    name: 'OLL',
+                    link: '/cube-three-by-three/oll',
+                    articles: null,
+                },
+                {
                     name: 'PLL',
                     link: '/cube-three-by-three/pll',
                     articles: null,
                 },
-                {
-                    name: 'OLL',
-                    link: '/cube-three-by-three/oll',
-                    articles: null,
-                }
             ]
         }
     ]
