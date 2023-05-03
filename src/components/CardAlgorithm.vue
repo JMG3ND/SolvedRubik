@@ -16,14 +16,15 @@ defineProps({
 })
 
 //Función que mantiene la proporción de la imágen
+const width = ref(null);
 const image_container = ref(null);
-const setHeight = computed(() => {
-    if (image_container.value) {
-        const width = image_container.value.clientWidth;
-        return `${width}px`;
-    }
-    return ``;
-});
+const setHeight = computed(() => `${width.value}px`);
+const changeWith = () => {
+    width.value = image_container.value.clientWidth;
+}
+
+window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando cambia el tamaño de la ventana
+window.addEventListener("DOMContentLoaded", changeWith); //Evento que se ejecuta cargan todos los elementos del DOM
 </script>
 
 <style lang="scss">
