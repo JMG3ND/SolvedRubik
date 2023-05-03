@@ -20,4 +20,24 @@
             margin-left: 1rem;
         }
     }
+
+    &__center-card-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__card-container {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .main-section {
+        &__card-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
 }

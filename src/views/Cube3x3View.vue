@@ -25,7 +25,7 @@ import { ref, computed } from 'vue';
 import GlobalSidebar from '../components/GlobalSidebar.vue';
 import TocSidebar from '../components/TocSidebar.vue';
 import ArticleActions from '../components/ArticleActions.vue';
-import { useSidebarData } from '../composable/sidebarData';
+import { useSidebarData } from '@/aplicationDatajs/sidebarData';
 
 const { sidebarData } = useSidebarData();
 const sidebarShow = ref(false)
