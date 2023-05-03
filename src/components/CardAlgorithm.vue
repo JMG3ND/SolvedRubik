@@ -9,7 +9,7 @@
 
 <script setup>
 import ImageAlgrithm from '@/components/ImageAlgrithm.vue';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 defineProps({
     image: Array,
     description: String,
@@ -20,11 +20,12 @@ const width = ref(null);
 const image_container = ref(null);
 const setHeight = computed(() => `${width.value}px`);
 const changeWith = () => {
-    width.value = image_container.value.clientWidth;
+    if (image_container.value)
+        width.value = image_container.value.clientWidth;
 }
 
+onMounted(() => changeWith());
 window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando cambia el tamaño de la ventana
-window.addEventListener("DOMContentLoaded", changeWith); //Evento que se ejecuta cargan todos los elementos del DOM
 </script>
 
 <style lang="scss">
