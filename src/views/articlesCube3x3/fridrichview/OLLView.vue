@@ -9,7 +9,7 @@
     </section>
     <section class="main-section">
         <header class="main-section__header">
-            <h1 class="main-section__title">Cruz</h1>
+            <h2 class="main-section__title">Caso Cruz</h2>
         </header>
         <article class="main-section__article">
             <div class="main-section__center-card-container">
@@ -27,6 +27,4 @@ import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import { useSectionCrossData } from '@/aplicationDatajs/OLLData/sectionCrossData';
 
 const { algorithmData } = useSectionCrossData();
-
-console.log(algorithmData);
 </script>

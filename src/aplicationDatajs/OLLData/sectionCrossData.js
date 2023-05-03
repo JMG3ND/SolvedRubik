@@ -25,6 +25,38 @@ export const useSectionCrossData = () => {
                 b, c, c,
             ],
             algorithm: "L' U R U' L U R'",
+        },
+        {
+            image: [
+                t, c, r,
+                c, c, c,
+                c, c, b,
+            ],
+            algorithm: "R U' L' U R' U' L",
+        },
+        {
+            image: [
+                t, c, t,
+                c, c, c,
+                c, c, c,
+            ],
+            algorithm: "R2 D' R U2 R' D R U2 R",
+        },
+        {
+            image: [
+                t, c, c,
+                c, c, c,
+                b, c, c,
+            ],
+            algorithm: "r U R' U' r' F R F'",
+        },
+        {
+            image: [
+                c, c, t,
+                c, c, c,
+                l, c, c,
+            ],
+            algorithm: "R' F' L' F R F' L F",
         }
     ]
 
