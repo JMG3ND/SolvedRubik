@@ -45,6 +45,7 @@ const color = element => {
 
     &__piece {
         position: relative;
+        z-index: 0;
         border-radius: 10%;
         background-color: #8e8e8e;
 

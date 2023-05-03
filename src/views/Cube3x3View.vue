@@ -102,6 +102,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             top: 95px;
             bottom: 0;
             left: 0;
+            z-index: 3;
             transform: translateX(-100%);
             transition: transform .5s;
 
