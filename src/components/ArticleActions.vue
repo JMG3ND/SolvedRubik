@@ -25,6 +25,7 @@ const emit = defineEmits(['showSidebar'])
         }
 
         position: fixed;
+        z-index: 1;
 
         &__button {
             display: block;
