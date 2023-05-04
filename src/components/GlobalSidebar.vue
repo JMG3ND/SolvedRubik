@@ -22,14 +22,6 @@ defineProps({
 </template>
 
 <style lang="scss">
-@media screen and (min-width: 1199px) {
-    .global-sidebar {
-        position: sticky;
-        top: 90px;
-    }
-}
-
-
 .global-sidebar {
     padding-right: 1rem;
     overflow-y: auto;

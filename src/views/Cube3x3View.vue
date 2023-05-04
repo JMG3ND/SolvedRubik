@@ -4,10 +4,14 @@
         <div class="content-divider justify-elements-in-screen__container">
             <div class="content-divider__sidebar-container" :class="changeShow">
                 <div class="content-divider__sidebar-links">
-                    <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData" />
+                    <div class="content-divider__sticky-content">
+                        <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData" />
+                    </div>
                 </div>
                 <div @click="changeTocData" class="content-divider__sidebar-toc">
-                    <!--<TocSidebar :data="tocSidebar" />-->
+                    <div class="content-divider__sticky-content">
+                        <TocSidebar :data="tocSidebar" />
+                    </div>
                 </div>
             </div>
             <div class="content-divider__main-container">
@@ -57,6 +61,11 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
         &__sidebar-toc {
             grid-column: 3;
         }
+
+        &__sticky-content {
+            position: sticky;
+            top: 120px;
+        }
     }
 }
 
@@ -66,14 +75,15 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
         grid-template-columns: 0.6fr 1.4fr;
         padding-top: 4rem;
 
-        &__sidebar-links {
-            height: 100%;
-        }
+        //Se alínean los elementos para poder aplicar position sticky al sidebar-linsk
+        align-items: start;
 
         &__sidebar-container {
             display: flex;
             flex-direction: column-reverse;
             justify-content: start;
+            position: sticky;
+            top: 120px;
         }
     }
 }
