@@ -13,6 +13,9 @@
                         <TocSidebar :data="tocSidebar" />
                     </div>
                 </div>
+                <Teleport v-if="sidebarShow" to="body">
+                    <div @click="showSidebar" class="content-divider__panel-hidden"></div>
+                </Teleport>
             </div>
             <div class="content-divider__main-container">
                 <main class="main-article">
@@ -32,8 +35,8 @@ import ArticleActions from '../components/ArticleActions.vue';
 import { useSidebarData } from '@/aplicationDatajs/sidebarData';
 
 const { sidebarData } = useSidebarData();
-const sidebarShow = ref(false)
-const showSidebar = () => sidebarShow.value = !sidebarShow.value
+const sidebarShow = ref(false);
+const showSidebar = () => sidebarShow.value = !sidebarShow.value;
 const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '')
 
 </script>
@@ -66,6 +69,10 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             position: sticky;
             top: 120px;
         }
+
+        &__panel-hidden {
+            display: none;
+        }
     }
 }
 
@@ -84,6 +91,10 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             justify-content: start;
             position: sticky;
             top: 120px;
+        }
+
+        &__panel-hidden {
+            display: none;
         }
     }
 }
@@ -119,6 +130,15 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             &--show {
                 transform: unset;
             }
+        }
+
+        &__panel-hidden {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
         }
     }
 }

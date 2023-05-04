@@ -1,12 +1,3 @@
-<script setup>
-import { RouterLink } from 'vue-router';
-import MainMenu from '@/components/MainMenu.vue'
-import TopNavegationFinder from '@/components/TopNavegationFinder.vue';
-import SwitcherTheme from './SwitcherTheme.vue';
-
-const showMenu = () => document.querySelector("#top-navegation-bar__menus-container").classList.toggle('top-navegation-bar__menus-container--show');
-</script>
-
 <template>
 	<!--block-->
 	<header class="top-navegation-bar justify-elements-in-screen">
@@ -14,7 +5,7 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
 			<RouterLink to="/" class="top-navegation-bar__logo">
 				<img src="../assets/images/logo-solvedrubik-150.png" alt="logo-solvedrubik">
 			</RouterLink>
-			<div class="top-navegation-bar__menus-container" id="top-navegation-bar__menus-container">
+			<div class="top-navegation-bar__menus-container" :class="showMenuClass">
 				<div class="top-navegation-bar__menu-separator top-navegation-bar__menu-separator--uno">
 					<!--block-->
 					<MainMenu />
@@ -25,6 +16,9 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
 					<!--block-->
 					<TopNavegationFinder />
 				</div>
+				<Teleport v-if="showMenubull" to="body">
+					<div @click="showMenu" class="top-navegation-bar__panel-hidden"></div>
+				</Teleport>
 			</div>
 			<div class="top-navegation-bar__button-container">
 				<button @click="showMenu" class="top-navegation-bar__button"
@@ -33,6 +27,18 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
 		</div>
 	</header>
 </template>
+
+<script setup>
+import { ref, computed } from 'vue';
+import { RouterLink } from 'vue-router';
+import MainMenu from '@/components/MainMenu.vue'
+import TopNavegationFinder from '@/components/TopNavegationFinder.vue';
+import SwitcherTheme from './SwitcherTheme.vue';
+
+const showMenubull = ref(false);
+const showMenuClass = computed(() => showMenubull.value ? 'top-navegation-bar__menus-container--show' : '');
+const showMenu = () => showMenubull.value = !showMenubull.value;
+</script>
 
 <style lang="scss">
 @import '@/assets/_colors-theme.scss';
@@ -118,20 +124,30 @@ const showMenu = () => document.querySelector("#top-navegation-bar__menus-contai
 				border: 2px solid $light-baground-color-z-index-1;
 			}
 
-			width: 80%;
-			max-width: 400px;
+			display: grid;
+			grid-auto-rows: max-content;
 			position: fixed;
-			transform: translateX(100%);
-			transition: transform .5s;
 			top: 60px;
 			bottom: 0;
 			right: 0;
-			display: grid;
-			grid-auto-rows: max-content;
+			width: 80%;
+			max-width: 400px;
+			transform: translateX(100%);
+			transition: transform .5s;
+			z-index: 1;
 
 			&--show {
 				transform: unset;
 			}
+		}
+
+		&__panel-hidden {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			z-index: 2;
 		}
 
 		&__logo {
