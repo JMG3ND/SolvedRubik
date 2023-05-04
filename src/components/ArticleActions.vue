@@ -1,7 +1,3 @@
-<script setup>
-const emit = defineEmits(['showSidebar'])
-</script>
-
 <template>
     <div class="article-actions justify-elements-in-screen">
         <div class="justify-elements-in-screen__container"><button @click="emit('showSidebar')"
@@ -11,22 +7,28 @@ const emit = defineEmits(['showSidebar'])
     </div>
 </template>
 
+<script setup>
+const emit = defineEmits(['showSidebar'])
+</script>
+
 <style lang="scss">
 @import '../assets/colors-theme.scss';
 
+.article-actions {
+    background-color: $dark-baground-color-z-index-1;
+    border-bottom: 1px solid $dark-border-box-color;
+
+    body.light & {
+        background-color: $light-baground-color-z-index-1;
+        border-bottom: 1px solid $light-border-box-color;
+    }
+
+    position: fixed;
+    z-index: 1;
+}
+
 @media screen and (max-width:850px) {
     .article-actions {
-        background-color: $dark-baground-color-z-index-1;
-        border-bottom: 1px solid $dark-border-box-color;
-
-        body.light & {
-            background-color: $light-baground-color-z-index-1;
-            border-bottom: 1px solid $light-border-box-color;
-        }
-
-        position: fixed;
-        z-index: 1;
-
         &__button {
             display: block;
             background-color: transparent;
@@ -40,15 +42,6 @@ const emit = defineEmits(['showSidebar'])
 @media screen and (min-width: 851px) {
     .article-actions {
         height: 2rem;
-        background-color: $dark-baground-color-z-index-1;
-        border-bottom: 1px solid $dark-border-box-color;
-
-        body.light & {
-            background-color: $light-baground-color-z-index-1;
-            border-bottom: 1px solid $light-border-box-color;
-        }
-
-        position: fixed;
 
         &__button {
             display: none;

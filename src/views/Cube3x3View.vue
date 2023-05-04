@@ -99,7 +99,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             flex-direction: column-reverse;
             justify-content: start;
             position: fixed;
-            top: 95px;
+            top: 90px;
             bottom: 0;
             left: 0;
             z-index: 3;

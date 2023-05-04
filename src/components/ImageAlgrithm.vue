@@ -34,6 +34,9 @@ const color = element => {
     position: absolute;
     background-color: #f4ec00;
     border-radius: 100px;
+    border: 1px solid black;
+    min-width: 4px;
+    min-height: 4px;
 }
 
 .algorithm-image {
@@ -57,28 +60,28 @@ const color = element => {
             @extend %extend-piece;
             width: 100%;
             height: 5%;
-            top: -10%;
+            top: -12%;
         }
 
         &--right::before {
             @extend %extend-piece;
-            width: 5%;
+            width: 7%;
             height: 100%;
-            right: -10%;
+            right: -12%;
         }
 
         &--left::before {
             @extend %extend-piece;
-            width: 5%;
+            width: 7%;
             height: 100%;
-            left: -10%;
+            left: -12%;
         }
 
         &--bottom::before {
             @extend %extend-piece;
             width: 100%;
             height: 5%;
-            bottom: -10%;
+            bottom: -12%;
         }
     }
 }
