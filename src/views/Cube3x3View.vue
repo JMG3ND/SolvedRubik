@@ -10,7 +10,7 @@
                 </div>
                 <div @click="changeTocData" class="content-divider__sidebar-toc">
                     <div class="content-divider__sticky-content">
-                        <TocSidebar :data="tocSidebar" />
+                        <TocSidebar :data="tocSidebarDataObj.tocSidebarData" />
                     </div>
                 </div>
                 <Teleport v-if="sidebarShow" to="body">
@@ -33,12 +33,13 @@ import GlobalSidebar from '../components/GlobalSidebar.vue';
 import TocSidebar from '../components/TocSidebar.vue';
 import ArticleActions from '../components/ArticleActions.vue';
 import { useSidebarData } from '@/aplicationDatajs/sidebarData';
+import { useTocSidebarStore } from '../stores/tocSidebarStore';
 
+const tocSidebarDataObj = useTocSidebarStore();
 const { sidebarData } = useSidebarData();
 const sidebarShow = ref(false);
 const showSidebar = () => sidebarShow.value = !sidebarShow.value;
 const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '')
-
 </script>
 
 <style lang="scss">

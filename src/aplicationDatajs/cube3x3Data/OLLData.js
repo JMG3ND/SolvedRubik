@@ -4,6 +4,7 @@ export const useOLLData = () => {
 
     const sectionArray = [
         {
+            id: "casocruz",
             title: "Caso Cruz",
             data: [
                 {
@@ -65,6 +66,7 @@ export const useOLLData = () => {
             ],
         },
         {
+            id: "casopunto",
             title: "Caso Punto",
             data: [
                 {
@@ -134,6 +136,7 @@ export const useOLLData = () => {
             ],
         },
         {
+            id: "casolinea",
             title: "Caso Línea",
             data: [
                 {
@@ -171,6 +174,7 @@ export const useOLLData = () => {
             ],
         },
         {
+            id: "casolpequena",
             title: "Caso L Pequeña",
             data: [
                 {
@@ -224,6 +228,7 @@ export const useOLLData = () => {
             ],
         },
         {
+            id: "casocuadrados",
             title: "Caso Cuadrados",
             data: [
                 {
@@ -314,6 +319,7 @@ export const useOLLData = () => {
             ],
         },
         {
+            id: "casopez",
             title: "Caso Pez",
             data: [
                 {
@@ -351,6 +357,7 @@ export const useOLLData = () => {
             ]
         },
         {
+            id: "casoformadec",
             title: "Caso Forma de C",
             data: [
                 {
@@ -372,6 +379,7 @@ export const useOLLData = () => {
             ]
         },
         {
+            id: "casoformadelgrande",
             title: "Caso Forma de L Grande",
             data: [
                 {
@@ -409,6 +417,7 @@ export const useOLLData = () => {
             ],
         },
         {
+            id: "casoformadep",
             title: "Caso Forma de P",
             data: [
                 {
@@ -446,6 +455,7 @@ export const useOLLData = () => {
             ]
         },
         {
+            id: "casoformadet",
             title: "Caso Forma de T",
             data: [
                 {
@@ -467,6 +477,7 @@ export const useOLLData = () => {
             ]
         },
         {
+            id: "casoformadew",
             title: "Caso Forma de W",
             data: [
                 {
@@ -488,6 +499,7 @@ export const useOLLData = () => {
             ]
         },
         {
+            id: "casoformadez",
             title: "Caso Forma de Z",
             data: [
                 {
@@ -509,6 +521,7 @@ export const useOLLData = () => {
             ]
         },
         {
+            id: "casodeesquinabienorientadas",
             title: "Caso de Esquinas Bien Orientadas",
             data: [
                 {

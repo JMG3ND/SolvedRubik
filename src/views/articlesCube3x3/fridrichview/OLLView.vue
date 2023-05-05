@@ -7,7 +7,7 @@
 
         </article>
     </section>
-    <section v-for="element in sectionArray" class="main-section">
+    <section v-for="element in sectionArray" :id="element.id" class="main-section">
         <header class="main-section__header">
             <h2 class="main-section__title">{{ element.title }}</h2>
         </header>
@@ -25,7 +25,11 @@
 <script setup>
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import { useOLLData } from '@/aplicationDatajs/cube3x3Data/OLLData';
+import { useTocSidebarStore } from '../../../stores/tocSidebarStore';
+import { onMounted } from 'vue';
 
+const { tocSidebarDataFill } = useTocSidebarStore();
 const { sectionArray } = useOLLData();
 
+onMounted(() => tocSidebarDataFill(sectionArray));
 </script>
