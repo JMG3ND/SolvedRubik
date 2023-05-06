@@ -1,5 +1,5 @@
-import { ref } from 'vue'
-import { defineStore } from 'pinia'
+import { ref } from 'vue';
+import { defineStore } from 'pinia';
 
 export const useTocSidebarStore = defineStore('tocSidebarData', () => {
   const tocSidebarData = ref(null);
