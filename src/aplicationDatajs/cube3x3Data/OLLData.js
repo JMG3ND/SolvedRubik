@@ -1,7 +1,6 @@
 export const useOLLData = () => {
     //c = center, t = top, r = right, l = left, b = bottom
     const c = 1, t = 2, r = 3, l = 4, b = 5;
-
     const sectionArray = [
         {
             id: "casocruz",
