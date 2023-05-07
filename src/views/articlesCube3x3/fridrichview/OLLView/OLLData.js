@@ -1,4 +1,6 @@
 export const useOLLData = () => {
+    //Este archivo contiene los datos que generan las imágenes de los casos oll
+    //La imágen está generada con matrices 3x3 que se describen en el siguiente formato
     //c = center, t = top, r = right, l = left, b = bottom
     const c = 1, t = 2, r = 3, l = 4, b = 5;
     const sectionArray = [

@@ -23,7 +23,7 @@
 
 <script setup>
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
-import { useOLLData } from '@/aplicationDatajs/cube3x3Data/OLLData';
+import { useOLLData } from './OLLData';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { onMounted } from 'vue';
 
