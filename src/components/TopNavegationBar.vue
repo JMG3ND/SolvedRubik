@@ -142,7 +142,7 @@ const showMenu = () => showMenubull.value = !showMenubull.value;
 		}
 
 		&__panel-hidden {
-			position: absolute;
+			position: fixed;
 			top: 0;
 			right: 0;
 			left: 0;

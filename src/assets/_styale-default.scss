@@ -37,3 +37,9 @@ body.light {
     margin: 0 auto;
   }
 }
+
+//El target especifica al elemento del fragmento de enlace con la # (almohadilla);
+//En este caso es para darle un margen al scroll y que el texto no sea tapado por el menú de navegación
+:target {
+  scroll-margin-top: 100px;
+}

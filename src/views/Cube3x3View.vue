@@ -140,7 +140,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 
         &__panel-hidden {
             display: block;
-            position: absolute;
+            position: fixed;
             top: 0;
             right: 0;
             bottom: 0;
