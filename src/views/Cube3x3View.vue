@@ -10,9 +10,11 @@
                 </div>
                 <div @click="changeTocData" class="content-divider__sidebar-toc">
                     <div class="content-divider__sticky-content">
-                        <TocSidebar :data="tocSidebarDataObj.tocSidebarData" />
+                        <TocSidebar :data="tocSidebarData.tocSidebarData" />
                     </div>
                 </div>
+
+                <!-- Panel que se muestra para cerrar el sidebar -->
                 <Teleport v-if="sidebarShow" to="body">
                     <div @click="showSidebar" class="content-divider__panel-hidden"></div>
                 </Teleport>
@@ -35,8 +37,10 @@ import ArticleActions from '../components/ArticleActions.vue';
 import { useSidebarData } from '@/aplicationDatajs/sidebarData';
 import { useTocSidebarStore } from '../stores/tocSidebarStore';
 
-const tocSidebarDataObj = useTocSidebarStore();
+const tocSidebarData = useTocSidebarStore();
 const { sidebarData } = useSidebarData();
+
+//Lógica que muestra y oculta el sidebar cuando la resolución es menor a 850px
 const sidebarShow = ref(false);
 const showSidebar = () => sidebarShow.value = !sidebarShow.value;
 const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '')
@@ -117,6 +121,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
                 border: 2px solid $light-baground-color-z-index-1;
             }
 
+            overflow: visible;
             display: flex;
             flex-direction: column-reverse;
             justify-content: start;
