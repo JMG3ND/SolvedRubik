@@ -8,7 +8,7 @@
                         <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData" />
                     </div>
                 </div>
-                <div @click="changeTocData" class="content-divider__sidebar-toc">
+                <div class="content-divider__sidebar-toc">
                     <div class="content-divider__sticky-content">
                         <TocSidebar :data="tocSidebarData.tocSidebarData" />
                     </div>
@@ -68,6 +68,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 
         &__sidebar-toc {
             grid-column: 3;
+            max-width: 250px;
         }
 
         &__sticky-content {
@@ -96,6 +97,10 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             justify-content: start;
             position: sticky;
             top: 120px;
+        }
+
+        &__sidebar-toc {
+            max-width: 250px;
         }
 
         &__panel-hidden {
@@ -138,6 +143,10 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             }
         }
 
+        &__sidebar-toc {
+            max-width: 250px;
+        }
+
         &__panel-hidden {
             display: block;
             position: fixed;
@@ -152,6 +161,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 .main-article {
     min-height: 85vh;
     padding: 0 1rem;
+    margin-bottom: 50vh;
 
     p {
         line-height: 1.5rem;

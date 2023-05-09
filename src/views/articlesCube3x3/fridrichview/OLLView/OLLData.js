@@ -6,7 +6,7 @@ export const useOLLData = () => {
     const sectionArray = [
         {
             id: "casocruz",
-            title: "Caso Cruz",
+            title: "Cruz",
             data: [
                 {
                     image: [
@@ -68,7 +68,7 @@ export const useOLLData = () => {
         },
         {
             id: "casopunto",
-            title: "Caso Punto",
+            title: "Punto",
             data: [
                 {
                     image: [
@@ -138,7 +138,7 @@ export const useOLLData = () => {
         },
         {
             id: "casolinea",
-            title: "Caso Línea",
+            title: "Línea",
             data: [
                 {
                     image: [
@@ -176,7 +176,7 @@ export const useOLLData = () => {
         },
         {
             id: "casolpequena",
-            title: "Caso L Pequeña",
+            title: "L Pequeña",
             data: [
                 {
                     image: [
@@ -230,7 +230,7 @@ export const useOLLData = () => {
         },
         {
             id: "casocuadrados",
-            title: "Caso Cuadrados",
+            title: "Cuadrados",
             data: [
                 {
                     image: [
@@ -251,7 +251,8 @@ export const useOLLData = () => {
             ],
         },
         {
-            title: "Caso Relámpago",
+            id: "casorelampago",
+            title: "Relámpago",
             data: [
                 {
                     image: [
@@ -321,7 +322,7 @@ export const useOLLData = () => {
         },
         {
             id: "casopez",
-            title: "Caso Pez",
+            title: "Pez",
             data: [
                 {
                     image: [
@@ -359,7 +360,7 @@ export const useOLLData = () => {
         },
         {
             id: "casoformadec",
-            title: "Caso Forma de C",
+            title: "Forma de C",
             data: [
                 {
                     image: [
@@ -381,7 +382,7 @@ export const useOLLData = () => {
         },
         {
             id: "casoformadelgrande",
-            title: "Caso Forma de L Grande",
+            title: "Forma de L Grande",
             data: [
                 {
                     image: [
@@ -419,7 +420,7 @@ export const useOLLData = () => {
         },
         {
             id: "casoformadep",
-            title: "Caso Forma de P",
+            title: "Forma de P",
             data: [
                 {
                     image: [
@@ -457,7 +458,7 @@ export const useOLLData = () => {
         },
         {
             id: "casoformadet",
-            title: "Caso Forma de T",
+            title: "Forma de T",
             data: [
                 {
                     image: [
@@ -479,7 +480,7 @@ export const useOLLData = () => {
         },
         {
             id: "casoformadew",
-            title: "Caso Forma de W",
+            title: "Forma de W",
             data: [
                 {
                     image: [
@@ -501,7 +502,7 @@ export const useOLLData = () => {
         },
         {
             id: "casoformadez",
-            title: "Caso Forma de Z",
+            title: "Forma de Z",
             data: [
                 {
                     image: [
@@ -523,7 +524,7 @@ export const useOLLData = () => {
         },
         {
             id: "casodeesquinabienorientadas",
-            title: "Caso de Esquinas Bien Orientadas",
+            title: "Esquinas Bien Orientadas",
             data: [
                 {
                     image: [

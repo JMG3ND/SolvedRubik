@@ -31,7 +31,10 @@ defineProps({
 /* 
 Se quiere que las anclas se resalten cuando el usuario se encuentra en una sección en específico de la página.
 
+Para lograr esto ocuparemos el método intersection observe
+Este objeto observará las secciones del main para pintar las anclas
 */
+
 </script>
 
 <style lang="scss">
@@ -50,9 +53,11 @@ Se quiere que las anclas se resalten cuando el usuario se encuentra en una secci
 
     &__link {
         display: inline-block;
+        width: 100%;
         text-decoration: none;
-        padding: 0.3rem;
+        padding: 0.5rem 1rem;
         border-left: 2px solid $dark-border-box-color;
+        font-size: small;
 
         &:hover {
             color: white;
@@ -61,6 +66,18 @@ Se quiere que las anclas se resalten cuando el usuario se encuentra en una secci
             body.light & {
                 color: black;
                 border-left: 2px solid black;
+            }
+        }
+
+        &--active {
+            color: white;
+            border-left: 2px solid white;
+            background-color: $dark-baground-color-z-index-1;
+
+            body.light & {
+                color: black;
+                border-left: 2px solid black;
+                background-color: $light-baground-color-z-index-1;
             }
         }
     }
