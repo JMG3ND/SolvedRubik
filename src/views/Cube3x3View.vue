@@ -3,14 +3,14 @@
     <div class="justify-elements-in-screen">
         <div class="content-divider justify-elements-in-screen__container">
             <div class="content-divider__sidebar-container" :class="changeShow">
-                <div class="content-divider__sidebar-links">
-                    <div class="content-divider__sticky-content">
-                        <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData" />
-                    </div>
-                </div>
                 <div class="content-divider__sidebar-toc">
                     <div class="content-divider__sticky-content">
                         <TocSidebar :data="tocSidebarData.tocSidebarData" />
+                    </div>
+                </div>
+                <div class="content-divider__sidebar-links">
+                    <div class="content-divider__sticky-content">
+                        <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData" />
                     </div>
                 </div>
 
@@ -76,6 +76,10 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             top: 120px;
         }
 
+        &__sidebar-links {
+            grid-row: 1;
+        }
+
         &__panel-hidden {
             display: none;
         }
@@ -93,10 +97,11 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 
         &__sidebar-container {
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
             justify-content: start;
             position: sticky;
             top: 120px;
+            overflow: auto;
         }
 
         &__sidebar-toc {
@@ -110,6 +115,8 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 }
 
 @media screen and (max-width: 850px) {
+
+
     .content-divider {
         display: block;
 
@@ -126,10 +133,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
                 border: 2px solid $light-baground-color-z-index-1;
             }
 
-            overflow: visible;
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: start;
+            display: block;
             position: fixed;
             top: 90px;
             bottom: 0;
@@ -145,6 +149,7 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 
         &__sidebar-toc {
             max-width: 250px;
+            max-height: 100%;
         }
 
         &__panel-hidden {
