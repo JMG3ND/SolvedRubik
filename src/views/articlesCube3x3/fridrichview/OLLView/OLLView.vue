@@ -5,14 +5,14 @@
         </header>
     </section>
 
-    <!-- Main-section contiene la estructura para visualizar las secciones dentro del artículo main -->
+    <!-- Main-section-algorithm contiene la estructura para visualizar las secciones dentro del artículo main -->
     <section v-for="element in sectionArray" :id="element.id" class="main-section">
-        <header class="main-section__header">
-            <h2 class="main-section__title">{{ element.title }}</h2>
+        <header class="main-section-algorithm__header">
+            <h2 class="main-section-algorithm__title">{{ element.title }}</h2>
         </header>
-        <article class="main-section__article">
-            <div class="main-section__center-card-container">
-                <div class="main-section__card-container">
+        <article class="main-section-algorithm__article">
+            <div class="main-section-algorithm__center-card-container">
+                <div class="main-section-algorithm__card-container">
                     <CardAlgorithm v-for="element in element.data" :image="element.image"
                         :description="element.algorithm" />
                 </div>

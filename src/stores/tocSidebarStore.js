@@ -24,7 +24,7 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
         ancla = document.querySelector(`.toc-sidebar__link[href="#${id}"]`);
 
       //Preguntamos si la sección está intersectando
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && entry) {
         //En caso de que así sea le asignamos una clase activa a los anclas
         ancla.classList.add("toc-sidebar__link--active");
       } else {
@@ -56,14 +56,16 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
     //Se asignan los datos al tocSidebarData
     tocSidebarData.value = Array;
 
-    //Creamos el nuevo observador
-    observer = new IntersectionObserver(callback, options);
+    if (Array) {
+      //Creamos el nuevo observador
+      observer = new IntersectionObserver(callback, options);
 
-    //Obtener las secciones que contienen el id
-    const sections = document.querySelectorAll(".main-section");
+      //Obtener las secciones que contienen el id
+      const sections = document.querySelectorAll(".main-section-algorithm");
 
-    //Añado todas las secciones al nuevo observador
-    sections.forEach(element => observer.observe(element));
+      //Añado todas las secciones al nuevo observador
+      sections.forEach(element => observer.observe(element));
+    }
   }
   return { tocSidebarData, tocSidebarDataFill }
 })
