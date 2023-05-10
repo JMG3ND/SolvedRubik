@@ -1,3 +1,14 @@
+<template>
+    <aside class="global-sidebar">
+        <RouterLink @click="scrollToUp" :to="url" class="global-sidebar__title"> {{ title }} </RouterLink>
+        <ul class="global-sidebar__list">
+            <li class="global-sidebar__item-container" v-for="element in data">
+                <ToggleList :link="element.link" :title="element.name" :list="element.articles" />
+            </li>
+        </ul>
+    </aside>
+</template>
+
 <script setup>
 import ToggleList from '../components/ToggleList.vue';
 import { RouterLink } from 'vue-router';
@@ -8,18 +19,9 @@ defineProps({
     data: Array
 })
 
+//Método que hace un scroll de la página al inicio cada vez que se cambia de artículo mediante el GlobalSidebar
+const scrollToUp = () => window.scrollTo({ top: 0 });
 </script>
-
-<template>
-    <aside class="global-sidebar">
-        <RouterLink :to="url" class="global-sidebar__title"> {{ title }} </RouterLink>
-        <ul class="global-sidebar__list">
-            <li class="global-sidebar__item-container" v-for="element in data">
-                <ToggleList :link="element.link" :title="element.name" :list="element.articles" />
-            </li>
-        </ul>
-    </aside>
-</template>
 
 <style lang="scss">
 .global-sidebar {

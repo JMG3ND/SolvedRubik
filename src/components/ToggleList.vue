@@ -1,7 +1,7 @@
 <template>
     <div class="toggle" :class="computedIconShow">
         <header class="toggle__header">
-            <RouterLink :to="link" class="toggle__link">
+            <RouterLink @click="scrollToUp" :to="link" class="toggle__link">
                 {{ title }}
                 <div @click="activeIconShow" v-if="list" class="toggle__icon-show">
                     <font-awesome-icon icon="fa-solid fa-caret-down" />
@@ -28,9 +28,13 @@ const props = defineProps({
     list: Array
 })
 
+//Lógica que describe si el toggle se muestra o no en la pantalla a menos de 850px
 const iconShow = ref(true);
 const activeIconShow = () => iconShow.value = !iconShow.value
 const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
+
+//Método que hace un scroll de la página al inicio cada vez que se cambia de artículo mediante el GlobalSidebar
+const scrollToUp = () => window.scrollTo({ top: 0 });
 </script>
 
 <style lang="scss">
