@@ -115,8 +115,6 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 }
 
 @media screen and (max-width: 850px) {
-
-
     .content-divider {
         display: block;
 
