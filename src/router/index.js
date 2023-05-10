@@ -25,7 +25,7 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: '',
+          name: 'introductionCube3x3',
           component: IntroductionCube3x3
         },
         {
