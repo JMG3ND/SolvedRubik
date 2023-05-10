@@ -3,6 +3,7 @@
         <div class="justify-elements-in-screen__container"><button @click="emit('showSidebar')"
                 class="article-actions__button">
                 <font-awesome-icon icon="fa-solid fa-list" />
+                <span class="article-actions__text">Menu</span>
             </button></div>
     </div>
 </template>
@@ -25,14 +26,20 @@ const emit = defineEmits(['showSidebar'])
 
     position: fixed;
     z-index: 1;
+
+    &__text {
+        font-size: small;
+    }
 }
 
 @media screen and (max-width:850px) {
     .article-actions {
         &__button {
-            display: block;
+            display: flex;
+            align-items: center;
+            border: none;
+            gap: 0.3rem;
             background-color: transparent;
-            border: 1px solid $dark-border-box-color;
             font-size: large;
             padding: 5px;
         }

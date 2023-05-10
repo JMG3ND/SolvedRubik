@@ -51,6 +51,7 @@ const color = element => {
         z-index: 0;
         border-radius: 10%;
         background-color: #8e8e8e;
+        border: 1px solid black;
 
         &--active {
             background-color: #f4ec00;
@@ -60,28 +61,28 @@ const color = element => {
             @extend %extend-piece;
             width: 100%;
             height: 5%;
-            top: -12%;
+            top: -15%;
         }
 
         &--right::before {
             @extend %extend-piece;
             width: 7%;
             height: 100%;
-            right: -12%;
+            right: -15%;
         }
 
         &--left::before {
             @extend %extend-piece;
             width: 7%;
             height: 100%;
-            left: -12%;
+            left: -15%;
         }
 
         &--bottom::before {
             @extend %extend-piece;
             width: 100%;
             height: 5%;
-            bottom: -12%;
+            bottom: -15%;
         }
     }
 }

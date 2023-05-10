@@ -64,7 +64,7 @@ Este objeto observará las secciones del main para pintar las anclas
             border-left: 2px solid white;
 
             body.light & {
-                color: black;
+                color: rgb(11, 0, 110);
                 border-left: 2px solid black;
             }
         }
@@ -75,7 +75,7 @@ Este objeto observará las secciones del main para pintar las anclas
             background-color: $dark-baground-color-z-index-1;
 
             body.light & {
-                color: black;
+                color: rgb(11, 0, 110);
                 border-left: 2px solid black;
                 background-color: $light-baground-color-z-index-1;
             }
