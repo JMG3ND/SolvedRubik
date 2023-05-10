@@ -2,6 +2,14 @@
 
 Página web que muestra los algoritmos del cubo de rubik
 
-##
+[Visitar página web](https://solvedrubik.com)
 
-Vista previa: https://solvedrubik.netlify.app/
+---
+
+## Dependencias
+
+- SASS
+- Font Awesome
+- Axios
+- Pinia
+- Vue Router
