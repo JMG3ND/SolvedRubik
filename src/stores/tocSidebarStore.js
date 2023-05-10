@@ -61,7 +61,7 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
       observer = new IntersectionObserver(callback, options);
 
       //Obtener las secciones que contienen el id
-      const sections = document.querySelectorAll(".main-section-algorithm");
+      const sections = document.querySelectorAll(".main-section--algorithm");
 
       //Añado todas las secciones al nuevo observador
       sections.forEach(element => observer.observe(element));

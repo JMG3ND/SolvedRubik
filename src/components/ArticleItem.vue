@@ -21,7 +21,7 @@ import { RouterLink } from 'vue-router';
 
 defineProps({
     title: String,
-    imageArticle: URL,
+    imageArticle: String,
     description: String,
     url: {
         type: String,

@@ -1,39 +1,5 @@
 @import '@/assets/_colors-theme.scss';
 
-.main-section-algorithm {
-    margin-bottom: 1rem;
-    background-color: $dark-baground-color-z-index-1;
-
-    body.light & {
-        background-color: $light-baground-color-z-index-1;
-    }
-
-    padding: 1rem;
-    border-radius: 20px;
-
-    &__paragraph {
-        line-height: 1em;
-    }
-
-    &__list {
-        >li {
-            margin-left: 1rem;
-        }
-    }
-
-    &__center-card-container {
-        display: flex;
-        justify-content: center;
-    }
-
-    &__card-container {
-        display: grid;
-        gap: 0.5rem;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        margin-top: 1rem;
-    }
-}
-
 .main-section {
     margin-bottom: 1rem;
     background-color: $dark-baground-color-z-index-1;
@@ -55,23 +21,28 @@
         }
     }
 
-    &__center-card-container {
-        display: flex;
-        justify-content: center;
-    }
+    //El modificador --algorithm refiere a la clase main article que contiene algoritmos
+    &--algorithm {
+        &__center-card-container {
+            display: flex;
+            justify-content: center;
+        }
 
-    &__card-container {
-        display: grid;
-        gap: 0.5rem;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        margin-top: 1rem;
+        &__card-container {
+            display: grid;
+            gap: 0.5rem;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            margin-top: 1rem;
+        }
     }
 }
 
 @media screen and (max-width: 640px) {
-    .main-section-algorithm {
-        &__card-container {
-            grid-template-columns: 1fr 1fr;
+    .main-section {
+        &--algorithm {
+            &__card-container {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     }
 }
