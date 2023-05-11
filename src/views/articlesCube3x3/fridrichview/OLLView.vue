@@ -1,22 +1,31 @@
 <template>
     <CardArticle title="Algoritmos OLL">
-
+        <p>
+            Los algoritmos OLL (Orientation of the Last Layer) se refiere al
+            tercer paso en el que se orienta la última capa del cubo (la capa superior) de manera que todas las piezas de la
+            última capa estén orientadas correctamente.
+        </p>
+        <p>
+            Para lograr esto, se deben aplicar una serie de algoritmos que cambian la orientación de las piezas de la última
+            capa. Hay 57 posibles casos OLL diferentes, y cada uno tiene su propio algoritmo asociado para resolverlo.
+        </p>
+        <p>
+            El objetivo del paso OLL es dejar la última capa orientada correctamente para que el siguiente paso, PLL
+            (Permutation of the Last Layer), pueda permutar las piezas de la última capa y completar la resolución del cubo.
+        </p>
+        <p>
+            Una vez completado el paso OLL, se puede avanzar al paso PLL, en el que se permutan las piezas de la última capa
+            para completar la resolución del cubo de Rubik.
+        </p>
     </CardArticle>
 
-    <!-- oll-algorithm-section contiene la estructura para visualizar las secciones dentro del artículo main -->
-    <section v-for="element in sectionArray" :id="element.id" class="oll-algorithm-section">
-        <header class="oll-algorithm-section__header">
-            <h2 class="oll-algorithm-section__title">{{ element.title }}</h2>
-        </header>
-        <div class="oll-algorithm-section__center-card-container">
-            <div class="oll-algorithm-section__card-container">
-                <OLLCardAlgorithm v-for="element in element.data" :image="element.image" :description="element.algorithm" />
-            </div>
-        </div>
-    </section>
+    <AlgorithmSection v-for="element in sectionArray" :id="element.id" :title="element.title">
+        <OLLCardAlgorithm v-for="element in element.data" :image="element.image" :description="element.algorithm" />
+    </AlgorithmSection>
 </template>
 
 <script setup>
+import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import OLLCardAlgorithm from '@/components/OLLCardAlgorithm.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
@@ -573,42 +582,5 @@ const sectionArray = [
 
 /* Se ejecuta la función onMounted para llenar el tocSidebar con el contenido de las secciones
 de esta vista */
-onMounted(() => tocSidebarDataFill(sectionArray, ".oll-algorithm-section"));
+onMounted(() => tocSidebarDataFill(sectionArray, ".algorithm-section"));
 </script>
-
-<style lang="scss">
-@import '@/assets/_colors-theme.scss';
-
-//oll-algorithm-section
-.oll-algorithm-section {
-    margin-bottom: 1rem;
-    background-color: $dark-baground-color-z-index-1;
-
-    body.light & {
-        background-color: $light-baground-color-z-index-1;
-    }
-
-    padding: 1rem;
-    border-radius: 20px;
-
-    &__center-card-container {
-        display: flex;
-        justify-content: center;
-    }
-
-    &__card-container {
-        display: grid;
-        gap: 0.5rem;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        margin-top: 1rem;
-    }
-}
-
-@media screen and (max-width: 640px) {
-    .oll-algorithm-section {
-        &__card-container {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-}
-</style>

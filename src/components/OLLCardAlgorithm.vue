@@ -1,11 +1,11 @@
 <template>
-    <figure class="card-algoritmo">
-        <div ref="image_container" :style="{ height: setHeight }" class="card-algoritmo__image-container">
+    <figure class="oll-card-algoritmo">
+        <div ref="image_container" :style="{ height: setHeight }" class="oll-card-algoritmo__image-container">
             <div class="algorithm-image">
                 <div v-for="element in image" class="algorithm-image__piece" :class="color(element)"></div>
             </div>
         </div>
-        <figcaption class="card-algoritmo__description">{{ description }}</figcaption>
+        <figcaption class="oll-card-algoritmo__description">{{ description }}</figcaption>
     </figure>
 </template>
 
@@ -50,7 +50,7 @@ window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando ca
 <style lang="scss">
 @import '@/assets/colors-theme.scss';
 
-.card-algoritmo {
+.oll-card-algoritmo {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -79,9 +79,9 @@ window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando ca
     position: absolute;
     background-color: #f4ec00;
     border-radius: 100px;
-    border: 1px solid black;
     min-width: 4px;
     min-height: 4px;
+    border: 1px solid black;
 }
 
 .algorithm-image {
