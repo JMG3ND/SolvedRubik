@@ -139,7 +139,7 @@ onMounted(() => window.scrollTo({ top: 0 }));
             top: 90px;
             bottom: 0;
             left: 0;
-            z-index: 3;
+            z-index: 4;
             transform: translateX(-100%);
             transition: transform .5s;
 
@@ -163,6 +163,7 @@ onMounted(() => window.scrollTo({ top: 0 }));
             right: 0;
             bottom: 0;
             left: 0;
+            z-index: 3;
         }
     }
 }
