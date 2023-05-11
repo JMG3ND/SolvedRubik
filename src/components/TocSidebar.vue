@@ -27,7 +27,7 @@ Si se pasa un arreglo que no contenga estas dos propiedades el componente no fun
 defineProps({
     data: Array
 });
-const emit = defineEmits('hiddenSidebar');
+const emit = defineEmits(['hiddenSidebar']);
 </script>
 
 <style lang="scss">
