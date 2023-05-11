@@ -6,7 +6,7 @@
             <ul class="toc-sidebar__list">
                 <li class="toc-sidebar__item" v-for="element in  data ">
                     <!--Consiste en la utilización de un ancla dinámico que se obtiene del arreglo con la propiedad id-->
-                    <a class="toc-sidebar__link" :href="`#${element.id}`">
+                    <a @click="emit('hiddenSidebar')" class="toc-sidebar__link" :href="`#${element.id}`">
                         {{ element.title }}
                     </a>
                 </li>
@@ -27,14 +27,7 @@ Si se pasa un arreglo que no contenga estas dos propiedades el componente no fun
 defineProps({
     data: Array
 });
-
-/* 
-Se quiere que las anclas se resalten cuando el usuario se encuentra en una sección en específico de la página.
-
-Para lograr esto ocuparemos el método intersection observe
-Este objeto observará las secciones del main para pintar las anclas
-*/
-
+const emit = defineEmits('hiddenSidebar');
 </script>
 
 <style lang="scss">

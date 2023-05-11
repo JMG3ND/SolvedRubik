@@ -17,21 +17,25 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
 
   //Método de devolución de llamada para el observador
   const callback = (entries) => {
-    entries.forEach(entry => {
-      const id = entry.target.getAttribute("id");
-      let ancla = null;
-      if (id)
-        ancla = document.querySelector(`.toc-sidebar__link[href="#${id}"]`);
+    try {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute("id");
+        let ancla = null;
+        if (id)
+          ancla = document.querySelector(`.toc-sidebar__link[href="#${id}"]`);
 
-      //Preguntamos si la sección está intersectando
-      if (entry.isIntersecting && entry) {
-        //En caso de que así sea le asignamos una clase activa a los anclas
-        ancla.classList.add("toc-sidebar__link--active");
-      } else {
-        //En caso de que ya no se esté intersectando le quitamos la clase
-        ancla.classList.remove("toc-sidebar__link--active");
-      }
-    });
+        //Preguntamos si la sección está intersectando
+        if (entry.isIntersecting && entry) {
+          //En caso de que así sea le asignamos una clase activa a los anclas
+          ancla.classList.add("toc-sidebar__link--active");
+        } else {
+          //En caso de que ya no se esté intersectando le quitamos la clase
+          ancla.classList.remove("toc-sidebar__link--active");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   /*
@@ -59,6 +63,8 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
 
       if (Array) {
         //Creamos el nuevo observador
+        if (observer)
+          observer.disconnect();
         observer = new IntersectionObserver(callback, options);
 
         //Obtener las secciones que contienen el id
@@ -68,8 +74,10 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
         sections.forEach(element => observer.observe(element));
       }
     } else {
+      if (observer)
+        observer.disconnect();
+      observer = null;
       tocSidebarData.value = null;
-      observer = null
     }
   }
   return { tocSidebarData, tocSidebarDataFill }

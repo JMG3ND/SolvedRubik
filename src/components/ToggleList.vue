@@ -1,7 +1,7 @@
 <template>
     <div class="toggle" :class="computedIconShow">
         <header class="toggle__header">
-            <RouterLink @click="scrollToUp" :to="link" class="toggle__link">
+            <RouterLink @click="clickRouterLink" :to="link" class="toggle__link">
                 {{ title }}
                 <div @click="activeIconShow" v-if="list" class="toggle__icon-show">
                     <font-awesome-icon icon="fa-solid fa-caret-down" />
@@ -11,7 +11,8 @@
         <article v-if="list" class="toggle__list-container">
             <ul class="toggle__list">
                 <li v-for="element in list" class="toggle__item-container">
-                    <ToggleList :link="element.link" :title="element.name" :list="element.articles"></ToggleList>
+                    <ToggleList :link="element.link" :title="element.name" :list="element.articles"
+                        @hiddenSidebar="emit('hiddenSidebar')"></ToggleList>
                 </li>
             </ul>
         </article>
@@ -28,13 +29,17 @@ const props = defineProps({
     list: Array
 })
 
+//Método que hace un scroll de la página al inicio cada vez que se cambia de artículo mediante el GlobalSidebar
+const emit = defineEmits(['hiddenSidebar']);
+const clickRouterLink = () => {
+    window.scrollTo({ top: 0 });
+    emit('hiddenSidebar');
+}
+
 //Lógica que describe si el toggle se muestra o no en la pantalla a menos de 850px
 const iconShow = ref(true);
 const activeIconShow = () => iconShow.value = !iconShow.value
 const computedIconShow = computed(() => iconShow.value ? 'toggle--active' : '');
-
-//Método que hace un scroll de la página al inicio cada vez que se cambia de artículo mediante el GlobalSidebar
-const scrollToUp = () => window.scrollTo({ top: 0 });
 </script>
 
 <style lang="scss">

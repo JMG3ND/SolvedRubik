@@ -5,12 +5,13 @@
             <div class="content-divider__sidebar-container" :class="changeShow">
                 <div class="content-divider__sidebar-toc">
                     <div class="content-divider__sticky-content">
-                        <TocSidebar :data="tocSidebarData.tocSidebarData" />
+                        <TocSidebar :data="tocSidebarData.tocSidebarData" @hiddenSidebar="hiddenSidebar" />
                     </div>
                 </div>
                 <div class="content-divider__sidebar-links">
                     <div class="content-divider__sticky-content">
-                        <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData" />
+                        <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData"
+                            @hiddenSidebar="hiddenSidebar" />
                     </div>
                 </div>
 
@@ -44,6 +45,7 @@ const { sidebarData } = useSidebarData();
 const sidebarShow = ref(false);
 const showSidebar = () => sidebarShow.value = !sidebarShow.value;
 const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '');
+const hiddenSidebar = () => sidebarShow.value = false
 
 //Hace scroll cuando carga el componente
 onMounted(() => window.scrollTo({ top: 0 }));
