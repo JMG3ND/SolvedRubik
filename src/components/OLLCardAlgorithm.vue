@@ -1,15 +1,22 @@
 <template>
-    <div class="algorithm-image">
-        <div v-for="element in colors" class="algorithm-image__piece" :class="color(element)"></div>
-    </div>
+    <figure class="card-algoritmo">
+        <div ref="image_container" :style="{ height: setHeight }" class="card-algoritmo__image-container">
+            <div class="algorithm-image">
+                <div v-for="element in image" class="algorithm-image__piece" :class="color(element)"></div>
+            </div>
+        </div>
+        <figcaption class="card-algoritmo__description">{{ description }}</figcaption>
+    </figure>
 </template>
 
 <script setup>
-
+import { ref, computed, onMounted } from 'vue';
 defineProps({
-    colors: Array,
+    image: Array,
+    description: String,
 })
 
+//Método que asigna las clases de cada pieza del cubo
 const color = element => {
     switch (element) {
         case 1:
@@ -26,9 +33,47 @@ const color = element => {
             return '';
     }
 };
+
+//Función que mantiene la proporción de la imágen
+const width = ref(null);
+const image_container = ref(null);
+const setHeight = computed(() => `${width.value}px`);
+const changeWith = () => {
+    if (image_container.value)
+        width.value = image_container.value.clientWidth;
+}
+
+onMounted(() => changeWith());
+window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando cambia el tamaño de la ventana
 </script>
 
 <style lang="scss">
+@import '@/assets/colors-theme.scss';
+
+.card-algoritmo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    max-width: 200px;
+    border-radius: 10px;
+
+    background-color: $dark-baground-color-z-index-2;
+
+    body.light & {
+        background-color: $light-baground-color-z-index-2;
+    }
+
+    &__image-container {
+        margin-bottom: 1rem;
+        width: clamp(100px, 100%, 150px);
+    }
+
+    &__description {
+        text-align: center;
+    }
+}
+
 %extend-piece {
     content: '';
     position: absolute;

@@ -1,28 +1,24 @@
 <template>
-    <section class="main-section">
-        <header class="main-section__header">
-            <h1 class="main-section__title">Algoritmos OLL</h1>
-        </header>
-    </section>
+    <CardArticle title="Algoritmos OLL">
 
-    <!-- Main-section--algorithm contiene la estructura para visualizar las secciones dentro del artículo main -->
-    <section v-for="element in sectionArray" :id="element.id" class="main-section main-section--algorithm">
-        <header class="main-section__header">
-            <h2 class="main-section__title">{{ element.title }}</h2>
+    </CardArticle>
+
+    <!-- oll-algorithm-section contiene la estructura para visualizar las secciones dentro del artículo main -->
+    <section v-for="element in sectionArray" :id="element.id" class="oll-algorithm-section">
+        <header class="oll-algorithm-section__header">
+            <h2 class="oll-algorithm-section__title">{{ element.title }}</h2>
         </header>
-        <article class="main-section__article">
-            <div class="main-section--algorithm__center-card-container">
-                <div class="main-section--algorithm__card-container">
-                    <CardAlgorithm v-for="element in element.data" :image="element.image"
-                        :description="element.algorithm" />
-                </div>
+        <div class="oll-algorithm-section__center-card-container">
+            <div class="oll-algorithm-section__card-container">
+                <OLLCardAlgorithm v-for="element in element.data" :image="element.image" :description="element.algorithm" />
             </div>
-        </article>
+        </div>
     </section>
 </template>
 
 <script setup>
-import CardAlgorithm from '@/components/CardAlgorithm.vue';
+import CardArticle from '@/components/CardArticle.vue';
+import OLLCardAlgorithm from '@/components/OLLCardAlgorithm.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { onMounted } from 'vue';
 
@@ -577,5 +573,42 @@ const sectionArray = [
 
 /* Se ejecuta la función onMounted para llenar el tocSidebar con el contenido de las secciones
 de esta vista */
-onMounted(() => tocSidebarDataFill(sectionArray));
+onMounted(() => tocSidebarDataFill(sectionArray, ".oll-algorithm-section"));
 </script>
+
+<style lang="scss">
+@import '@/assets/_colors-theme.scss';
+
+//oll-algorithm-section
+.oll-algorithm-section {
+    margin-bottom: 1rem;
+    background-color: $dark-baground-color-z-index-1;
+
+    body.light & {
+        background-color: $light-baground-color-z-index-1;
+    }
+
+    padding: 1rem;
+    border-radius: 20px;
+
+    &__center-card-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__card-container {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .oll-algorithm-section {
+        &__card-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+</style>

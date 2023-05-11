@@ -53,7 +53,6 @@ onMounted(() => window.scrollTo({ top: 0 }));
 
 <style lang="scss">
 @import '../assets/colors-theme.scss';
-@import '@/assets/main-section.scss';
 
 .content-divider {
     padding-top: 4rem;

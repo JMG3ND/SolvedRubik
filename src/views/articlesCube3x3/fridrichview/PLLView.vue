@@ -1,8 +1,11 @@
 <template>
-    <h1>PLL</h1>
+    <CardArticle title="Algoritmos PLL">
+
+    </CardArticle>
 </template>
 
 <script setup>
+import CardArticle from '@/components/CardArticle.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { onMounted } from 'vue';
 
