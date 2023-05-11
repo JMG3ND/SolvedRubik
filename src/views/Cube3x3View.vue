@@ -20,7 +20,7 @@
                 </Teleport>
             </div>
             <div class="content-divider__main-container">
-                <main class="main-article">
+                <main class="content-divider__main">
                     <RouterView />
                 </main>
             </div>
@@ -29,11 +29,11 @@
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router';
-import { ref, computed } from 'vue';
 import GlobalSidebar from '../components/GlobalSidebar.vue';
 import TocSidebar from '../components/TocSidebar.vue';
 import ArticleActions from '../components/ArticleActions.vue';
+import { RouterView } from 'vue-router';
+import { ref, computed, onMounted } from 'vue';
 import { useSidebarData } from '@/aplicationDatajs/sidebarData';
 import { useTocSidebarStore } from '../stores/tocSidebarStore';
 
@@ -43,19 +43,39 @@ const { sidebarData } = useSidebarData();
 //Lógica que muestra y oculta el sidebar cuando la resolución es menor a 850px
 const sidebarShow = ref(false);
 const showSidebar = () => sidebarShow.value = !sidebarShow.value;
-const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '')
+const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '');
+
+//Hace scroll cuando carga el componente
+onMounted(() => window.scrollTo({ top: 0 }));
 </script>
 
 <style lang="scss">
 @import '../assets/colors-theme.scss';
 @import '@/assets/main-section.scss';
 
+.content-divider {
+    padding-top: 4rem;
+
+    &__main {
+        min-height: 85vh;
+        padding: 0 1rem;
+        margin-bottom: 50vh;
+    }
+
+    &__panel-hidden {
+        display: none;
+    }
+
+    &__sidebar-toc {
+        max-width: 250px;
+    }
+}
+
 @media screen and (min-width: 1200px) {
     .content-divider {
         display: grid;
         grid-template-columns: 0.4fr 1fr 0.4fr;
         gap: 1rem;
-        padding-top: 4rem;
 
         &__sidebar-container {
             display: contents;
@@ -68,7 +88,6 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
 
         &__sidebar-toc {
             grid-column: 3;
-            max-width: 250px;
         }
 
         &__sticky-content {
@@ -79,10 +98,6 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
         &__sidebar-links {
             grid-row: 1;
         }
-
-        &__panel-hidden {
-            display: none;
-        }
     }
 }
 
@@ -90,7 +105,6 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
     .content-divider {
         display: grid;
         grid-template-columns: 0.6fr 1.4fr;
-        padding-top: 4rem;
 
         //Se alínean los elementos para poder aplicar position sticky al sidebar-linsk
         align-items: start;
@@ -103,24 +117,12 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             top: 120px;
             overflow: auto;
         }
-
-        &__sidebar-toc {
-            max-width: 250px;
-        }
-
-        &__panel-hidden {
-            display: none;
-        }
     }
 }
 
 @media screen and (max-width: 850px) {
     .content-divider {
         display: block;
-
-        &__sidebar-links {
-            height: 100%;
-        }
 
         &__sidebar-container {
             background-color: $dark-baground-color-z-index-2;
@@ -145,8 +147,11 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             }
         }
 
+        &__sidebar-links {
+            height: 100%;
+        }
+
         &__sidebar-toc {
-            max-width: 250px;
             max-height: 100%;
         }
 
@@ -157,30 +162,6 @@ const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-
             right: 0;
             bottom: 0;
             left: 0;
-        }
-    }
-}
-
-.main-article {
-    min-height: 85vh;
-    padding: 0 1rem;
-    margin-bottom: 50vh;
-
-    p {
-        line-height: 1.5rem;
-        margin: 1rem 0 2rem;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
-
-    ol {
-        padding: 0 1rem;
-
-        li {
-            line-height: 1.5rem;
-            margin: 0.5rem 0;
         }
     }
 }

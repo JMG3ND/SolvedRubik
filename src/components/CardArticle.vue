@@ -28,18 +28,13 @@ defineProps(["title"]);
         margin-inline-end: 0px;
     }
 
-    ol {
-        padding: 0 1rem;
+    ol,
+    ul {
+        padding: 0 2rem;
 
         li {
             line-height: 1.5rem;
-            margin: 0.5rem 0;
-        }
-    }
-
-    &__list {
-        >li {
-            margin-left: 1rem;
+            //margin: 0.5rem 0;
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <!--Menú de navegación que se utiliza para navegar entre las distíntas secciones del contenido main-->
-    <aside ref="asidevar" class="toc-sidebar">
+    <aside v-if="data" ref="asidevar" class="toc-sidebar">
         <h2 class="toc-sidebar__title">En este artículo</h2>
         <nav class="toc-sidebar__nav">
             <ul class="toc-sidebar__list">

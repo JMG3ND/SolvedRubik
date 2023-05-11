@@ -45,26 +45,31 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
     ]
   */
   const tocSidebarDataFill = data => {
-    const Array = [];
+    if (data) {
+      const Array = [];
 
-    //Este forEach extrae solo el title y el id de cada objeto del array
-    //en caso de que la data contenga más datos de los requeridos
-    data.forEach(element => {
-      Array.push({ title: element.title, id: element.id });
-    });
+      //Este forEach extrae solo el title y el id de cada objeto del array
+      //en caso de que la data contenga más datos de los requeridos
+      data.forEach(element => {
+        Array.push({ title: element.title, id: element.id });
+      });
 
-    //Se asignan los datos al tocSidebarData
-    tocSidebarData.value = Array;
+      //Se asignan los datos al tocSidebarData
+      tocSidebarData.value = Array;
 
-    if (Array) {
-      //Creamos el nuevo observador
-      observer = new IntersectionObserver(callback, options);
+      if (Array) {
+        //Creamos el nuevo observador
+        observer = new IntersectionObserver(callback, options);
 
-      //Obtener las secciones que contienen el id
-      const sections = document.querySelectorAll(".main-section--algorithm");
+        //Obtener las secciones que contienen el id
+        const sections = document.querySelectorAll(".main-section--algorithm");
 
-      //Añado todas las secciones al nuevo observador
-      sections.forEach(element => observer.observe(element));
+        //Añado todas las secciones al nuevo observador
+        sections.forEach(element => observer.observe(element));
+      }
+    } else {
+      tocSidebarData.value = null;
+      observer = null
     }
   }
   return { tocSidebarData, tocSidebarDataFill }

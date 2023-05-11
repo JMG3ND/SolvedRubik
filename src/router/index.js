@@ -7,7 +7,7 @@ import MovementNotation from '../views/articlesCube3x3/MovementNotationView.vue'
 import FridrichCross from '../views/articlesCube3x3/FridrichView.vue';
 import F2LView from '../views/articlesCube3x3/fridrichview/F2LView.vue';
 import FridrichCrossView from '../views/articlesCube3x3/fridrichview/FridrichCrossView.vue';
-import OLLView from '../views/articlesCube3x3/fridrichview/OLLView/OLLView.vue';
+import OLLView from '../views/articlesCube3x3/fridrichview/OLLView.vue';
 import PLLView from '../views/articlesCube3x3/fridrichview/PLLView.vue';
 
 const router = createRouter({
