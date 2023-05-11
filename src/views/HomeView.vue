@@ -19,7 +19,7 @@
                     <CardArticle title="¿Qué es Solved Rubik?">
                         <p>
                             En esta web encontrarás artículos guía para aprender a resolver el cubo de rubik desde lo más
-                            básico hasta lo más avanzado Además, podrás encontrar videos instructivos, recomendaciones de
+                            básico hasta lo más avanzado Además, podrás encontrar recomendaciones de
                             cubos
                             para principiantes y expertos, y consejos para mejorar tu técnica. Si eres un principiante en el
                             mundo del cubo de Rubik, te recomendamos comenzar por los artículos para principiantes,
