@@ -102,7 +102,78 @@ const sectionArray = [
     {
         id: 'advancedalgorithm',
         title: 'Algoritmos Avanzados',
-        data: null
+        data: [
+            {
+                title: "J",
+                image: [[f, 315], [f, 135], [i, 90], [i, 270]],
+                algorithm: "R U R' F' (R U R' U') R' F R2 U' R'"
+            },
+            {
+                title: "L",
+                image: [[a, 0], [a, 180], [d, 315], [d, 135]],
+                algorithm: "R' U' R2 B R' U' R' U R B' R' U R"
+            },
+            {
+                title: "T",
+                image: [[c, 0], [c, 180], [i, 90], [i, 270]],
+                algorithm: "(R U R' U') R' F R2 U' R' U' R U R' F'"
+            },
+            {
+                title: "F",
+                image: [[c, 90], [c, 270], [i, 90], [i, 270]],
+                algorithm: "R' U' F' (R U R' U') R' F R2 U' R' U' R U R' U R"
+            },
+            {
+                title: "Y",
+                image: [[c, 45], [c, 225], [d, 315], [d, 135]],
+                algorithm: "F R U' R' U' R U R' F' (R U R' U') R' F R F'"
+            },
+            {
+                title: "V",
+                image: [[e, 45], [e, 225], [c, 45], [c, 225]],
+                algorithm: "R' U R' U' Y R' F' R2 U' R' U R' F R F"
+            },
+            {
+                title: "R1",
+                image: [[a, 0], [a, 180], [f, 315], [f, 135]],
+                algorithm: "R' U2 R U2 R' F (R U R' U') R' F' R2"
+            },
+            {
+                title: "R2",
+                image: [[d, 315], [d, 135], [i, 90], [i, 270]],
+                algorithm: "R U' R' U' R U R D R' U' R D' R' U2 R'"
+            },
+            {
+                title: "N1",
+                image: [[c, 45], [c, 225], [c, 90], [c, 270]],
+                algorithm: "R U R' U R U R' F' (R U R' U') R' F R2 U' R' U2 R U' R'"
+            },
+            {
+                title: "N2",
+                image: [[c, 0], [c, 180], [c, 45], [c, 225]],
+                algorithm: "R' U' R U2 R' U' R2 B R' U' R' U R B' R' U R U R' U R"
+            },
+            {
+                title: "G1",
+                image: [[a, 0], [h, 270], [c, 135], [c, 0], [d, 135], [e, 225]],
+                algorithm: "R2 u R' U R' U' R u' R2 F' U F",
+            },
+            {
+                title: "G2",
+                image: [[a, 180], [h, 90], [c, 315], [c, 180], [d, 315], [e, 45]],
+                algorithm: "F' U' F R2 u R' U R U' R u' R2"
+            },
+            {
+                title: "G3",
+                image: [[a, 180], [h, 270], [c, 45], [d, 315], [e, 45], [c, 180]],
+                algorithm: "R2 F2 R U2 R U2 R' F (R U R' U') R' F R2"
+            },
+            {
+                title: "G4",
+                image: [[a, 0], [h, 90], [c, 225], [d, 135], [e, 225], [c, 0]],
+                algorithm: "R2 F' R U R U' R' F' R U2 R' U2 R' F2 R2"
+            }
+        ]
     }
 ]
 

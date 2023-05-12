@@ -5,7 +5,7 @@
             <div class="pll-card-algoritmo__image">
                 <div v-for=" in 9" class="pll-card-algoritmo__piece"></div>
                 <div v-for="row in image" class="pll-card-algoritmo__arrow-container"
-                    :class='`pll-card-algoritmo__arrow-container--${row[0]} pll-card-algoritmo__arrow-container--rotate-${row[1]}`'>
+                    :class='`pll-card-algoritmo__arrow-container--${row[0]} pll-card-algoritmo__arrow-container--rotate-${row[1]} ${widthforc(row)}`'>
                     <ArrowAnimate />
                 </div>
             </div>
@@ -31,6 +31,14 @@ const setHeight = computed(() => `${width.value}px`);
 const changeWith = () => {
     if (image_container.value)
         width.value = image_container.value.clientWidth;
+}
+
+//Esta función cambia la apariencia de la flecha cuando es una flecha central ortogonal a los ejes x, y para una mejor visualización
+const widthforc = (row) => {
+    if (row[0] == 2 && (row[1] == 45 || row[1] == 135 || row[1] == 225 || row[1] == 315)) {
+        return 'pll-card-algoritmo__arrow-container--maxwidth'
+    }
+    return '';
 }
 
 onMounted(() => changeWith());
@@ -151,16 +159,18 @@ window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando ca
         //Vertical
         //left
         &--8 {
-            top: 48%;
-            left: -25%;
-            right: 45%;
+            top: 0;
+            left: -19%;
+            right: 50%;
+            bottom: 0;
         }
 
         //right
         &--9 {
-            top: 48%;
-            left: 45%;
-            right: -25%;
+            top: 0;
+            left: 50%;
+            right: -19%;
+            bottom: 0;
         }
 
         &--rotate {
@@ -169,6 +179,13 @@ window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando ca
                     transform: rotate(#{$i*45}deg);
                 }
             }
+        }
+
+        &--maxwidth {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
         }
     }
 }
