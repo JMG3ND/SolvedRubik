@@ -4,6 +4,10 @@
         <div ref="image_container" :style="{ height: setHeight }" class="pll-card-algoritmo__image-container">
             <div class="pll-card-algoritmo__image">
                 <div v-for=" in 9" class="pll-card-algoritmo__piece"></div>
+                <div v-for="row in image" class="pll-card-algoritmo__arrow-container"
+                    :class='`pll-card-algoritmo__arrow-container--${row[0]} pll-card-algoritmo__arrow-container--rotate-${row[1]}`'>
+                    <ArrowAnimate />
+                </div>
             </div>
         </div>
         <figcaption class="pll-card-algoritmo__description">{{ algorithm }}</figcaption>
@@ -11,6 +15,7 @@
 </template>
 
 <script setup>
+import ArrowAnimate from '@/components/ArrowAnimate.vue';
 import { ref, computed, onMounted } from 'vue';
 
 defineProps({
@@ -36,6 +41,7 @@ window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando ca
 @import '@/assets/colors-theme.scss';
 
 .pll-card-algoritmo {
+    position: relative;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -77,6 +83,93 @@ window.addEventListener("resize", changeWith); //Evento que se ejecuta cuando ca
         border-radius: 10%;
         background-color: #f4ec00;
         border: 1px solid black;
+    }
+
+    &__arrow-container {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        overflow: hidden;
+
+        //Horizontales
+        &--1 {
+            top: 0;
+            bottom: calc(100% - 100%/3);
+            left: calc(100%/6);
+            right: calc(100%/6);
+        }
+
+        //Este puede cambiar varía para las esquinas
+        &--2 {
+            top: calc(100%/6);
+            left: calc(100%/6);
+            right: calc(100%/6);
+            bottom: calc(100%/6);
+        }
+
+
+        &--3 {
+            top: calc(100% - 100%/3);
+            bottom: 0;
+            left: calc(100%/6);
+            right: calc(100%/6);
+        }
+
+        //Aristas
+        //top-left
+        &--4 {
+            top: 0;
+            left: 0;
+            right: calc(100%/3);
+            bottom: calc(100%/3);
+        }
+
+        //top-right
+        &--5 {
+            top: 0;
+            left: calc(100%/3);
+            right: 0;
+            bottom: calc(100%/3);
+        }
+
+        //bottom-left
+        &--6 {
+            top: calc(100%/3);
+            left: calc(100%/3);
+            right: 0;
+            bottom: 0;
+        }
+
+        //bottom-right
+        &--7 {
+            top: calc(100%/3);
+            left: 0;
+            right: calc(100%/3);
+            bottom: 0;
+        }
+
+        //Vertical
+        //left
+        &--8 {
+            top: 48%;
+            left: -25%;
+            right: 45%;
+        }
+
+        //right
+        &--9 {
+            top: 48%;
+            left: 45%;
+            right: -25%;
+        }
+
+        &--rotate {
+            @for $i from 1 through 7 {
+                &-#{$i*45} {
+                    transform: rotate(#{$i*45}deg);
+                }
+            }
+        }
     }
 }
 </style>

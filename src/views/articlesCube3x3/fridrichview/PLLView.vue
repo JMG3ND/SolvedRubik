@@ -44,6 +44,19 @@ const { tocSidebarDataFill } = useTocSidebarStore();
 //| 1 | 2 | 3 |
 //| 4 | 5 | 6 |
 //| 7 | 8 | 9 |
+
+//Angulos
+// | 45 🡦 | 90 🡣 | 135 🡧 | 180 🡠 | 225 🡤 | 270 🡡 | 315 🡥 |
+
+//esquinas
+// | top: a | bottom: b | left: h | right: i |
+
+//centro
+// | center: c |
+
+//cuadros
+//top-left: d | top-right: e | bottom-right: f | bottom-left: g
+const a = 1, b = 3, c = 2, d = 4, e = 5, f = 6, g = 7, h = 8, i = 9;
 const sectionArray = [
     {
         id: 'basicalgorithm',
@@ -51,37 +64,37 @@ const sectionArray = [
         data: [
             {
                 title: "U1",
-                image: [[2, 4], [4, 6], [6, 2]],
+                image: [[d, 135], [c, 0], [e, 225]],
                 algorithm: "R U R' U R' U' R2 U' R' U R' U R",
             },
             {
                 title: "U2",
-                image: [[4, 2], [2, 6], [6, 4]],
+                image: [[d, 315], [e, 45], [c, 180]],
                 algorithm: "R' U R' U' R' U' R' U R U R2",
             },
             {
                 title: "Z",
-                image: [[2, 6], [6, 2], [4, 8], [8, 4]],
+                image: [[e, 45], [e, 225], [g, 45], [g, 225]],
                 algorithm: "M2 U' M2 U' M' U2 M2 U2 M' U2",
             },
             {
                 title: "H",
-                image: [[2, 8], [8, 2], [4, 6], [6, 4]],
+                image: [[c, 90], [c, 270], [c, 0], [c, 180]],
                 algorithm: "M2 U M2 U2 M2 U M2",
             },
             {
                 title: "A1",
-                image: [[1, 3], [3, 7], [3, 1]],
+                image: [[a, 0], [c, 135], [h, 270]],
                 algorithm: "R U R' F' r U R' U' r' F R2 U' R'",
             },
             {
                 title: "A2",
-                image: [[3, 1], [1, 7], [7, 3]],
+                image: [[a, 180], [h, 90], [c, 315]],
                 algorithm: "R U R2 F' r U R U' r' F R U' R'",
             },
             {
                 title: "E",
-                image: [[1, 3], [3, 1], [7, 9], [9, 7]],
+                image: [[a, 0], [a, 180], [b, 0], [b, 180]],
                 algorithm: "X' R U' R' D R U R' D' R U R' D R U' R' D'",
             }
         ]

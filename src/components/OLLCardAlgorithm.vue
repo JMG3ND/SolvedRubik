@@ -1,6 +1,6 @@
 <template>
     <figure class="oll-card-algoritmo">
-        <div ref="image_container" :style="{ height: setHeight }" class="oll-card-algoritmo__image-container">
+        <div ref="image_container" class="oll-card-algoritmo__image-container">
             <div class="algorithm-image">
                 <div v-for="element in image" class="algorithm-image__piece" :class="color(element)"></div>
             </div>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 defineProps({
     image: Array,
     description: String,
@@ -35,12 +35,10 @@ const color = element => {
 };
 
 //Función que mantiene la proporción de la imágen
-const width = ref(null);
 const image_container = ref(null);
-const setHeight = computed(() => `${width.value}px`);
 const changeWith = () => {
     if (image_container.value)
-        width.value = image_container.value.clientWidth;
+        image_container.value.style.height = `${image_container.value.clientWidth}px`;
 }
 
 onMounted(() => changeWith());
