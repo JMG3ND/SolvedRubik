@@ -1,5 +1,5 @@
 <template>
-    <CardArticle title="Algoritmos PLL">
+    <CardArticle class="identifier-section" id="algorithmpll" title="Algoritmos PLL">
         <p>
             Los Algoritmos PLL (Permutation of the Last Layer) se refiere al cuarto y último paso en el método de resolución
             del cubo de Rubik
@@ -24,7 +24,7 @@
         </p>
     </CardArticle>
 
-    <AlgorithmSection v-for="element in sectionArray" :id="element.id" :title="element.title">
+    <AlgorithmSection class="identifier-section" v-for="element in sectionArray" :id="element.id" :title="element.title">
         <PLLCardAlgorithm v-for="card in element.data" :title="card.title" :image="card.image"
             :algorithm="card.algorithm" />
     </AlgorithmSection>
@@ -179,5 +179,14 @@ const sectionArray = [
 
 /* Se ejecuta la función onMounted para llenar el tocSidebar con el contenido de las secciones
 de esta vista */
-onMounted(() => tocSidebarDataFill(sectionArray, ".algorithm-section"));
+onMounted(() => {
+    const GlobalSectionArray = [
+        {
+            id: 'algorithmpll',
+            title: 'Algoritmos PLL'
+        },
+        ...sectionArray
+    ];
+    tocSidebarDataFill(GlobalSectionArray, ".identifier-section")
+});
 </script>

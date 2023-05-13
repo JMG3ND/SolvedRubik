@@ -1,5 +1,5 @@
 <template>
-    <CardArticle title="Algoritmos OLL">
+    <CardArticle class="identifier-section" id='algorithmoll' title="Algoritmos OLL">
         <p>
             Los algoritmos OLL (Orientation of the Last Layer) se refiere al
             tercer paso en el que se orienta la última capa del cubo (la capa superior) de manera que todas las piezas de la
@@ -19,7 +19,7 @@
         </p>
     </CardArticle>
 
-    <AlgorithmSection v-for="element in sectionArray" :id="element.id" :title="element.title">
+    <AlgorithmSection class="identifier-section" v-for="element in sectionArray" :id="element.id" :title="element.title">
         <OLLCardAlgorithm v-for="element in element.data" :image="element.image" :description="element.algorithm" />
     </AlgorithmSection>
 </template>
@@ -582,5 +582,14 @@ const sectionArray = [
 
 /* Se ejecuta la función onMounted para llenar el tocSidebar con el contenido de las secciones
 de esta vista */
-onMounted(() => tocSidebarDataFill(sectionArray, ".algorithm-section"));
+onMounted(() => {
+    const GlobalSectionArray = [
+        {
+            id: 'algorithmoll',
+            title: 'Algoritmos OLL'
+        },
+        ...sectionArray
+    ]
+    tocSidebarDataFill(GlobalSectionArray, ".identifier-section")
+});
 </script>
