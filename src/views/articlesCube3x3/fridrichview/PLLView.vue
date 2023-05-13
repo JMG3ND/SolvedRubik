@@ -165,12 +165,12 @@ const sectionArray = [
             },
             {
                 title: "G3",
-                image: [[a, 180], [h, 270], [c, 45], [d, 315], [e, 45], [c, 180]],
+                image: [[a, 180], [i, 270], [c, 45], [d, 315], [e, 45], [c, 180]],
                 algorithm: "R2 F2 R U2 R U2 R' F (R U R' U') R' F R2"
             },
             {
                 title: "G4",
-                image: [[a, 0], [h, 90], [c, 225], [d, 135], [e, 225], [c, 0]],
+                image: [[a, 0], [i, 90], [c, 225], [d, 135], [e, 225], [c, 0]],
                 algorithm: "R2 F' R U R U' R' F' R U2 R' U2 R' F2 R2"
             }
         ]
