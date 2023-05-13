@@ -17,6 +17,8 @@
 </script>
 
 <style lang="scss">
+@import '@/assets/colors-theme.scss';
+
 .cube-card {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -39,10 +41,12 @@
             @keyframes esquina1 {
                 from {
                     transform: translateX(0) translateY(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateX(-50%) translateY(-50%);
+                    background-color: $white;
                 }
             }
         }
@@ -53,10 +57,12 @@
             @keyframes arista1 {
                 from {
                     transform: translateY(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateY(-50%);
+                    background-color: $orange;
                 }
             }
         }
@@ -67,10 +73,12 @@
             @keyframes esquina2 {
                 from {
                     transform: translateX(0) translateY(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateX(50%) translateY(-50%);
+                    background-color: $orange;
                 }
             }
         }
@@ -81,10 +89,12 @@
             @keyframes arista2 {
                 from {
                     transform: translateX(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateX(-50%);
+                    background-color: $green;
                 }
             }
         }
@@ -95,10 +105,12 @@
             @keyframes esquina3 {
                 from {
                     transform: translateX(0) translateY(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateX(-50%) translateY(50%);
+                    background-color: $orange;
                 }
             }
         }
@@ -109,10 +121,12 @@
             @keyframes arista3 {
                 from {
                     transform: translateX(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateX(50%);
+                    background-color: $red;
                 }
             }
         }
@@ -123,10 +137,12 @@
             @keyframes esquina4 {
                 from {
                     transform: translateX(0) translateY(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateX(50%) translateY(50%);
+                    background-color: $red;
                 }
             }
         }
@@ -137,10 +153,12 @@
             @keyframes arista4 {
                 from {
                     transform: translateY(0);
+                    background-color: $yellow;
                 }
 
                 to {
                     transform: translateY(50%);
+                    background-color: $green;
                 }
             }
         }
