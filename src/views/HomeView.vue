@@ -2,7 +2,10 @@
     <!--Main Finder-->
     <div class="home-page-finder justify-elements-in-screen">
         <div class="home-page-finder__container justify-elements-in-screen__container">
-            <div class="home-page-finder__form" action="">
+            <div class="home-page-finder__form">
+                <div class="home-page-finder__background-rotate">
+                    <CubeCard />
+                </div>
                 <img class="home-page-finder__title home-page-finder__title--dark"
                     src="@/assets/images/logo-solvedrubik-hom-page-presentation-dark-640.png" alt="título Solved Rubik">
                 <img class="home-page-finder__title home-page-finder__title--light"
@@ -64,6 +67,7 @@
 </template>
 
 <script setup>
+import CubeCard from '@/components/CubeCard.vue';
 import CardArticle from '../components/CardArticle.vue';
 import ArticleItem from '@/components/ArticleItem.vue';
 import cube2x2 from '@/assets/images/home-page-article/cubo-dos-por-dos.png';
@@ -81,6 +85,7 @@ onMounted(() => window.scrollTo({ top: 0 }));
 
 //Main Finder
 .home-page-finder {
+    overflow: hidden;
     box-shadow: 2px;
     background-color: $dark-baground-color-z-index-3;
 
@@ -89,6 +94,7 @@ onMounted(() => window.scrollTo({ top: 0 }));
     }
 
     &__form {
+        position: relative;
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -97,10 +103,12 @@ onMounted(() => window.scrollTo({ top: 0 }));
         gap: 20px;
         padding: 5% 0;
         align-items: center;
+        overflow: hidden;
     }
 
     &__title {
         width: 640px;
+        z-index: 1;
 
         &--light {
             display: none;
@@ -115,6 +123,30 @@ onMounted(() => window.scrollTo({ top: 0 }));
                 display: none;
             }
         }
+    }
+
+    &__container {
+        overflow: hidden;
+    }
+
+    &__background-rotate {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        animation: infiniterotation 60s infinite cubic-bezier(0.45, 0.43, 1, 1);
+    }
+}
+
+//regla css que describe la rotación del aimagen de fondo
+@keyframes infiniterotation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }
 
