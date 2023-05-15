@@ -21,7 +21,7 @@
                 </Teleport>
             </div>
             <div class="content-divider__main-container">
-                <main class="content-divider__main">
+                <main @touchmove="handleTouchMove" class="content-divider__main">
                     <RouterView />
                 </main>
             </div>
@@ -47,8 +47,31 @@ const showSidebar = () => sidebarShow.value = !sidebarShow.value;
 const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '');
 const hiddenSidebar = () => sidebarShow.value = false
 
+//Evento para ocultar y mostrar el sidebar cuando se arrastra el dedo de forma horizontal
+let startX = 0; //Posición inicial del toque en la pantalla
+const handleTouchMove = event => {
+    const touch = event.touches[0];
+    const deltaX = touch.clientX - startX;
+    console.log(deltaX);
+
+    if (deltaX > 100) {
+        // Si se arrastra hacia la derecha y el sidebar está cerrado, abrirlo
+        sidebarShow.value = true;
+    } else if (deltaX < 0) {
+        // Si se arrastra hacia la izquierda y el sidebar está abierto, cerrarlo
+        sidebarShow.value = false;
+    }
+}
+const handleTouchStart = event => {
+    const touch = event.touches[0];
+    startX = touch.clientX;
+}
+
 //Hace scroll cuando carga el componente
-onMounted(() => window.scrollTo({ top: 0 }));
+onMounted(() => {
+    window.scrollTo({ top: 0 });
+    addEventListener('touchstart', handleTouchStart);
+});
 </script>
 
 <style lang="scss">
