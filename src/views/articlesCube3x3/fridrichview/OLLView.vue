@@ -20,19 +20,41 @@
     </CardArticle>
 
     <AlgorithmSection class="identifier-section" v-for="element in sectionArray" :id="element.id" :title="element.title">
-        <OLLCardAlgorithm v-for="element in element.data" :image="element.image" :description="element.algorithm" />
+        <CardAlgorithm v-for="algorithm in element.data" :description="algorithm.algorithm">
+            <div class="oll-algorithm-image">
+                <div v-for="piece in algorithm.image" class="oll-algorithm-image__piece" :class="color(piece)"></div>
+            </div>
+        </CardAlgorithm>
     </AlgorithmSection>
 </template>
 
 <script setup>
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
-import OLLCardAlgorithm from '@/components/OLLCardAlgorithm.vue';
+import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { onMounted } from 'vue';
 
 /* Método que llena los datos de la tienda del tocSidebar */
 const { tocSidebarDataFill } = useTocSidebarStore();
+
+//Método que asigna las clases de cada pieza del cubo
+const color = element => {
+    switch (element) {
+        case 1:
+            return 'oll-algorithm-image__piece--active';
+        case 2:
+            return 'oll-algorithm-image__piece--top'
+        case 3:
+            return 'oll-algorithm-image__piece--right'
+        case 4:
+            return 'oll-algorithm-image__piece--left'
+        case 5:
+            return 'oll-algorithm-image__piece--bottom'
+        default:
+            return '';
+    }
+};
 
 //La imágen está generada con matrices 3x3 que se describen en el siguiente formato
 //c = center, t = top, r = right, l = left, b = bottom
@@ -593,3 +615,63 @@ onMounted(() => {
     tocSidebarDataFill(GlobalSectionArray, ".identifier-section")
 });
 </script>
+
+<style lang="scss">
+%extend-piece {
+    content: '';
+    position: absolute;
+    background-color: #f4ec00;
+    border-radius: 100px;
+    min-width: 4px;
+    min-height: 4px;
+    border: 1px solid black;
+}
+
+.oll-algorithm-image {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+
+    &__piece {
+        position: relative;
+        z-index: 0;
+        border-radius: 10%;
+        background-color: #8e8e8e;
+        border: 1px solid black;
+
+        &--active {
+            background-color: #f4ec00;
+        }
+
+        &--top::before {
+            @extend %extend-piece;
+            width: 100%;
+            height: 5%;
+            top: -15%;
+        }
+
+        &--right::before {
+            @extend %extend-piece;
+            width: 7%;
+            height: 100%;
+            right: -15%;
+        }
+
+        &--left::before {
+            @extend %extend-piece;
+            width: 7%;
+            height: 100%;
+            left: -15%;
+        }
+
+        &--bottom::before {
+            @extend %extend-piece;
+            width: 100%;
+            height: 5%;
+            bottom: -15%;
+        }
+    }
+}
+</style>

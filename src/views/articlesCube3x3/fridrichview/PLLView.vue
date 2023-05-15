@@ -25,13 +25,21 @@
     </CardArticle>
 
     <AlgorithmSection class="identifier-section" v-for="element in sectionArray" :id="element.id" :title="element.title">
-        <PLLCardAlgorithm v-for="card in element.data" :title="card.title" :image="card.image"
-            :algorithm="card.algorithm" />
+        <CardAlgorithm v-for="algorithm in element.data" :title="algorithm.title" :description="algorithm.algorithm">
+            <div class="pll-algoritmo-image">
+                <div v-for=" in 9" class="pll-algoritmo-image__piece"></div>
+                <div v-for="row in algorithm.image" class="pll-algoritmo-image__arrow-container"
+                    :class='`pll-algoritmo-image__arrow-container--${row[0]} pll-algoritmo-image__arrow-container--rotate-${row[1]} ${widthforc(row)}`'>
+                    <ArrowAnimate />
+                </div>
+            </div>
+        </CardAlgorithm>
     </AlgorithmSection>
 </template>
 
 <script setup>
-import PLLCardAlgorithm from '@/components/PLLCardAlgorithm.vue';
+import CardAlgorithm from '@/components/CardAlgorithm.vue';
+import ArrowAnimate from '@/components/ArrowAnimate.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
@@ -177,6 +185,14 @@ const sectionArray = [
     }
 ]
 
+//Esta función cambia la apariencia de la flecha cuando es una flecha central ortogonal a los ejes x, y para una mejor visualización
+const widthforc = (row) => {
+    if (row[0] == 2 && (row[1] == 45 || row[1] == 135 || row[1] == 225 || row[1] == 315)) {
+        return 'pll-algoritmo-image__arrow-container--maxwidth'
+    }
+    return '';
+}
+
 /* Se ejecuta la función onMounted para llenar el tocSidebar con el contenido de las secciones
 de esta vista */
 onMounted(() => {
@@ -190,3 +206,118 @@ onMounted(() => {
     tocSidebarDataFill(GlobalSectionArray, ".identifier-section")
 });
 </script>
+
+<style lang="scss">
+.pll-algoritmo-image {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+
+    &__piece {
+        position: relative;
+        z-index: 0;
+        border-radius: 10%;
+        background-color: #f4ec00;
+        border: 1px solid black;
+    }
+
+    &__arrow-container {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        overflow: hidden;
+
+        //Horizontales
+        &--1 {
+            top: 0;
+            bottom: calc(100% - 100%/3);
+            left: calc(100%/6);
+            right: calc(100%/6);
+        }
+
+        //Este puede cambiar varía para las esquinas
+        &--2 {
+            top: calc(100%/6);
+            left: calc(100%/6);
+            right: calc(100%/6);
+            bottom: calc(100%/6);
+        }
+
+
+        &--3 {
+            top: calc(100% - 100%/3);
+            bottom: 0;
+            left: calc(100%/6);
+            right: calc(100%/6);
+        }
+
+        //Aristas
+        //top-left
+        &--4 {
+            top: 0;
+            left: 0;
+            right: calc(100%/3);
+            bottom: calc(100%/3);
+        }
+
+        //top-right
+        &--5 {
+            top: 0;
+            left: calc(100%/3);
+            right: 0;
+            bottom: calc(100%/3);
+        }
+
+        //bottom-left
+        &--6 {
+            top: calc(100%/3);
+            left: calc(100%/3);
+            right: 0;
+            bottom: 0;
+        }
+
+        //bottom-right
+        &--7 {
+            top: calc(100%/3);
+            left: 0;
+            right: calc(100%/3);
+            bottom: 0;
+        }
+
+        //Vertical
+        //left
+        &--8 {
+            top: 0;
+            left: -19%;
+            right: 50%;
+            bottom: 0;
+        }
+
+        //right
+        &--9 {
+            top: 0;
+            left: 50%;
+            right: -19%;
+            bottom: 0;
+        }
+
+        &--rotate {
+            @for $i from 1 through 7 {
+                &-#{$i*45} {
+                    transform: rotate(#{$i*45}deg);
+                }
+            }
+        }
+
+        &--maxwidth {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}
+</style>

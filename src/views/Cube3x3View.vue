@@ -34,10 +34,11 @@ import GlobalSidebar from '../components/GlobalSidebar.vue';
 import TocSidebar from '../components/TocSidebar.vue';
 import ArticleActions from '../components/ArticleActions.vue';
 import { RouterView } from 'vue-router';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useSidebarData } from '@/aplicationDatajs/sidebarData';
 import { useTocSidebarStore } from '../stores/tocSidebarStore';
 
+//Datos del sidebar de secciones
 const tocSidebarData = useTocSidebarStore();
 const { sidebarData } = useSidebarData();
 
@@ -58,16 +59,23 @@ const handleTouchMove = event => {
         sidebarShow.value = true;
     }
 }
+//Método que obtiene la posición x inicial al tocar la pantalla
 const handleTouchStart = event => {
     const touch = event.touches[0];
     startX = touch.clientX;
 }
 
-//Hace scroll cuando carga el componente
 onMounted(() => {
+    //Hace scroll cuando carga el componente
     window.scrollTo({ top: 0 });
+    //Añade el evento touchstart para controlar el sidebar con el dedo al montar elcomponente
     addEventListener('touchstart', handleTouchStart);
 });
+
+onBeforeUnmount(() => {
+    //Remueve el evento touchstart al desmontar el componente
+    removeEventListener('touchstart', handleTouchStart);
+})
 </script>
 
 <style lang="scss">
