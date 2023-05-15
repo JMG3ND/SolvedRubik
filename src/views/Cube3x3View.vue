@@ -52,14 +52,10 @@ let startX = 0; //Posición inicial del toque en la pantalla
 const handleTouchMove = event => {
     const touch = event.touches[0];
     const deltaX = touch.clientX - startX;
-    console.log(deltaX);
 
-    if (deltaX > 100) {
+    if (deltaX > 100 && !sidebarShow.value) {
         // Si se arrastra hacia la derecha y el sidebar está cerrado, abrirlo
         sidebarShow.value = true;
-    } else if (deltaX < 0) {
-        // Si se arrastra hacia la izquierda y el sidebar está abierto, cerrarlo
-        sidebarShow.value = false;
     }
 }
 const handleTouchStart = event => {
