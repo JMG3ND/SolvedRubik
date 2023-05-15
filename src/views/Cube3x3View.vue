@@ -53,7 +53,7 @@ const handleTouchMove = event => {
     const touch = event.touches[0];
     const deltaX = touch.clientX - startX;
 
-    if (deltaX > 100 && !sidebarShow.value) {
+    if (deltaX > 50 && !sidebarShow.value) {
         // Si se arrastra hacia la derecha y el sidebar está cerrado, abrirlo
         sidebarShow.value = true;
     }
