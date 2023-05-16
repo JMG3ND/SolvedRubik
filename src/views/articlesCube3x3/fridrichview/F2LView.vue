@@ -9,19 +9,21 @@
         </p>
     </CardArticle>
 
-    <AlgorithmSection class="identifier-section" id="esquinaenlacapasup" title="Esquina en la capa superior">
-        <CardAlgorithm v-for=" in 2" description="U' F' U F l l l l l l l l l">
+    <AlgorithmSection v-for="item in sectionArray" class="identifier-section" :id="item.id" :title="item.title">
+        <CardAlgorithm v-for="algorithm in item.data" :description="algorithm.algorithm">
             <div class="f2l-algorithm-image">
                 <div ref="cube" class="f2l-algorithm-image__cube">
                     <div class="f2l-algorithm-image__face f2l-algorithm-image__face--up">
-                        <div class="f2l-algorithm-image__piece" style="background-color: white"></div>
-                        <div class="f2l-algorithm-image__piece" v-for=" in 8"></div>
+                        <div v-for="piece in algorithm.image.up" class="f2l-algorithm-image__piece" :class="color(piece)">
+                        </div>
                     </div>
                     <div class="f2l-algorithm-image__face f2l-algorithm-image__face--left">
-                        <div class="f2l-algorithm-image__piece" v-for=" in 9"></div>
+                        <div v-for="piece in algorithm.image.left" class="f2l-algorithm-image__piece" :class="color(piece)">
+                        </div>
                     </div>
                     <div class="f2l-algorithm-image__face f2l-algorithm-image__face--right">
-                        <div class="f2l-algorithm-image__piece" v-for=" in 9"></div>
+                        <div v-for="piece in algorithm.image.right" class="f2l-algorithm-image__piece"
+                            :class="color(piece)"></div>
                     </div>
                 </div>
             </div>
@@ -37,13 +39,157 @@ import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 //Contenido de las secciones
+//null = 0 white = 1, orange = 2, blue = 3, red = 4, green = 5, yellow = 6
+const n = 0, w = 1, o = 2, b = 3, r = 4, g = 5, y = 6;
 const sectionArray = [
     {
-        id: 'Edgeandcornerontoplayer',
+        id: 'edgeandcornerontoplayer',
         title: 'Esquina y arista en la capa superior',
-        data: null,
-    }
+        data: [
+            {
+                image: {
+                    up: [n, n, n, b, n, n, b, n, n],
+                    left: [o, o, n, n, o, o, n, o, o],
+                    right: [w, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U' F' U F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, n, o, o, n],
+                    left: [w, n, n, n, o, o, n, o, o],
+                    right: [b, b, n, n, b, b, n, b, b]
+                },
+                algorithm: "U R U' R'"
+            },
+            {
+                image: {
+                    up: [n, o, n, n, n, n, o, n, n],
+                    left: [w, n, n, n, o, o, n, o, o],
+                    right: [b, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "F' U' F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, o, b, n, n],
+                    left: [o, n, n, n, o, o, n, o, o],
+                    right: [w, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, o, n, n, b, n, n],
+                    left: [o, b, n, n, o, o, n, o, o],
+                    right: [w, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "R U' R' U R U' R' U2"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, n, o, b, n],
+                    left: [w, n, n, n, o, o, n, o, o],
+                    right: [b, o, n, n, b, b, n, b, b]
+                },
+                algorithm: "R U2 R' U F' U' F2 R' F' R"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, n, b, b, n],
+                    left: [o, n, n, n, o, o, n, o, o],
+                    right: [w, o, n, n, b, b, n, b, b]
+                },
+                algorithm: "R U' R' U2 F' U' F"
+            },
+            {
+                image: {
+                    up: [n, n, n, o, n, n, o, n, n],
+                    left: [w, b, n, n, o, o, n, o, o],
+                    right: [b, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "F' U F U2 R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, n, b, o, n],
+                    left: [o, n, n, n, o, o, n, o, o],
+                    right: [w, b, n, n, b, b, n, b, b]
+                },
+                algorithm: "U' R U' R' U R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, b, n, n, o, n, n],
+                    left: [w, o, n, n, o, o, n, o, o],
+                    right: [b, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "d R' U R U' R' U' R"
+            },
+            {
+                image: {
+                    up: [n, b, n, n, n, n, b, n, n],
+                    left: [o, n, n, n, o, o, n, o, o],
+                    right: [w, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U F' U' F U2 F' U F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, o, o, n, n],
+                    left: [w, n, n, n, o, o, n, o, o],
+                    right: [b, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U' R U R' U' R U2 R"
+            },
+            {
+                image: {
+                    up: [n, o, n, n, n, n, b, n, n],
+                    left: [o, n, n, n, o, o, n, o, o],
+                    right: [w, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U' R U R' U R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, b, o, n, n],
+                    left: [w, n, n, n, o, o, n, o, o],
+                    right: [b, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U' R U' R' U F' U' F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, n, b, b, n, n],
+                    left: [o, n, n, n, o, o, n, o, o],
+                    right: [w, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "y' U R' U2 R U2 R' U R"
+            },
+            {
+                image: {
+                    up: [n, o, n, n, n, n, o, n, n],
+                    left: [w, n, n, n, o, o, n, o, o],
+                    right: [b, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U' R U2 R' U2 R U' R'"
+            },
+        ]
+    },
 ]
+
+//Método que retorna las clases correspondientes al color de la pieza
+const color = (element) => {
+    switch (element) {
+        case 1: return 'f2l-algorithm-image__piece--white';
+        case 2: return 'f2l-algorithm-image__piece--orange';
+        case 3: return 'f2l-algorithm-image__piece--blue';
+        case 4: return 'f2l-algorithm-image__piece--red';
+        case 5: return 'f2l-algorithm-image__piece--green';
+        case 6: return 'f2l-algorithm-image__piece--yellow';
+        default: return '';
+    }
+}
 
 //Variable de referencia al objeto cubo
 const cube = ref(null);
@@ -121,7 +267,31 @@ onUnmounted(() => window.removeEventListener('resize', adjustTranslateZ));
         border-radius: 5px;
         width: 100%;
         height: 100%;
-        background-color: white;
+        background-color: #8e8e8e;
+
+        &--white {
+            background-color: $white;
+        }
+
+        &--blue {
+            background-color: $blue;
+        }
+
+        &--orange {
+            background-color: $orange;
+        }
+
+        &--yellow {
+            background-color: $yellow;
+        }
+
+        &--green {
+            background-color: $green;
+        }
+
+        &--red {
+            background-color: $red;
+        }
     }
 }
 </style>

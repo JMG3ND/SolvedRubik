@@ -1,7 +1,7 @@
 <template>
     <figure class="card-algoritmo">
         <header v-if="title">
-            <h1>{{ title }}</h1>
+            <h2>{{ title }}</h2>
         </header>
         <div ref="image_container" class="card-algoritmo__image-container">
             <slot></slot>
