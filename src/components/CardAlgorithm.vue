@@ -6,14 +6,17 @@
         <div ref="image_container" class="card-algoritmo__image-container">
             <slot></slot>
         </div>
-        <figcaption class="card-algoritmo__description">{{ description }}</figcaption>
+        <figcaption v-if="description" class="card-algoritmo__description">{{ description }}</figcaption>
     </figure>
 </template>
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 defineProps({
-    description: String,
+    description: {
+        type: String,
+        default: null
+    },
     title: {
         type: String,
         default: null

@@ -26,12 +26,65 @@
             resolver el
             cubo de Rubik y es utilizado por muchos cuberos profesionales.</p>
     </CardArticle>
+
+    <AlgorithmSection id="pasosresolucion" title="Etapas de resolución Fridrich">
+        <RouterLink v-for="etapa in etapasImage" :to="etapa.url">
+            <CardAlgorithm :title="etapa.title">
+                <OrtogonalCube :image="etapa.image" />
+            </CardAlgorithm>
+        </RouterLink>
+    </AlgorithmSection>
 </template>
 
 <script setup>
+import OrtogonalCube from '@/components/OrtogonalCube.vue';
+import AlgorithmSection from '@/components/AlgorithmSection.vue';
+import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
+
+//null = 0 white = 1, orange = 2, blue = 3, red = 4, green = 5, yellow = 6
+const n = 0, w = 1, o = 2, b = 3, r = 4, g = 5, y = 6;
+const etapasImage = [
+    {
+        url: '',
+        title: 'Cross',
+        image: {
+            up: [n, n, n, b, y, n, b, n, n],
+            left: [o, o, n, n, o, o, n, o, o],
+            right: [w, n, n, n, b, b, n, b, b]
+        }
+    },
+    {
+        url: '',
+        title: 'F2L',
+        image: {
+            up: [n, n, n, b, y, n, b, n, n],
+            left: [o, o, n, n, o, o, n, o, o],
+            right: [w, n, n, n, b, b, n, b, b]
+        }
+    },
+    {
+        url: '',
+        title: 'OLL',
+        image: {
+            up: [n, n, n, b, y, n, b, n, n],
+            left: [o, o, n, n, o, o, n, o, o],
+            right: [w, n, n, n, b, b, n, b, b]
+        }
+    },
+    {
+        url: '',
+        title: 'PLL',
+        image: {
+            up: [n, n, n, b, y, n, b, n, n],
+            left: [o, o, n, n, o, o, n, o, o],
+            right: [w, n, n, n, b, b, n, b, b]
+        }
+    }
+]
 
 //Reinicio los datos del tocSidebar
 const { tocSidebarDataFill } = useTocSidebarStore();

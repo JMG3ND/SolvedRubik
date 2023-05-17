@@ -1,5 +1,5 @@
 <template>
-    <CardArticle class="identifier-section" title="Algoritmos F2L">
+    <CardArticle class="identifier-section" id="algorithmf2l" title="Algoritmos F2L">
         <p>
             El paso F2L (First Two Layers) del método Fridrich para resolver el cubo de Rubik se centra en completar las dos
             capas inferiores del cubo mientras se resuelve la primera capa cruzada. Consiste en emparejar una esquina y un
@@ -11,44 +11,30 @@
 
     <AlgorithmSection v-for="item in sectionArray" class="identifier-section" :id="item.id" :title="item.title">
         <CardAlgorithm v-for="algorithm in item.data" :description="algorithm.algorithm">
-            <div class="f2l-algorithm-image">
-                <div ref="cube" class="f2l-algorithm-image__cube">
-                    <div class="f2l-algorithm-image__face f2l-algorithm-image__face--up">
-                        <div v-for="piece in algorithm.image.up" class="f2l-algorithm-image__piece" :class="color(piece)">
-                        </div>
-                    </div>
-                    <div class="f2l-algorithm-image__face f2l-algorithm-image__face--left">
-                        <div v-for="piece in algorithm.image.left" class="f2l-algorithm-image__piece" :class="color(piece)">
-                        </div>
-                    </div>
-                    <div class="f2l-algorithm-image__face f2l-algorithm-image__face--right">
-                        <div v-for="piece in algorithm.image.right" class="f2l-algorithm-image__piece"
-                            :class="color(piece)"></div>
-                    </div>
-                </div>
-            </div>
+            <OrtogonalCube :image="algorithm.image" />
         </CardAlgorithm>
     </AlgorithmSection>
 </template>
 
 <script setup>
+import OrtogonalCube from '@/components/OrtogonalCube.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { onMounted } from 'vue';
 
 //Contenido de las secciones
 //null = 0 white = 1, orange = 2, blue = 3, red = 4, green = 5, yellow = 6
 const n = 0, w = 1, o = 2, b = 3, r = 4, g = 5, y = 6;
 const sectionArray = [
     {
-        id: 'edgeandcornerontoplayer',
-        title: 'Esquina y arista en la capa superior',
+        id: 'basicandwhiteontheside',
+        title: 'Básico y blanco en lateral',
         data: [
             {
                 image: {
-                    up: [n, n, n, b, n, n, b, n, n],
+                    up: [n, n, n, b, y, n, b, n, n],
                     left: [o, o, n, n, o, o, n, o, o],
                     right: [w, n, n, n, b, b, n, b, b]
                 },
@@ -56,7 +42,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, n, o, o, n],
+                    up: [n, n, n, n, y, n, o, o, n],
                     left: [w, n, n, n, o, o, n, o, o],
                     right: [b, b, n, n, b, b, n, b, b]
                 },
@@ -64,7 +50,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, o, n, n, n, n, o, n, n],
+                    up: [n, o, n, n, y, n, o, n, n],
                     left: [w, n, n, n, o, o, n, o, o],
                     right: [b, n, n, n, b, b, n, b, b]
                 },
@@ -72,7 +58,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, o, b, n, n],
+                    up: [n, n, n, n, y, o, b, n, n],
                     left: [o, n, n, n, o, o, n, o, o],
                     right: [w, n, n, n, b, b, n, b, b]
                 },
@@ -80,7 +66,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, o, n, n, b, n, n],
+                    up: [n, n, n, o, y, n, b, n, n],
                     left: [o, b, n, n, o, o, n, o, o],
                     right: [w, n, n, n, b, b, n, b, b]
                 },
@@ -88,7 +74,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, n, o, b, n],
+                    up: [n, n, n, n, y, n, o, b, n],
                     left: [w, n, n, n, o, o, n, o, o],
                     right: [b, o, n, n, b, b, n, b, b]
                 },
@@ -96,7 +82,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, n, b, b, n],
+                    up: [n, n, n, n, y, n, b, b, n],
                     left: [o, n, n, n, o, o, n, o, o],
                     right: [w, o, n, n, b, b, n, b, b]
                 },
@@ -104,7 +90,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, o, n, n, o, n, n],
+                    up: [n, n, n, o, y, n, o, n, n],
                     left: [w, b, n, n, o, o, n, o, o],
                     right: [b, n, n, n, b, b, n, b, b]
                 },
@@ -112,7 +98,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, n, b, o, n],
+                    up: [n, n, n, n, y, n, b, o, n],
                     left: [o, n, n, n, o, o, n, o, o],
                     right: [w, b, n, n, b, b, n, b, b]
                 },
@@ -120,7 +106,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, b, n, n, o, n, n],
+                    up: [n, n, n, b, y, n, o, n, n],
                     left: [w, o, n, n, o, o, n, o, o],
                     right: [b, n, n, n, b, b, n, b, b]
                 },
@@ -128,7 +114,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, b, n, n, n, n, b, n, n],
+                    up: [n, b, n, n, y, n, b, n, n],
                     left: [o, n, n, n, o, o, n, o, o],
                     right: [w, n, n, n, b, b, n, b, b]
                 },
@@ -136,7 +122,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, o, o, n, n],
+                    up: [n, n, n, n, y, o, o, n, n],
                     left: [w, n, n, n, o, o, n, o, o],
                     right: [b, n, n, n, b, b, n, b, b]
                 },
@@ -144,7 +130,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, o, n, n, n, n, b, n, n],
+                    up: [n, o, n, n, y, n, b, n, n],
                     left: [o, n, n, n, o, o, n, o, o],
                     right: [w, n, n, n, b, b, n, b, b]
                 },
@@ -152,7 +138,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, b, o, n, n],
+                    up: [n, n, n, n, y, b, o, n, n],
                     left: [w, n, n, n, o, o, n, o, o],
                     right: [b, n, n, n, b, b, n, b, b]
                 },
@@ -160,7 +146,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, n, n, n, n, b, b, n, n],
+                    up: [n, n, n, n, y, b, b, n, n],
                     left: [o, n, n, n, o, o, n, o, o],
                     right: [w, n, n, n, b, b, n, b, b]
                 },
@@ -168,7 +154,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, o, n, n, n, n, o, n, n],
+                    up: [n, o, n, n, y, n, o, n, n],
                     left: [w, n, n, n, o, o, n, o, o],
                     right: [b, n, n, n, b, b, n, b, b]
                 },
@@ -176,122 +162,242 @@ const sectionArray = [
             },
         ]
     },
-]
-
-//Método que retorna las clases correspondientes al color de la pieza
-const color = (element) => {
-    switch (element) {
-        case 1: return 'f2l-algorithm-image__piece--white';
-        case 2: return 'f2l-algorithm-image__piece--orange';
-        case 3: return 'f2l-algorithm-image__piece--blue';
-        case 4: return 'f2l-algorithm-image__piece--red';
-        case 5: return 'f2l-algorithm-image__piece--green';
-        case 6: return 'f2l-algorithm-image__piece--yellow';
-        default: return '';
+    {
+        id: 'whiteup',
+        title: 'Blanco hacia arriba',
+        data: [
+            {
+                image: {
+                    up: [n, n, n, o, y, n, w, n, n],
+                    left: [b, b, n, n, o, o, n, o, o],
+                    right: [o, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "R U R' U2 (R U R' U') R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, w, b, n],
+                    left: [b, n, n, n, o, o, n, o, o],
+                    right: [o, o, n, n, b, b, n, b, b]
+                },
+                algorithm: "R U R' U R U2 R' F' U2 F"
+            },
+            {
+                image: {
+                    up: [n, n, n, b, y, n, w, n, n],
+                    left: [b, o, n, n, o, o, n, o, o],
+                    right: [o, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "F' U2 F U F' U' F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, w, o, n],
+                    left: [b, n, n, n, o, o, n, o, o],
+                    right: [o, b, n, n, b, b, n, b, b]
+                },
+                algorithm: "R U2 R' U' R U R'"
+            },
+            {
+                image: {
+                    up: [n, b, n, n, y, n, w, n, n],
+                    left: [b, n, n, n, o, o, n, o, o],
+                    right: [o, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U' F' U2 F U' F' U F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, o, w, n, n],
+                    left: [b, n, n, n, o, o, n, o, o],
+                    right: [o, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U R U2 R' U R U' R'"
+            },
+            {
+                image: {
+                    up: [n, o, n, n, y, n, w, n, n],
+                    left: [b, n, n, n, o, o, n, o, o],
+                    right: [o, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U2 R U R' U R U' R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, b, w, n, n],
+                    left: [b, n, n, n, o, o, n, o, o],
+                    right: [o, n, n, n, b, b, n, b, b]
+                },
+                algorithm: "U2 F' U' F U' F' U F"
+            },
+        ]
+    },
+    {
+        id: 'whiteinbottomlayeredgeintoplayer',
+        title: 'Blanco en capa inferior, arista en capa superior',
+        data: [
+            {
+                image: {
+                    up: [n, n, n, b, y, n, n, n, n],
+                    left: [n, o, n, n, o, o, o, o, o],
+                    right: [n, n, n, n, b, b, b, b, b]
+                },
+                algorithm: "U R U' R' U' F' U F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, o, n],
+                    left: [n, n, n, n, o, o, o, o, o],
+                    right: [n, b, n, n, b, b, b, b, b]
+                },
+                algorithm: "U' F' U F U R U' R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, b, y, n, n, n, n],
+                    left: [n, o, n, n, o, o, b, o, o],
+                    right: [n, n, n, n, b, b, w, b, b]
+                },
+                algorithm: "F' U F U' F' U F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, o, n],
+                    left: [n, n, n, n, o, o, w, o, o],
+                    right: [n, b, n, n, b, b, o, b, b]
+                },
+                algorithm: "R U' R' U R U' R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, o, y, n, n, n, n],
+                    left: [n, b, n, n, o, o, b, o, o],
+                    right: [n, n, n, n, b, b, w, b, b]
+                },
+                algorithm: "U' (R U R' U') R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, b, n],
+                    left: [n, n, n, n, o, o, w, o, o],
+                    right: [n, o, n, n, b, b, o, b, b]
+                },
+                algorithm: "U' R U' R' F' U' F"
+            },
+        ]
+    },
+    {
+        id: 'whiteintoplayeredgeinsecondlayer',
+        title: 'Blanco en capa superior, arista en segunda capa',
+        data: [
+            {
+                image: {
+                    up: [n, n, n, n, y, n, w, n, n],
+                    left: [b, n, n, o, o, o, n, o, o],
+                    right: [o, n, n, b, b, b, n, b, b]
+                },
+                algorithm: "(R U R' U') (R U R' U') R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, b, n, n],
+                    left: [o, n, n, o, o, o, n, o, o],
+                    right: [w, n, n, b, b, b, n, b, b]
+                },
+                algorithm: "R U' R' F' U2 F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, b, n, n],
+                    left: [o, n, n, o, o, o, n, o, o],
+                    right: [w, n, n, b, b, b, n, b, b]
+                },
+                algorithm: "U' R U2 R' U R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, o, n, n],
+                    left: [w, n, n, o, o, o, n, o, o],
+                    right: [b, n, n, b, b, b, n, b, b]
+                },
+                algorithm: "U' R U' R' U2 R U' R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, b, n, n],
+                    left: [o, n, n, b, o, o, n, o, o],
+                    right: [w, n, n, o, b, b, n, b, b]
+                },
+                algorithm: "d R' U' R d' R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, o, n, n],
+                    left: [w, n, n, b, o, o, n, o, o],
+                    right: [b, n, n, o, b, b, n, b, b]
+                },
+                algorithm: "U' R U R' d R' U' R"
+            },
+        ]
+    },
+    {
+        id: 'corneronbottomlayeredgeonsecondlayer',
+        title: 'Esquina en capa inferior, arista en segunda capa',
+        data: [
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, n, n],
+                    left: [n, n, n, b, o, o, o, o, o],
+                    right: [n, n, n, o, b, b, b, b, b]
+                },
+                algorithm: "R U2 R' U R U2 R' U F' U' F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, n, n],
+                    left: [n, n, n, o, o, o, b, o, o],
+                    right: [n, n, n, b, b, b, w, b, b]
+                },
+                algorithm: "R U' R' U R U2 R' U R U' R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, n, n],
+                    left: [n, n, n, o, o, o, w, o, o],
+                    right: [n, n, n, b, b, b, o, b, b]
+                },
+                algorithm: "(R U R' U') R U2 R' U' R U R'"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, n, n],
+                    left: [n, n, n, b, o, o, b, o, o],
+                    right: [n, n, n, o, b, b, w, b, b]
+                },
+                algorithm: "R U' R' U R' U' R F' U F"
+            },
+            {
+                image: {
+                    up: [n, n, n, n, y, n, n, n, n],
+                    left: [n, n, n, b, o, o, w, o, o],
+                    right: [n, n, n, o, b, b, o, b, b]
+                },
+                algorithm: "F' U F U2 R U R' U R U' R'"
+            },
+        ]
     }
-}
-
-//Variable de referencia al objeto cubo
-const cube = ref(null);
-
-//Lógica que ajusta el tamaño del cubo de la cara Z
-const adjustTranslateZ = () => {
-    cube.value.forEach(element => {
-        const desplazamiento = window.getComputedStyle(element.children[1]).getPropertyValue("transform");
-        const matriz = desplazamiento.match(/matrix3d\(([^)]+)\)/)[1].split(", ");
-        const desplazamientoX = parseFloat(matriz[12]);
-        element.children[2].style = `transform: translateZ(${-1 * desplazamientoX}px)`;
-    });
-}
+]
 
 //Reinicio los datos del tocSidebar y asigna algunos eventos
 const { tocSidebarDataFill } = useTocSidebarStore();
 onMounted(() => {
-    tocSidebarDataFill(null);
-    adjustTranslateZ();
-    window.addEventListener('resize', adjustTranslateZ);
+    const GlobalSectionArray = [
+        {
+            id: 'algorithmf2l',
+            title: 'Algoritmos F2L'
+        },
+        ...sectionArray
+    ]
+    tocSidebarDataFill(GlobalSectionArray, '.identifier-section');
 });
-onUnmounted(() => window.removeEventListener('resize', adjustTranslateZ));
 </script>
-
-<style lang="scss">
-@import '@/assets/colors-theme.scss';
-
-.f2l-algorithm-image {
-    transform-style: preserve-3d;
-    display: flex;
-    justify-content: center;
-    perspective: 2000px;
-    width: 100%;
-    height: 100%;
-    max-height: 200px;
-    max-width: 200px;
-
-    &__cube {
-        transform-style: preserve-3d;
-        perspective: 2000px;
-        position: relative;
-        height: 100%;
-        width: 100%;
-
-        transform: rotateY(50deg) rotateX(337deg) rotateZ(335deg) translate3d(20%, 10%, 0);
-    }
-
-
-    &__face {
-        transform-style: preserve-3d;
-        perspective: 2000px;
-        position: absolute;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 3px;
-        width: 60%;
-        height: 60%;
-
-        &--up {
-            transform: translateY(-52%) rotateX(90deg);
-        }
-
-        &--left {
-            transform: translateX(-52%) rotateY(90deg);
-        }
-
-        //El desplazamiento de la cara derecha se hace mediante JS ya que el % es una propiedad de 2 dimenciones y no de 3
-        /*&--right { 
-            transform: translateZ(35px);
-        }*/
-    }
-
-    &__piece {
-        border: 1px solid black;
-        border-radius: 5px;
-        width: 100%;
-        height: 100%;
-        background-color: #8e8e8e;
-
-        &--white {
-            background-color: $white;
-        }
-
-        &--blue {
-            background-color: $blue;
-        }
-
-        &--orange {
-            background-color: $orange;
-        }
-
-        &--yellow {
-            background-color: $yellow;
-        }
-
-        &--green {
-            background-color: $green;
-        }
-
-        &--red {
-            background-color: $red;
-        }
-    }
-}
-</style>
