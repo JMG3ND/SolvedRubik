@@ -63,7 +63,7 @@ onUnmounted(() => window.removeEventListener('resize', adjustTranslateZ));
     transform-style: preserve-3d;
     display: flex;
     justify-content: center;
-    perspective: 2000px;
+    perspective: 300px;
     width: 100%;
     height: 100%;
     max-height: 200px;
@@ -71,7 +71,6 @@ onUnmounted(() => window.removeEventListener('resize', adjustTranslateZ));
 
     &__cube {
         transform-style: preserve-3d;
-        perspective: 2000px;
         position: relative;
         height: 100%;
         width: 100%;
@@ -81,7 +80,6 @@ onUnmounted(() => window.removeEventListener('resize', adjustTranslateZ));
 
     &__face {
         transform-style: preserve-3d;
-        perspective: 2000px;
         position: absolute;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
