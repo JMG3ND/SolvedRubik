@@ -29,8 +29,8 @@ import { onMounted } from 'vue';
 const n = 0, w = 1, o = 2, b = 3, r = 4, g = 5, y = 6;
 const sectionArray = [
     {
-        id: 'basicandwhiteontheside',
-        title: 'Básico y blanco en lateral',
+        id: 'basic',
+        title: 'Básico',
         data: [
             {
                 image: {
@@ -64,6 +64,12 @@ const sectionArray = [
                 },
                 algorithm: "R U R'"
             },
+        ]
+    },
+    {
+        id: 'basicandwhiteontheside',
+        title: 'Blanco en lateral',
+        data: [
             {
                 image: {
                     up: [n, n, n, o, y, n, b, n, n],
