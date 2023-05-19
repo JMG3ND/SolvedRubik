@@ -50,7 +50,7 @@ const sectionArray = [
             },
             {
                 image: {
-                    up: [n, o, n, n, y, n, o, n, n],
+                    up: [n, b, n, n, y, n, o, n, n],
                     left: [w, n, n, n, o, o, n, o, o],
                     right: [b, n, n, n, b, b, n, b, b]
                 },
