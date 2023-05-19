@@ -1,5 +1,5 @@
 <template>
-    <CardArticle title="Método Fridrich">
+    <CardArticle class="identifier-section" id="fridrichmethod" title="Método Fridrich">
         <p>
             El método de resolución Fridrich es un enfoque eficiente y popular para resolver el cubo de Rubik, que
             se
@@ -8,15 +8,19 @@
             cuberos profesionales desde entonces. </p>
         <p>El método Fridrich consta de cuatro etapas:</p>
         <ol>
-            <li>Cross o cruz: En esta etapa, el objetivo es formar una cruz en la cara inferior del cubo, utilizando
+            <li><strong>Cross o cruz:</strong> En esta etapa, el objetivo es formar una cruz en la cara inferior del cubo,
+                utilizando
                 los
                 colores de los centros como guía.</li>
-            <li>F2L o First Two Layers (primeras dos capas): En esta etapa, se resuelven las cuatro esquinas y los
+            <li><strong>F2L o First Two Layers (primeras dos capas):</strong> En esta etapa, se resuelven las cuatro
+                esquinas y los
                 cuatro bordes que forman las dos primeras capas del cubo.</li>
-            <li>OLL o Orientation of the Last Layer (orientación de la última capa): En esta etapa, se orientan
+            <li><strong>OLL o Orientation of the Last Layer (orientación de la última capa):</strong> En esta etapa, se
+                orientan
                 todas
                 las piezas de la última capa del cubo para que todas las caras estén del mismo color.</li>
-            <li>PLL o Permutation of the Last Layer (permutación de la última capa): En esta etapa, se permutan
+            <li><strong>PLL o Permutation of the Last Layer (permutación de la última capa):</strong> En esta etapa, se
+                permutan
                 todas
                 las piezas de la última capa para completar la resolución del cubo.</li>
         </ol>
@@ -27,7 +31,7 @@
             cubo de Rubik y es utilizado por muchos cuberos profesionales.</p>
     </CardArticle>
 
-    <AlgorithmSection id="pasosresolucion" title="Etapas de resolución Fridrich">
+    <AlgorithmSection class="identifier-section" id="resolutionstep" title="Etapas de resolución Fridrich">
         <RouterLink class="router-link-fridrich-step" v-for="etapa in etapasImage" :to="etapa.url">
             <CardAlgorithm :title="etapa.title">
                 <OrtogonalCube :image="etapa.image" />
@@ -86,13 +90,24 @@ const etapasImage = [
     }
 ]
 
+//Secciones para el tocSidebarData
+const sectionArray = [
+    {
+        id: 'fridrichmethod',
+        title: 'Método Fridrich'
+    },
+    {
+        id: 'resolutionstep',
+        title: 'Etapas de resolución Fridrich'
+    }
+]
+
 //Reinicio los datos del tocSidebar
 const { tocSidebarDataFill } = useTocSidebarStore();
-onMounted(() => tocSidebarDataFill(null));
+onMounted(() => tocSidebarDataFill(sectionArray, '.identifier-section'));
 </script>
 
 <style lang="scss">
 .router-link-fridrich-step {
     width: 100%;
-}
-</style>
+}</style>
