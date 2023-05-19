@@ -57,8 +57,8 @@ const etapasImage = [
         title: '1. Cross',
         image: {
             up: [n, w, n, w, w, w, n, w, n],
-            left: [n, o, n, n, o, n, n, n, n],
-            right: [n, b, n, n, b, n, n, n, n]
+            left: [n, b, n, n, b, n, n, n, n],
+            right: [n, o, n, n, o, n, n, n, n]
         }
     },
     {
@@ -110,4 +110,5 @@ onMounted(() => tocSidebarDataFill(sectionArray, '.identifier-section'));
 <style lang="scss">
 .router-link-fridrich-step {
     width: 100%;
-}</style>
+}
+</style>
