@@ -28,7 +28,7 @@
     </CardArticle>
 
     <AlgorithmSection id="pasosresolucion" title="Etapas de resolución Fridrich">
-        <RouterLink v-for="etapa in etapasImage" :to="etapa.url">
+        <RouterLink class="router-link-fridrich-step" v-for="etapa in etapasImage" :to="etapa.url">
             <CardAlgorithm :title="etapa.title">
                 <OrtogonalCube :image="etapa.image" />
             </CardAlgorithm>
@@ -49,39 +49,39 @@ import { RouterLink } from 'vue-router';
 const n = 0, w = 1, o = 2, b = 3, r = 4, g = 5, y = 6;
 const etapasImage = [
     {
-        url: '',
-        title: 'Cross',
+        url: '/cube-three-by-three/fridrich-cross',
+        title: '1. Cross',
         image: {
-            up: [n, n, n, b, y, n, b, n, n],
-            left: [o, o, n, n, o, o, n, o, o],
-            right: [w, n, n, n, b, b, n, b, b]
+            up: [n, w, n, w, w, w, n, w, n],
+            left: [n, o, n, n, o, n, n, n, n],
+            right: [n, b, n, n, b, n, n, n, n]
         }
     },
     {
-        url: '',
-        title: 'F2L',
+        url: '/cube-three-by-three/f2l',
+        title: '2. F2L',
         image: {
-            up: [n, n, n, b, y, n, b, n, n],
-            left: [o, o, n, n, o, o, n, o, o],
-            right: [w, n, n, n, b, b, n, b, b]
+            up: [n, n, n, n, y, n, n, n, n],
+            left: [n, n, n, o, o, o, o, o, o],
+            right: [n, n, n, b, b, b, b, b, b]
         }
     },
     {
-        url: '',
-        title: 'OLL',
+        url: '/cube-three-by-three/oll',
+        title: '3. OLL',
         image: {
-            up: [n, n, n, b, y, n, b, n, n],
-            left: [o, o, n, n, o, o, n, o, o],
-            right: [w, n, n, n, b, b, n, b, b]
+            up: [y, y, y, y, y, y, y, y, y],
+            left: [n, n, n, o, o, o, o, o, o],
+            right: [n, n, n, b, b, b, b, b, b]
         }
     },
     {
-        url: '',
-        title: 'PLL',
+        url: '/cube-three-by-three/pll',
+        title: '4. PLL',
         image: {
-            up: [n, n, n, b, y, n, b, n, n],
-            left: [o, o, n, n, o, o, n, o, o],
-            right: [w, n, n, n, b, b, n, b, b]
+            up: [y, y, y, y, y, y, y, y, y],
+            left: [o, o, o, o, o, o, o, o, o],
+            right: [b, b, b, b, b, b, b, b, b]
         }
     }
 ]
@@ -90,3 +90,9 @@ const etapasImage = [
 const { tocSidebarDataFill } = useTocSidebarStore();
 onMounted(() => tocSidebarDataFill(null));
 </script>
+
+<style lang="scss">
+.router-link-fridrich-step {
+    width: 100%;
+}
+</style>

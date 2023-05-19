@@ -44,9 +44,11 @@ onBeforeUnmount(() => window.removeEventListener("resize", changeWith))
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
     padding: 1rem;
     max-width: 200px;
     border-radius: 10px;
+    width: 100%;
 
     background-color: $dark-baground-color-z-index-2;
 

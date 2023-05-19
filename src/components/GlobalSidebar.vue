@@ -21,10 +21,7 @@ defineProps({
 })
 //Método que hace un scroll de la página al inicio cada vez que se cambia de artículo mediante el GlobalSidebar
 const emit = defineEmits(['hiddenSidebar']);
-const clickRouterLink = () => {
-    window.scrollTo({ top: 0 });
-    emit('hiddenSidebar');
-}
+const clickRouterLink = () => emit('hiddenSidebar');
 </script>
 
 <style lang="scss">

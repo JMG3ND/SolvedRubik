@@ -3,10 +3,8 @@
         <header class="algorithm-section__header">
             <h2 class="algorithm-section__title">{{ title }}</h2>
         </header>
-        <div class="algorithm-section__center-card-container">
-            <div class="algorithm-section__card-container">
-                <slot></slot>
-            </div>
+        <div class="algorithm-section__card-container">
+            <slot></slot>
         </div>
     </section>
 </template>
@@ -30,16 +28,13 @@ defineProps(['id', 'title']);
     padding: 1rem;
     border-radius: 20px;
 
-    &__center-card-container {
-        display: flex;
-        justify-content: center;
-    }
-
     &__card-container {
+        width: 100%;
         display: grid;
         gap: 0.5rem;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         margin-top: 1rem;
+        justify-items: center;
     }
 }
 
