@@ -22,10 +22,7 @@
 	</footer>
 </template>
 
-<script>
-export default {
-	name: 'PrincipalFooter'
-}
+<script setup>
 </script>
 
 <style lang="scss">
@@ -109,10 +106,10 @@ export default {
 		&__text {
 			width: 0;
 			overflow: hidden;
-			transition: 0.3s;
+			transition: width 0.3s;
 
 			.social-networks-list__item:hover & {
-				width: 6rem;
+				width: 110px;
 			}
 		}
 	}

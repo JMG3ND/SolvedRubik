@@ -1,14 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue';
-import Cube3x3View from '../views/Cube3x3View.vue';
-import IntroductionCube3x3 from '../views/articlesCube3x3/IntroductionCube3x3.vue'
-import MovementNotation from '../views/articlesCube3x3/MovementNotationView.vue';
-import FridrichCross from '../views/articlesCube3x3/FridrichView.vue';
-import F2LView from '../views/articlesCube3x3/fridrichview/F2LView.vue';
-import FridrichCrossView from '../views/articlesCube3x3/fridrichview/FridrichCrossView.vue';
-import OLLView from '../views/articlesCube3x3/fridrichview/OLLView.vue';
-import PLLView from '../views/articlesCube3x3/fridrichview/PLLView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,46 +13,53 @@ const router = createRouter({
     {
       path: '/cube-three-by-three',
       name: 'cube3x3',
-      component: Cube3x3View,
+      component: () => import('../views/Cube3x3View.vue'),
       children: [
         {
           path: '',
           name: 'introductionCube3x3',
-          component: IntroductionCube3x3
+          component: () => import('../views/articlesCube3x3/IntroductionCube3x3.vue')
         },
         {
           path: 'movement-notation',
           name: 'movement-notation',
-          component: MovementNotation
+          component: () => import('../views/articlesCube3x3/MovementNotationView.vue')
         },
         {
           path: 'fridrich',
           name: 'fridrich',
-          component: FridrichCross
+          component: () => import('../views/articlesCube3x3/FridrichView.vue')
         },
         {
           path: 'f2l',
           name: 'f2l',
-          component: F2LView
+          component: () => import('../views/articlesCube3x3/fridrichview/F2LView.vue')
         },
         {
           path: 'fridrich-cross',
           name: 'fridrich-cross',
-          component: FridrichCrossView
+          component: () => import('../views/articlesCube3x3/fridrichview/FridrichCrossView.vue')
         },
         {
           path: 'oll',
           name: 'oll',
-          component: OLLView
+          component: () => import('../views/articlesCube3x3/fridrichview/OLLView.vue')
         },
         {
           path: 'pll',
           name: 'pll',
-          component: PLLView
+          component: () => import('../views/articlesCube3x3/fridrichview/PLLView.vue')
         },
       ]
     },
-  ]
+    {
+      path: '/:pathMatch(.*)',
+      component: () => import('../views/NotFound404View.vue')
+    }
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 };
+  }
 })
 
-export default router
+export default router;

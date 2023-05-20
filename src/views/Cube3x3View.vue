@@ -2,20 +2,21 @@
     <ArticleActions @showSidebar="showSidebar" />
     <div class="justify-elements-in-screen">
         <div class="content-divider justify-elements-in-screen__container">
-            <div class="content-divider__sidebar-container" :class="changeShow">
+            <div class="content-divider__sidebar-container"
+                :class="{ 'content-divider__sidebar-container--show': sidebarShow }">
                 <div class="content-divider__sidebar-toc">
                     <div class="content-divider__sticky-content">
-                        <TocSidebar :data="tocSidebarData.tocSidebarData" @hiddenSidebar="hiddenSidebar" />
+                        <TocSidebar :data="tocSidebarData.tocSidebarData" @hiddenSidebar="showSidebar" />
                     </div>
                 </div>
                 <div class="content-divider__sidebar-links">
                     <div class="content-divider__sticky-content">
                         <GlobalSidebar url="/cube-three-by-three" title="Cubo 3 x 3" :data="sidebarData"
-                            @hiddenSidebar="hiddenSidebar" />
+                            @hiddenSidebar="showSidebar" />
                     </div>
                 </div>
 
-                <!-- Panel que se muestra para cerrar el sidebar -->
+                <!-- Panel invisible para cerrar el sidebar -->
                 <Teleport v-if="sidebarShow" to="body">
                     <div @click="showSidebar" class="content-divider__panel-hidden"></div>
                 </Teleport>
@@ -34,7 +35,7 @@ import GlobalSidebar from '../components/GlobalSidebar.vue';
 import TocSidebar from '../components/TocSidebar.vue';
 import ArticleActions from '../components/ArticleActions.vue';
 import { RouterView } from 'vue-router';
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useSidebarData } from '@/aplicationDatajs/sidebarData';
 import { useTocSidebarStore } from '../stores/tocSidebarStore';
 
@@ -45,8 +46,6 @@ const { sidebarData } = useSidebarData();
 //Lógica que muestra y oculta el sidebar cuando la resolución es menor a 850px
 const sidebarShow = ref(false);
 const showSidebar = () => sidebarShow.value = !sidebarShow.value;
-const changeShow = computed(() => sidebarShow.value ? 'content-divider__sidebar-container--show' : '');
-const hiddenSidebar = () => sidebarShow.value = false
 
 //Evento para ocultar y mostrar el sidebar cuando se arrastra el dedo de forma horizontal
 let startX = 0; //Posición inicial del toque en la pantalla

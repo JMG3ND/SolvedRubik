@@ -49,10 +49,6 @@ export const useTocSidebarStore = defineStore('tocSidebarData', () => {
     ]
   */
   const tocSidebarDataFill = (data, classSection) => {
-
-    //Se hace scroll siempre que se cambia la data del toc sidebar
-    window.scrollTo({ top: 0 });
-
     if (data) {
       const Array = [];
 
