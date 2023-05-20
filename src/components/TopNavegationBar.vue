@@ -5,7 +5,8 @@
 			<RouterLink to="/" class="top-navegation-bar__logo">
 				<img src="../assets/images/logo-solvedrubik-150.png" alt="logo-solvedrubik">
 			</RouterLink>
-			<div class="top-navegation-bar__menus-container" :class="showMenuClass">
+			<div class="top-navegation-bar__menus-container"
+				:class="{ 'top-navegation-bar__menus-container--show': showMenubull }">
 				<div class="top-navegation-bar__menu-separator top-navegation-bar__menu-separator--uno">
 					<!--block-->
 					<MainMenu />
@@ -29,14 +30,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import MainMenu from '@/components/MainMenu.vue'
 import TopNavegationFinder from '@/components/TopNavegationFinder.vue';
 import SwitcherTheme from './SwitcherTheme.vue';
 
 const showMenubull = ref(false);
-const showMenuClass = computed(() => showMenubull.value ? 'top-navegation-bar__menus-container--show' : '');
 const showMenu = () => showMenubull.value = !showMenubull.value;
 </script>
 
