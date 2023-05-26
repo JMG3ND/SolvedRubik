@@ -40,10 +40,12 @@
                 izquierda, la derecha a tu derecha, la cara superior está en la parte superior y la cara inferior está en la
                 parte inferior.</p>
         </CardArticle>
+        <RubikCube />
     </section>
 </template>
 
 <script setup>
+import RubikCube from '@/components/RubikCube.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { onMounted } from 'vue';
