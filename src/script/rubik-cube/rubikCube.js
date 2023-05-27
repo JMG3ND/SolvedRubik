@@ -161,6 +161,18 @@ export class RubikCube {
                     }
                 })
                 break;
+            case "X'": prima *= -1;
+            case "X":
+                this._pieces.forEach((piece) => {
+                    this.rotateFace(piece.piece, new THREE.Vector3(0, -1 * prima, 0));
+                });
+                break;
+            case "Y'": prima *= -1;
+            case "Y":
+                this._pieces.forEach((piece) => {
+                    this.rotateFace(piece.piece, new THREE.Vector3(1 * prima, 0, 0));
+                });
+                break;
         }
     }
 

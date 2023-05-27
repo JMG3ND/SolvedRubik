@@ -15,7 +15,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 let ambient, rubikcube;
 
-const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'"];
+const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "X", "X'", "Y", "Y'"];
 
 const canvas = ref();
 const changeWith = () => {
