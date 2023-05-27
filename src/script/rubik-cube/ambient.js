@@ -11,7 +11,7 @@ export class Ambient {
         this.createScene();
         this.createCamera(canvas);
         this.createRenderer(canvas);
-        this.createControls();
+        //this.createControls();
     }
 
     createScene() {
@@ -22,24 +22,25 @@ export class Ambient {
         this._camera = new THREE.PerspectiveCamera(
             75,
             canvas.clientWidth / canvas.clientHeight,
-            5,
-            20
+            0.01,
+            10
         );
-        this._camera.position.z = 8;
-        const resizeCamera = () => {
-            this._camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            this._camera.updateProjectionMatrix();
-        }
-        window.addEventListener('resize', resizeCamera);
+        this._camera.position.z = 4;
+        this._camera.position.y = 2.5;
+        this._camera.position.x = 2.5;
+        this._camera.lookAt(0, 0, 0);
+    }
+    resizeCamera(canvas) {
+        this._camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        this._camera.updateProjectionMatrix();
     }
     createRenderer(canvas) {
         this._renderer = new THREE.WebGLRenderer();
         this._renderer.setSize(canvas.clientWidth, canvas.clientHeight);
         canvas.appendChild(this._renderer.domElement);
-        const resizeRenderer = () => {
-            this._renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        }
-        window.addEventListener('resize', resizeRenderer);
+    }
+    resizeRenderer(canvas) {
+        this._renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     }
     createControls() {
         this._controls = new OrbitControls(this._camera, this._renderer.domElement);
@@ -50,6 +51,7 @@ export class Ambient {
     renderer() {
         this._renderer.render(this._scene, this._camera);
     }
+
 
     get scene() {
         return this._scene;

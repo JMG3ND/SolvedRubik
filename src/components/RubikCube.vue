@@ -1,5 +1,11 @@
 <template>
-    <div class="canvas" ref="canvas"></div>
+    <div class="rubik-cube">
+        <div class="rubik-cube__canvas" ref="canvas"></div>
+        <div class="rubik-cube__controls">
+            <button v-for="character in moves" @click="rubikcube.rotateObject(character)" class="rubik-cube__button">{{
+                character }}</button>
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -7,16 +13,23 @@ import { Ambient } from '@/script/rubik-cube/ambient.js';
 import { RubikCube } from '@/script/rubik-cube/rubikCube.js';
 import { ref, onMounted, onUnmounted } from 'vue';
 
+let ambient, rubikcube;
+
+const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'"];
+
 const canvas = ref();
 const changeWith = () => {
-    if (canvas.value)
+    if (canvas.value) {
         canvas.value.style.height = `${canvas.value.clientWidth}px`;
+        ambient.resizeCamera(canvas.value);
+        ambient.resizeRenderer(canvas.value);
+    }
 }
 
 onMounted(() => {
     canvas.value.style.height = `${canvas.value.clientWidth}px`;
-    const ambient = new Ambient(canvas.value);
-    const rubikcube = new RubikCube();
+    ambient = new Ambient(canvas.value);
+    rubikcube = new RubikCube();
 
     ambient.scene.add(rubikcube.cube);
 
@@ -28,14 +41,55 @@ onMounted(() => {
     window.addEventListener('resize', changeWith);
 });
 onUnmounted(() => {
-    window.removeEventListener('resize', changeWith)
+    window.removeEventListener('resize', changeWith);
 })
 
 </script>
 
 <style lang="scss">
-.canvas {
+@import '@/assets/colors-theme.scss';
+
+.rubik-cube {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
-    background-color: white;
+
+    &__canvas {
+        width: 95%;
+        border-radius: 5%;
+        border: 1px solid black;
+        background-color: #444654;
+        overflow: hidden;
+    }
+
+    &__controls {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &__button {
+        background-color: $dark-baground-color-z-index-1;
+
+        body.light & {
+            background-color: $light-baground-color-z-index-1;
+        }
+
+        padding: 1rem;
+        margin: 0.1rem;
+        font-size: large;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .rubik-cube {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        &__canvas {
+            width: 80%;
+        }
+    }
 }
 </style>

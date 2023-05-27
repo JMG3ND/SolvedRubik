@@ -19,7 +19,7 @@ export class RubikPiece {
     addColorBox(x, y, z) {
         if (x != 0) {
             const geometryColorBox_x = new THREE.BoxGeometry(0.05, 0.9, 0.9);
-            const materialColorBox_x = new THREE.MeshBasicMaterial({ color: x == 1 ? 0xff5500 : 0xff012d });
+            const materialColorBox_x = new THREE.MeshBasicMaterial({ color: x == 1 ? 0xff012d : 0xff5500 });
             const colorBox_x = new THREE.Mesh(geometryColorBox_x, materialColorBox_x);
             colorBox_x.position.x += 0.5 * x;
             this.piece.add(colorBox_x);
