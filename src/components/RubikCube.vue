@@ -2,8 +2,9 @@
     <div class="rubik-cube">
         <div class="rubik-cube__canvas" ref="canvas"></div>
         <div class="rubik-cube__controls">
-            <button v-for="character in moves" @click="rubikcube.rotateObject(character)" class="rubik-cube__button">{{
-                character }}</button>
+            <button :disabled="centinel" v-for="character in moves" @click="secuence(character)"
+                class="rubik-cube__button">{{
+                    character }}</button>
         </div>
     </div>
 </template>
@@ -16,6 +17,15 @@ import { ref, onMounted, onUnmounted } from 'vue';
 let ambient, rubikcube;
 
 const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "X", "X'", "Y", "Y'"];
+
+let centinel = ref(false);
+const secuence = (character) => {
+    centinel.value = true;
+    rubikcube.rotateTarget(character);
+    setTimeout(() => {
+        centinel.value = false;
+    }, 600);
+};
 
 const canvas = ref();
 const changeWith = () => {

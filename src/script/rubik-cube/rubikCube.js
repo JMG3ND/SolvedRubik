@@ -6,7 +6,6 @@ export class RubikCube {
     constructor() {
         this._cube = new THREE.Group();
         this._pieces = [];
-        this._prima = 1;
 
         this.createPiece();
         this.addPieces();
@@ -110,70 +109,39 @@ export class RubikCube {
         piece.position.y = parseFloat(y.toFixed(0));
         piece.position.z = parseFloat(z.toFixed(0));
     }
-    rotateObject(character) {
-        let prima = 1;
-        switch (character) {
-            case "F'": prima *= -1;
-            case "F":
-                this._pieces.forEach((piece) => {
-                    if (piece.piece.position.z === 1) {
-                        this.rotateFace(piece.piece, new THREE.Vector3(0, 0, -1 * prima));
-                    }
-                })
-                break;
-            case "B'": prima *= -1;
-            case "B":
-                this._pieces.forEach((piece) => {
-                    if (piece.piece.position.z === -1) {
-                        this.rotateFace(piece.piece, new THREE.Vector3(0, 0, 1 * prima));
-                    }
-                })
-                break;
-            case "R'": prima *= -1;
-            case "R":
-                this._pieces.forEach((piece) => {
-                    if (piece.piece.position.x === 1) {
-                        this.rotateFace(piece.piece, new THREE.Vector3(-1 * prima, 0, 0));
-                    }
-                })
-                break;
-            case "L'": prima *= -1;
-            case "L":
-                this._pieces.forEach((piece) => {
-                    if (piece.piece.position.x === -1) {
-                        this.rotateFace(piece.piece, new THREE.Vector3(1 * prima, 0, 0));
-                    }
-                })
-                break;
-            case "U'": prima *= -1;
-            case "U":
-                this._pieces.forEach((piece) => {
-                    if (piece.piece.position.y === 1) {
-                        this.rotateFace(piece.piece, new THREE.Vector3(0, -1 * prima, 0));
-                    }
-                })
-                break;
-            case "D'": prima *= -1;
-            case "D":
-                this._pieces.forEach((piece) => {
-                    if (piece.piece.position.y === -1) {
-                        this.rotateFace(piece.piece, new THREE.Vector3(0, 1 * prima, 0));
-                    }
-                })
-                break;
-            case "X'": prima *= -1;
-            case "X":
-                this._pieces.forEach((piece) => {
-                    this.rotateFace(piece.piece, new THREE.Vector3(0, -1 * prima, 0));
-                });
-                break;
-            case "Y'": prima *= -1;
-            case "Y":
-                this._pieces.forEach((piece) => {
-                    this.rotateFace(piece.piece, new THREE.Vector3(1 * prima, 0, 0));
-                });
-                break;
-        }
+    rotateTarget(character) {
+        const firstcharacter = character[0];
+        const direction = character[1] ? 1 : -1;
+        this._pieces.forEach((piece, index) => {
+            const position = piece.piece.position;
+
+            switch (firstcharacter) {
+                case "F":
+                    if (position.z === 1) this.rotateFace(piece.piece, new THREE.Vector3(0, 0, direction));
+                    break;
+                case "B":
+                    if (position.z === -1) this.rotateFace(piece.piece, new THREE.Vector3(0, 0, direction));
+                    break;
+                case "R":
+                    if (position.x === 1) this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
+                    break;
+                case "L":
+                    if (position.x === -1) this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
+                    break;
+                case "U":
+                    if (position.y === 1) this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
+                    break;
+                case "D":
+                    if (position.y === -1) this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
+                    break;
+                case "X":
+                    this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
+                    break;
+                case "Y":
+                    this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
+                    break;
+            }
+        });
     }
 
     get cube() {
