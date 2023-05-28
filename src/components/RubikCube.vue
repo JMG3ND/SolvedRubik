@@ -24,7 +24,7 @@ const secuence = (character) => {
     rubikcube.rotateTarget(character);
     setTimeout(() => {
         centinel.value = false;
-    }, 600);
+    }, 550);
 };
 
 const canvas = ref();
