@@ -65,8 +65,6 @@ const handleTouchStart = event => {
 }
 
 onMounted(() => {
-    //Hace scroll cuando carga el componente
-    window.scrollTo({ top: 0 });
     //Añade el evento touchstart para controlar el sidebar con el dedo al montar elcomponente
     addEventListener('touchstart', handleTouchStart);
 });

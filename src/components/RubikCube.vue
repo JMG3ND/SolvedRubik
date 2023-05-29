@@ -15,14 +15,14 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 let ambient, rubikcube;
 
-const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "X", "X'", "Y", "Y'"];
+const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "X", "X'", "Y", "Y'", "Z", "Z'"];
 
+//Se crea un array para hacer una cola de eventos para animar los movimientos del cubo de forma secuencial
 let eventArray = [];
 const secuence = (character) => {
     eventArray.push(character);
     if (eventArray.length === 1) recursive();
 };
-
 const recursive = () => {
     if (eventArray.length >= 1) {
         rubikcube.rotateTarget(eventArray[0]);
@@ -33,10 +33,7 @@ const recursive = () => {
     }
 }
 
-class movement {
-
-}
-
+//Se crea un contenedor de escena para el cubo
 const canvas = ref();
 const changeWith = () => {
     if (canvas.value) {

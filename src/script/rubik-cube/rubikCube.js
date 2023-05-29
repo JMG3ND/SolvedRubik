@@ -120,25 +120,28 @@ export class RubikCube {
                     if (position.z === 1) this.rotateFace(piece.piece, new THREE.Vector3(0, 0, direction));
                     break;
                 case "B":
-                    if (position.z === -1) this.rotateFace(piece.piece, new THREE.Vector3(0, 0, direction));
+                    if (position.z === -1) this.rotateFace(piece.piece, new THREE.Vector3(0, 0, -direction));
                     break;
                 case "R":
                     if (position.x === 1) this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
                     break;
                 case "L":
-                    if (position.x === -1) this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
+                    if (position.x === -1) this.rotateFace(piece.piece, new THREE.Vector3(-direction, 0, 0));
                     break;
                 case "U":
                     if (position.y === 1) this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
                     break;
                 case "D":
-                    if (position.y === -1) this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
+                    if (position.y === -1) this.rotateFace(piece.piece, new THREE.Vector3(0, -direction, 0));
                     break;
                 case "X":
-                    this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
+                    this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
                     break;
                 case "Y":
-                    this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
+                    this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
+                    break;
+                case "Z":
+                    this.rotateFace(piece.piece, new THREE.Vector3(0, 0, direction));
                     break;
             }
         });
