@@ -11,7 +11,7 @@ export class Ambient {
         this.createScene();
         this.createCamera(canvas);
         this.createRenderer(canvas);
-        //this.createControls();
+        this.createControls();
     }
 
     createScene() {
@@ -46,6 +46,10 @@ export class Ambient {
         this._controls = new OrbitControls(this._camera, this._renderer.domElement);
         this._controls.enableZoom = false;
         this._controls.enablePan = false;
+        this._controls.minAzimuthAngle = -Math.PI / 5;
+        this._controls.maxAzimuthAngle = Math.PI / 5;
+        this._controls.minPolarAngle = Math.PI / 3;
+        this._controls.maxPolarAngle = Math.PI / 1.5;
         this._controls.update();
     }
     renderer() {
