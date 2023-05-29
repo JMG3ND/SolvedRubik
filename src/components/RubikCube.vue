@@ -2,9 +2,8 @@
     <div class="rubik-cube">
         <div class="rubik-cube__canvas" ref="canvas"></div>
         <div class="rubik-cube__controls">
-            <button :disabled="centinel" v-for="character in moves" @click="secuence(character)"
-                class="rubik-cube__button">{{
-                    character }}</button>
+            <button v-for="character in moves" @click="secuence(character)" class="rubik-cube__button">{{
+                character }}</button>
         </div>
     </div>
 </template>
@@ -18,14 +17,27 @@ let ambient, rubikcube;
 
 const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "X", "X'", "Y", "Y'"];
 
-let centinel = ref(false);
+let eventArray = [];
 const secuence = (character) => {
-    centinel.value = true;
-    rubikcube.rotateTarget(character);
-    setTimeout(() => {
-        centinel.value = false;
-    }, 550);
+    eventArray.push(character);
+    console.log(eventArray)
+    if (eventArray.length === 1) recursive();
 };
+
+const recursive = () => {
+    if (eventArray.length >= 1) {
+        rubikcube.rotateTarget(eventArray[0]);
+        setTimeout(() => {
+            eventArray.shift();
+            console.log(eventArray);
+            recursive();
+        }, 550);
+    }
+}
+
+class movement {
+
+}
 
 const canvas = ref();
 const changeWith = () => {
