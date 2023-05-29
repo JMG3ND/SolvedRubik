@@ -20,7 +20,6 @@ const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'",
 let eventArray = [];
 const secuence = (character) => {
     eventArray.push(character);
-    console.log(eventArray)
     if (eventArray.length === 1) recursive();
 };
 
@@ -29,7 +28,6 @@ const recursive = () => {
         rubikcube.rotateTarget(eventArray[0]);
         setTimeout(() => {
             eventArray.shift();
-            console.log(eventArray);
             recursive();
         }, 550);
     }
