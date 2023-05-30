@@ -15,7 +15,8 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 let ambient, rubikcube;
 
-const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "X", "X'", "Y", "Y'", "Z", "Z'"];
+const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "M", "M'",
+    "E", "E'", "S", "S'", "u", "u'", "d", "d'", "r", "r'", "l", "l'", "X", "X'", "Y", "Y'", "Z", "Z'"];
 
 //Se crea un array para hacer una cola de eventos para animar los movimientos del cubo de forma secuencial
 let eventArray = [];
@@ -69,6 +70,7 @@ onUnmounted(() => {
 .rubik-cube {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
     width: 100%;
 
     &__canvas {
@@ -105,6 +107,9 @@ onUnmounted(() => {
         gap: 1rem;
 
         &__canvas {
+            position: sticky;
+            top: 100px;
+            bottom: 1000px;
             width: 80%;
         }
     }

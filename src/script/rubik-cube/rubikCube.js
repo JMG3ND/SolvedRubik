@@ -134,6 +134,27 @@ export class RubikCube {
                 case "D":
                     if (position.y === -1) this.rotateFace(piece.piece, new THREE.Vector3(0, -direction, 0));
                     break;
+                case "M":
+                    if (position.x === 0) this.rotateFace(piece.piece, new THREE.Vector3(-direction, 0, 0));
+                    break;
+                case "E":
+                    if (position.y === 0) this.rotateFace(piece.piece, new THREE.Vector3(0, -direction, 0));
+                    break;
+                case "S":
+                    if (position.z === 0) this.rotateFace(piece.piece, new THREE.Vector3(0, 0, direction));
+                    break;
+                case "u":
+                    if (position.y !== -1) this.rotateFace(piece.piece, new THREE.Vector3(0, direction, 0));
+                    break;
+                case "d":
+                    if (position.y !== 1) this.rotateFace(piece.piece, new THREE.Vector3(0, -direction, 0));
+                    break;
+                case "r":
+                    if (position.x !== -1) this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
+                    break;
+                case "l":
+                    if (position.x !== 1) this.rotateFace(piece.piece, new THREE.Vector3(-direction, 0, 0));
+                    break;
                 case "X":
                     this.rotateFace(piece.piece, new THREE.Vector3(direction, 0, 0));
                     break;
