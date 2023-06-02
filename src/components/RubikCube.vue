@@ -2,14 +2,10 @@
     <div class="rubik-cube">
         <div class="rubik-cube__canvas" ref="canvas"></div>
         <div class="rubik-cube__controls">
-            <div class="rubik-cube__movement-container">
-                <button v-for="character in horaries" @click="secuence(character)" class="rubik-cube__button">{{
+            <template v-for="element in movements" class="rubik-cube__movement-container">
+                <button v-for="character in element" @click="secuence(character)" class="rubik-cube__button">{{
                     character }}</button>
-            </div>
-            <div class="rubik-cube__movement-container">
-                <button v-for="character in antihoraries" @click="secuence(character)" class="rubik-cube__button">{{
-                    character }}</button>
-            </div>
+            </template>
         </div>
     </div>
 </template>
@@ -21,8 +17,26 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 let ambient, rubikcube;
 
-const horaries = ['F', 'B', 'R', 'L', 'U', 'D', 'M', 'E', 'S', 'u', 'd', 'r', 'l', 'X', 'Y', 'Z']
-const antihoraries = ["F'", "B'", "R'", "L'", "U'", "D'", "M'", "E'", "S'", "u'", "d'", "r'", "l'", "X'", "Y'", "Z'"]
+const movements = [
+    ["F", "F'", "F2"],
+    ["B", "B'", "B2"],
+    ["R", "R'", "R2"],
+    ["L", "L'", "L2"],
+    ["U", "U'", "U2"],
+    ["D", "D'", "D2"],
+    ["M", "M'", "M2"],
+    ["E", "E'", "E2"],
+    ["S", "S'", "S2"],
+    ["f", "f'", "f2"],
+    ["b", "b'", "b2"],
+    ["r", "r'", "r2"],
+    ["l", "l'", "l2"],
+    ["u", "u'", "u2"],
+    ["d", "d'", "d2"],
+    ["X", "X'", "X2"],
+    ["Y", "Y'", "Y2"],
+    ["Z", "Z'", "Z2"]
+];
 
 //Se crea un array para hacer una cola de eventos para animar los movimientos del cubo de forma secuencial
 let eventArray = [];
@@ -76,7 +90,6 @@ onUnmounted(() => {
 .rubik-cube {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
     width: 100%;
 
     &__canvas {
@@ -85,17 +98,16 @@ onUnmounted(() => {
         border: 1px solid black;
         background-color: #444654;
         overflow: hidden;
+
+        position: sticky;
+        top: 25%;
+        bottom: 1000px;
     }
 
     &__controls {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    &__movement-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
     }
 
     &__button {
@@ -105,6 +117,8 @@ onUnmounted(() => {
             background-color: $light-baground-color-z-index-1;
         }
 
+        border: none;
+        border-radius: 5px;
         padding: 1rem;
         margin: 0.1rem;
         font-size: large;

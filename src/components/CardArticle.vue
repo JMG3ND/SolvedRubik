@@ -19,6 +19,10 @@ defineProps(["title"]);
     padding: 1rem;
     border-radius: 20px;
 
+    h1 {
+        margin-bottom: 1rem;
+    }
+
     p {
         line-height: 1.5rem;
         margin: 1rem 0 2rem;

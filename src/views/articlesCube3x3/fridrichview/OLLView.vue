@@ -70,7 +70,7 @@ const sectionArray = [
                     c, c, c,
                     b, c, b,
                 ],
-                algorithm: "R U2 R' U' (R U R' U') R U' R'",
+                algorithm: "R U2 R' U' R U R' U' R U' R'",
             },
             {
                 image: [
@@ -140,7 +140,7 @@ const sectionArray = [
                     l, c, r,
                     l, b, b,
                 ],
-                algorithm: "F (R U R' U') F' f (R U R' U') f'",
+                algorithm: "F R U R' U' F' f R U R' U' f'",
             },
             {
                 image: [
@@ -164,7 +164,7 @@ const sectionArray = [
                     l, c, r,
                     l, b, r,
                 ],
-                algorithm: "r' R U (R U R' U') r R2 F R F'",
+                algorithm: "r' R U R U R' U' r R2 F R F'",
             },
             {
                 image: [
@@ -188,7 +188,7 @@ const sectionArray = [
                     l, c, r,
                     c, b, c,
                 ],
-                algorithm: "r' R U (R U R' U') r2 R2 U R U' r'",
+                algorithm: "r' R U R U R' U' r2 R2 U R U' r'",
             },
         ],
     },
@@ -218,7 +218,7 @@ const sectionArray = [
                     c, c, c,
                     l, b, b,
                 ],
-                algorithm: "f (R U R' U') (R U R' U') f'",
+                algorithm: "f R U R' U' R U R' U' f'",
             },
             {
                 image: [
@@ -226,7 +226,7 @@ const sectionArray = [
                     c, c, c,
                     l, b, r,
                 ],
-                algorithm: "F (R U R' U') x R U' L U R' U' r'",
+                algorithm: "F R U R' U' x R U' L U R' U' r'",
             }
         ],
     },
@@ -280,7 +280,7 @@ const sectionArray = [
                     c, c, r,
                     l, b, b,
                 ],
-                algorithm: "F (R U R' U') (R U R' U') F'",
+                algorithm: "F R U R' U' R U R' U' F'",
             },
         ],
     },
@@ -566,7 +566,7 @@ const sectionArray = [
                     c, c, c,
                     l, b, c,
                 ],
-                algorithm: "R' F (R U R' U') y L' d R",
+                algorithm: "R' F R U R' U' y L' d R",
             },
             {
                 image: [
@@ -596,7 +596,7 @@ const sectionArray = [
                     c, c, c,
                     c, b, c,
                 ],
-                algorithm: "L' (R U R' U') L R' F R F'",
+                algorithm: "L' R U R' U' L R' F R F'",
             }
         ]
     },

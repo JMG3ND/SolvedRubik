@@ -1,6 +1,6 @@
 <template>
     <section>
-        <CardArticle title="Notación de movimientos">
+        <CardArticle id="movementnotation" class="identifier-section" title="Notación de movimientos">
             <p>La notación de movimientos del Cubo de Rubik 3x3 se basa en el uso de letras
                 para representar los movimientos de
                 cada una de las seis caras del cubo. Las letras utilizadas son:</p>
@@ -40,7 +40,9 @@
                 izquierda, la derecha a tu derecha, la cara superior está en la parte superior y la cara inferior está en la
                 parte inferior.</p>
         </CardArticle>
-        <RubikCube />
+        <CardArticle id="movementemulation" class="identifier-section" title="Emulador de movimientos">
+            <RubikCube />
+        </CardArticle>
     </section>
 </template>
 
@@ -52,5 +54,17 @@ import { onMounted } from 'vue';
 
 //Reinicio los datos del tocSidebar
 const { tocSidebarDataFill } = useTocSidebarStore();
-onMounted(() => tocSidebarDataFill(null));
+onMounted(() => {
+    const arraySection = [
+        {
+            title: "Notación de movimientos",
+            id: "movementnotation",
+        },
+        {
+            title: "Emulador de movimientos",
+            id: "movementemulation"
+        }
+    ]
+    tocSidebarDataFill(arraySection, ".identifier-section");
+});
 </script>
