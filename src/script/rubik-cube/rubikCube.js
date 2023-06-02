@@ -112,7 +112,7 @@ export class RubikCube {
     rotateTarget(character) {
         const firstcharacter = character[0];
         const direction = character[1] ? 1 : -1;
-        this._pieces.forEach((piece, index) => {
+        this._pieces.forEach((piece) => {
             const position = piece.piece.position;
 
             switch (firstcharacter) {

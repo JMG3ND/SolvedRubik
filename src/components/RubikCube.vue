@@ -2,8 +2,14 @@
     <div class="rubik-cube">
         <div class="rubik-cube__canvas" ref="canvas"></div>
         <div class="rubik-cube__controls">
-            <button v-for="character in moves" @click="secuence(character)" class="rubik-cube__button">{{
-                character }}</button>
+            <div class="rubik-cube__movement-container">
+                <button v-for="character in horaries" @click="secuence(character)" class="rubik-cube__button">{{
+                    character }}</button>
+            </div>
+            <div class="rubik-cube__movement-container">
+                <button v-for="character in antihoraries" @click="secuence(character)" class="rubik-cube__button">{{
+                    character }}</button>
+            </div>
         </div>
     </div>
 </template>
@@ -15,8 +21,8 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 let ambient, rubikcube;
 
-const moves = ["F", "F'", "B", "B'", "R", "R'", "L", "L'", "U", "U'", "D", "D'", "M", "M'",
-    "E", "E'", "S", "S'", "u", "u'", "d", "d'", "r", "r'", "l", "l'", "X", "X'", "Y", "Y'", "Z", "Z'"];
+const horaries = ['F', 'B', 'R', 'L', 'U', 'D', 'M', 'E', 'S', 'u', 'd', 'r', 'l', 'X', 'Y', 'Z']
+const antihoraries = ["F'", "B'", "R'", "L'", "U'", "D'", "M'", "E'", "S'", "u'", "d'", "r'", "l'", "X'", "Y'", "Z'"]
 
 //Se crea un array para hacer una cola de eventos para animar los movimientos del cubo de forma secuencial
 let eventArray = [];
@@ -82,6 +88,12 @@ onUnmounted(() => {
     }
 
     &__controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__movement-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
     }
