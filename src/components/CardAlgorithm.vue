@@ -59,6 +59,10 @@ onBeforeUnmount(() => window.removeEventListener("resize", changeWith))
     &__image-container {
         margin-bottom: 1rem;
         width: clamp(100px, 100%, 150px);
+
+        img {
+            width: 100%;
+        }
     }
 
     &__description {
