@@ -61,6 +61,7 @@ onBeforeUnmount(() => window.removeEventListener("resize", changeWith))
         width: clamp(100px, 100%, 150px);
 
         img {
+            height: auto;
             width: 100%;
         }
     }

@@ -11,13 +11,12 @@
 
     <AlgorithmSection v-for="item in sectionArray" class="identifier-section" :id="item.id" :title="item.title">
         <CardAlgorithm v-for="algorithm in item.data" :description="algorithm.algorithm">
-            <img :src="algorithm.image" alt="">
+            <img width="150" height="120" :src="algorithm.image" alt="Imágen de algoritmo F2L">
         </CardAlgorithm>
     </AlgorithmSection>
 </template>
 
 <script setup>
-import OrtogonalCube from '@/components/OrtogonalCube.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
