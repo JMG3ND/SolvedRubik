@@ -3,7 +3,7 @@
 	<header class="top-navegation-bar justify-elements-in-screen">
 		<div class="top-navegation-bar__nav justify-elements-in-screen__container">
 			<RouterLink to="/" class="top-navegation-bar__logo">
-				<img src="../assets/images/logo-solvedrubik-150.png" alt="logo-solvedrubik">
+				<img width="150" height="44" src="../assets/images/logo-solvedrubik-150.png" alt="logo-solvedrubik">
 			</RouterLink>
 			<div class="top-navegation-bar__menus-container"
 				:class="{ 'top-navegation-bar__menus-container--show': showMenubull }">
@@ -15,14 +15,14 @@
 					<!--block-->
 					<SwitcherTheme />
 					<!--block-->
-					<TopNavegationFinder />
+					<!--<TopNavegationFinder />-->
 				</div>
 				<Teleport v-if="showMenubull" to="body">
 					<div @click="showMenu" class="top-navegation-bar__panel-hidden"></div>
 				</Teleport>
 			</div>
 			<div class="top-navegation-bar__button-container">
-				<button @click="showMenu" class="top-navegation-bar__button"
+				<button aria-label="Mostrar menú" @click="showMenu" class="top-navegation-bar__button"
 					id="top-navegation-bar__button"><font-awesome-icon icon="fa-solid fa-bars" /></button>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import MainMenu from '@/components/MainMenu.vue'
-import TopNavegationFinder from '@/components/TopNavegationFinder.vue';
+//import TopNavegationFinder from '@/components/TopNavegationFinder.vue';
 import SwitcherTheme from './SwitcherTheme.vue';
 
 const showMenubull = ref(false);

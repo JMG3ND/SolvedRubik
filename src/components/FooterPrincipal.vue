@@ -2,21 +2,22 @@
 	<footer class="footer justify-elements-in-screen">
 		<nav class="footer__nav justify-elements-in-screen__container">
 			<ul class="social-networks-list">
-				<li class="social-networks-list__item-container"></li><a class="social-networks-list__item"
-					href="#"><font-awesome-icon class="fa-brands fa-facebook" icon="fa-brands fa-facebook" /><span
-						class="social-networks-list__text social-networks-list__text--facebook">Facebook</span></a>
-				<li class="social-networks-list__item-container"></li><a class="social-networks-list__item"
-					href="#"><font-awesome-icon class="fa-brands fa-twitter" icon="fa-brands fa-twitter" /><span
-						class="social-networks-list__text social-networks-list__text--twitter">Twitter</span></a>
-				<li class="social-networks-list__item-container"></li><a class="social-networks-list__item"
-					href="#"><font-awesome-icon class="fa-brands fa-instagram" icon="fa-brands fa-instagram" /><span
-						class="social-networks-list__text social-networks-list__text--instagram">Instagram</span></a>
-				<li class="social-networks-list__item-container"></li><a class="social-networks-list__item"
-					href="#"><font-awesome-icon class="fa-brands fa-youtube" icon="fa-brands fa-youtube" /><span
-						class="social-networks-list__text social-networks-list__text--youtube">Youtube</span></a>
-				<li class="social-networks-list__item-container"></li><a class="social-networks-list__item"
-					href="#"><font-awesome-icon class="fa-brands fa-whatsapp" icon="fa-brands fa-whatsapp" /><span
-						class="social-networks-list__text social-networks-list__text--whatsapp">Whatsapp</span></a>
+				<li class="social-networks-list__item-container"><a class="social-networks-list__item"
+						href="#"><font-awesome-icon class="fa-brands fa-facebook" icon="fa-brands fa-facebook" /><span
+							class="social-networks-list__text social-networks-list__text--facebook">Facebook</span></a></li>
+				<li class="social-networks-list__item-container"><a class="social-networks-list__item"
+						href="#"><font-awesome-icon class="fa-brands fa-twitter" icon="fa-brands fa-twitter" /><span
+							class="social-networks-list__text social-networks-list__text--twitter">Twitter</span></a></li>
+				<li class="social-networks-list__item-container"><a class="social-networks-list__item"
+						href="#"><font-awesome-icon class="fa-brands fa-instagram" icon="fa-brands fa-instagram" /><span
+							class="social-networks-list__text social-networks-list__text--instagram">Instagram</span></a>
+				</li>
+				<li class="social-networks-list__item-container"><a class="social-networks-list__item"
+						href="#"><font-awesome-icon class="fa-brands fa-youtube" icon="fa-brands fa-youtube" /><span
+							class="social-networks-list__text social-networks-list__text--youtube">Youtube</span></a></li>
+				<li class="social-networks-list__item-container"><a class="social-networks-list__item"
+						href="#"><font-awesome-icon class="fa-brands fa-whatsapp" icon="fa-brands fa-whatsapp" /><span
+							class="social-networks-list__text social-networks-list__text--whatsapp">Whatsapp</span></a></li>
 			</ul>
 		</nav>
 	</footer>

@@ -34,14 +34,13 @@
     <AlgorithmSection class="identifier-section" id="resolutionstep" title="Etapas de resolución Fridrich">
         <RouterLink class="router-link-fridrich-step" v-for="etapa in etapasImage" :to="etapa.url">
             <CardAlgorithm :title="etapa.title">
-                <OrtogonalCube :image="etapa.image" />
+                <img width="150" height="150" :src="etapa.image" alt="Imágen que representa el paso de fridrich" />
             </CardAlgorithm>
         </RouterLink>
     </AlgorithmSection>
 </template>
 
 <script setup>
-import OrtogonalCube from '@/components/OrtogonalCube.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import CardArticle from '@/components/CardArticle.vue';
@@ -49,44 +48,26 @@ import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
-//null = 0 white = 1, orange = 2, blue = 3, red = 4, green = 5, yellow = 6
-const n = 0, w = 1, o = 2, b = 3, r = 4, g = 5, y = 6;
 const etapasImage = [
     {
         url: '/cube-three-by-three/fridrich-cross',
         title: '1. Cross',
-        image: {
-            up: [n, w, n, w, w, w, n, w, n],
-            left: [n, b, n, n, b, n, n, n, n],
-            right: [n, o, n, n, o, n, n, n, n]
-        }
+        image: '/fridrich-steps/etapa-de-resolucion-fridrich-1.png'
     },
     {
         url: '/cube-three-by-three/f2l',
         title: '2. F2L',
-        image: {
-            up: [n, n, n, n, y, n, n, n, n],
-            left: [n, n, n, o, o, o, o, o, o],
-            right: [n, n, n, b, b, b, b, b, b]
-        }
+        image: '/fridrich-steps/etapa-de-resolucion-fridrich-2.png'
     },
     {
         url: '/cube-three-by-three/oll',
         title: '3. OLL',
-        image: {
-            up: [y, y, y, y, y, y, y, y, y],
-            left: [n, n, n, o, o, o, o, o, o],
-            right: [n, n, n, b, b, b, b, b, b]
-        }
+        image: '/fridrich-steps/etapa-de-resolucion-fridrich-3.png'
     },
     {
         url: '/cube-three-by-three/pll',
         title: '4. PLL',
-        image: {
-            up: [y, y, y, y, y, y, y, y, y],
-            left: [o, o, o, o, o, o, o, o, o],
-            right: [b, b, b, b, b, b, b, b, b]
-        }
+        image: '/fridrich-steps/etapa-de-resolucion-fridrich-4.png'
     }
 ]
 

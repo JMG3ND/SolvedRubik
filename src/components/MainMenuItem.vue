@@ -1,3 +1,22 @@
+<template>
+    <div class="main-menu-item" :class="contentItemActiveClass">
+        <div class="main-menu-item__content-item-head">
+            <a class="main-menu-item__item" href="#">
+                <span class="main-menu-item__text">{{ title }}</span>
+            </a>
+            <button v-if="subMenu" aria-label="Menú acordión" @click="activeItem"
+                class="main-menu-item__button"><font-awesome-icon icon="fa-solid fa-caret-down" /></button>
+        </div>
+        <div v-if="subMenu" class="main-menu-item__sub-menu-container">
+            <ul class="sub-menu">
+                <!--Block-->
+                <SubMenuItem v-for="element in subMenu" :title="element.title" :description="element.description"
+                    :color="element.color" :link="element.link" />
+            </ul>
+        </div>
+    </div>
+</template>
+
 <script setup>
 import { ref } from 'vue';
 import SubMenuItem from './SubMenuItem.vue';
@@ -16,25 +35,6 @@ const activeItem = () => {
 }
 
 </script>
-
-<template>
-    <div class="main-menu-item" :class="contentItemActiveClass">
-        <div class="main-menu-item__content-item-head">
-            <a class="main-menu-item__item" href="#">
-                <span class="main-menu-item__text">{{ title }}</span>
-            </a>
-            <button v-if="subMenu" @click="activeItem" class="main-menu-item__button"><font-awesome-icon
-                    icon="fa-solid fa-caret-down" /></button>
-        </div>
-        <div v-if="subMenu" class="main-menu-item__sub-menu-container">
-            <ul class="sub-menu">
-                <!--Block-->
-                <SubMenuItem v-for="element in subMenu" :title="element.title" :description="element.description"
-                    :color="element.color" :link="element.link" />
-            </ul>
-        </div>
-    </div>
-</template>
 
 <style lang="scss">
 @import '../assets/colors-theme.scss';
