@@ -38,7 +38,6 @@ defineProps(["title"]);
 
         li {
             line-height: 1.5rem;
-            //margin: 0.5rem 0;
         }
     }
 }
