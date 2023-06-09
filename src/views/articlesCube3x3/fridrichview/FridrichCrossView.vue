@@ -16,8 +16,7 @@
                 será el color de la cara que estás resolviendo primero.
             </li>
             <li>
-                Encuentra una arista correcta: Busca una pieza de esquina que tenga el color base seleccionado y una arista
-                adyacente con otro color correspondiente a una cara adyacente.
+                Encuentra una arista correcta: Busca una arista que tenga el color base seleccionado.
             </li>
             <li>
                 Ubica la arista correcta: Examina el cubo y localiza dónde encajaría la arista correcta. Si la arista ya
@@ -52,16 +51,30 @@
         <p>
             Para este ejemplo elegiremos el color blanco, por lo cual buscaremos el centro blanco del cubo
         </p>
-        <div class="select-face-color">
+        <div class="image-container">
             <img class="select-face-color__image" width="250" src="/fridrich-cross/select-face-color.png"
                 alt="selección de centro">
         </div>
     </CardArticle>
-    <CardArticle class="identifier-section" id="aristacorrecta" title="Encuentra una arista correcta">
+    <CardArticle class="identifier-section" id="aristacorrecta" title="Arista con color elegido">
         <p>
-            Busca una pieza de esquina que tenga el color base seleccionado y una arista adyacente con otro color
-            correspondiente a una cara adyacente.
+            Busca una arista que tenga el color base seleccionado. Las piezas de aristas tienen 2 colores, y el objetivo es
+            lograr que la arista coincida en color con los centros correspondientes. Por ejemplo, consideremos la siguiente
+            imagen: muestra el centro que hemos elegido, la arista encontrada con el color seleccionado y el centro que
+            corresponde al segundo color de la arista.
         </p>
+        <div class="image-container">
+            <img class="select-face-color__image" width="250" src="/fridrich-cross/select-face-color-arista.png"
+                alt="selección de centro">
+        </div>
+        <p>
+            El objetivo es lograr que la arista coincida en color con cada uno de los centros, obteniendo como resultado la
+            siguiente forma.
+        </p>
+        <div class="image-container">
+            <img class="select-face-color__image" width="250" src="/fridrich-cross/select-face-color-arista-2.png"
+                alt="selección de centro">
+        </div>
     </CardArticle>
 </template>
 
@@ -83,7 +96,7 @@ onMounted(() => {
             id: "colorbase"
         },
         {
-            title: "Encuentra una arista correcta",
+            title: "Arista con color elegido",
             id: "aristacorrecta"
         }
     ];
@@ -92,7 +105,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-.select-face-color {
+.image-container {
     display: flex;
     justify-content: center;
 }
