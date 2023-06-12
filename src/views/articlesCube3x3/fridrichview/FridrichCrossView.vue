@@ -80,8 +80,13 @@
             Para cada una de las aristas adyacentes al color elegido (recordemos que una cara tiene cuatro aristas), es
             necesario llevar a
             cabo este paso. Se debe tener precaución de no desconfigurar las aristas que ya se han colocado. La técnica
-            utilizada para lograr esto es emplear la capa contraria a la de la cara en la que se está armando la cruz.
+            utilizada para lograr esto es emplear la capa contraria a la de la cara en la que se está armando la cruz es
+            decir.
         </p>
+        <div class="image-container">
+            <img class="select-face-color__image" width="250" src="/fridrich-cross/select-face-color-arista-3.png"
+                alt="selección de centro">
+        </div>
     </CardArticle>
 </template>
 
