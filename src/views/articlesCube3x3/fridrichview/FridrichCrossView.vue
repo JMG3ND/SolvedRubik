@@ -120,5 +120,6 @@ onMounted(() => {
 .image-container {
     display: flex;
     justify-content: center;
+
 }
 </style>
