@@ -154,7 +154,7 @@ const showMenu = () => showMenubull.value = !showMenubull.value;
 			cursor: pointer;
 
 			&>img {
-				width: 120px;
+				width: 150px;
 			}
 		}
 
