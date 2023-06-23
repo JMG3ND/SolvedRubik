@@ -80,11 +80,17 @@
             Para cada una de las aristas adyacentes al color elegido (recordemos que una cara tiene cuatro aristas), es
             necesario llevar a
             cabo este paso. Se debe tener precaución de no desconfigurar las aristas que ya se han colocado. La técnica
-            utilizada para lograr esto es emplear la capa contraria a la de la cara en la que se está armando la cruz es
-            decir.
+            utilizada para lograr esto es emplear la capa contraria a la de la cara en la que se está armando la cruz.
         </p>
         <div class="image-container">
             <img class="select-face-color__image" width="250" src="/fridrich-cross/select-face-color-arista-3.png"
+                alt="selección de centro">
+        </div>
+    </CardArticle>
+    <CardArticle class="identifier-section" id="completecross" title="Completar cruz">
+        <p>El resultado de completar el procedimiento para las 4 aristas es obtener la forma de cruz en la cara del cubo</p>
+        <div class="image-container">
+            <img class="select-face-color__image" width="250" src="/fridrich-cross/select-face-color-arista-4.png"
                 alt="selección de centro">
         </div>
     </CardArticle>
@@ -110,6 +116,10 @@ onMounted(() => {
         {
             title: "Arista con color elegido",
             id: "aristacorrecta"
+        },
+        {
+            title: "Completar la cruz",
+            id: "completecross"
         }
     ];
     tocSidebarDataFill(sectionArray, ".identifier-section");
