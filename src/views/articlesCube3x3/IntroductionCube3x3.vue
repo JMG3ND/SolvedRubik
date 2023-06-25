@@ -22,7 +22,7 @@
         <p>
             En esta sección de la págian podrá encontrar algunos de los métodos de resolución existentes para el cubo de
             rubik 3x3 y se detalla paso a paso como completar la resolución del mismo según el método que se elija
-            aprender
+            aprender.
         </p>
     </CardArticle>
 </template>

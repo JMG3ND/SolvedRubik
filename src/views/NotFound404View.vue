@@ -5,6 +5,7 @@
             <p>Página no encontrada</p>
         </div>
         <font-awesome-icon class="not-found__icon" icon="fa-solid fa-circle-exclamation" />
+
     </div>
 </template>
 
