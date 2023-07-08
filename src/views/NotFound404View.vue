@@ -21,5 +21,5 @@
     &__icon {
         font-size: xx-large;
     }
-}
+} 
 </style>
