@@ -12,26 +12,30 @@
         </p>
         <ol>
             <li>
-                Elige un color base: Observa el cubo y selecciona un color que quieras utilizar como base para tu cruz. Este
+                <strong>Elige un color base:</strong> Observa el cubo y selecciona un color que quieras utilizar como base
+                para tu cruz. Este
                 será el color de la cara que estás resolviendo primero.
             </li>
             <li>
-                Encuentra una arista correcta: Busca una arista que tenga el color base seleccionado.
+                <strong>Encuentra una arista correcta:</strong> Busca una arista que tenga el color base seleccionado.
             </li>
             <li>
-                Ubica la arista correcta: Examina el cubo y localiza dónde encajaría la arista correcta. Si la arista ya
+                <strong>Ubica la arista correcta:</strong> Examina el cubo y localiza dónde encajaría la arista correcta. Si
+                la arista ya
                 está en su
                 lugar, pasa a la siguiente.
             </li>
             <li>
-                Orienta la arista: Si la arista está en la cara incorrecta pero en la posición correcta, debes girar esa
+                <strong>Orienta la arista:</strong> Si la arista está en la cara incorrecta pero en la posición correcta,
+                debes girar esa
                 capa para
                 colocarla en la posición correcta y orientarla apropiadamente. Esto se logra mediante la ejecución de
                 algoritmos
                 específicos para girar las capas del cubo de Rubik.
             </li>
             <li>
-                Repite el proceso: Continúa buscando aristas correctas y colocándolas en su lugar hasta que hayas completado
+                <strong>Repite el proceso:</strong> Continúa buscando aristas correctas y colocándolas en su lugar hasta que
+                hayas completado
                 la cruz
                 en la cara seleccionada.
             </li>
@@ -131,5 +135,4 @@ onMounted(() => {
     display: flex;
     justify-content: center;
 
-}
-</style>
+}</style>
