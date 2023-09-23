@@ -100,6 +100,7 @@ onMounted(() => {
 @import '@/assets/colors-theme.scss';
 
 .controls {
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
