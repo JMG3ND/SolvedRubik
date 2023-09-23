@@ -41,7 +41,15 @@
                 parte inferior.</p>
         </CardArticle>
         <CardArticle id="movementemulation" class="identifier-section" title="Emulador de movimientos">
-            <RubikCube />
+            <RubikCube v-slot="slotProps" ref="rubikCube" variable="hola">
+                <div class="controls">
+                    <template v-for="element in movements" class="controls__movement-container">
+                        <button v-for="character in element" @click="slotProps.rubikcube.secuence(character)"
+                            class="controls__button">{{
+                                character }}</button>
+                    </template>
+                </div>
+            </RubikCube>
         </CardArticle>
     </section>
 </template>
@@ -50,7 +58,26 @@
 import RubikCube from '@/components/RubikCube.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
+
+const movements = [
+    ["F", "F'", "F2"],
+    ["B", "B'", "B2"],
+    ["R", "R'", "R2"],
+    ["L", "L'", "L2"],
+    ["U", "U'", "U2"],
+    ["D", "D'", "D2"],
+    ["M", "M'", "M2"],
+    ["E", "E'", "E2"],
+    ["S", "S'", "S2"],
+    ["r", "r'", "r2"],
+    ["l", "l'", "l2"],
+    ["u", "u'", "u2"],
+    ["d", "d'", "d2"],
+    ["X", "X'", "X2"],
+    ["Y", "Y'", "Y2"],
+    ["Z", "Z'", "Z2"]
+];
 
 //Reinicio los datos del tocSidebar
 const { tocSidebarDataFill } = useTocSidebarStore();
@@ -68,3 +95,27 @@ onMounted(() => {
     tocSidebarDataFill(arraySection, ".identifier-section");
 });
 </script>
+
+<style lang="scss">
+@import '@/assets/colors-theme.scss';
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    &__button {
+        background-color: $dark-baground-color-z-index-1;
+
+        body.light & {
+            background-color: $light-baground-color-z-index-1;
+        }
+
+        border: none;
+        border-radius: 5px;
+        padding: 1rem;
+        margin: 0.1rem;
+        font-size: large;
+    }
+}
+</style>

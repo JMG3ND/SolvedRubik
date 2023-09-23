@@ -26,9 +26,12 @@
             </div>
         </CardAlgorithm>
     </AlgorithmSection>
+
+    <RepresentationAlgorithm></RepresentationAlgorithm>
 </template>
 
 <script setup>
+import RepresentationAlgorithm from '@/components/RepresentationAlgorithm.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';

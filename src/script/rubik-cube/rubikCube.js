@@ -6,6 +6,8 @@ export class RubikCube {
     constructor() {
         this._cube = new THREE.Group();
         this._pieces = [];
+        this._algorithmSecuence = [];
+        this._speedAnimation = 400;
 
         this.createPiece();
         this.addPieces();
@@ -90,7 +92,7 @@ export class RubikCube {
         const end = { rotation: Math.PI / (1 * angle) };
 
         const tween = new TWEEN.Tween(start)
-            .to(end, 500)
+            .to(end, this._speedAnimation)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(({ rotation }) => {
 
@@ -167,6 +169,19 @@ export class RubikCube {
                     break;
             }
         });
+    }
+    recursive() {
+        if (this._algorithmSecuence.length >= 1) {
+            this.rotateTarget(this._algorithmSecuence[0]);
+            setTimeout(() => {
+                this._algorithmSecuence.shift();
+                this.recursive();
+            }, this._speedAnimation + 50);
+        }
+    }
+    secuence(character) {
+        this._algorithmSecuence.push(character);
+        if (this._algorithmSecuence.length === 1) this.recursive();
     }
 
     get cube() {
