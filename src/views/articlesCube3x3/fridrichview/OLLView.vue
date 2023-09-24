@@ -20,14 +20,14 @@
     </CardArticle>
 
     <AlgorithmSection class="identifier-section" v-for="element in sectionArray" :id="element.id" :title="element.title">
-        <CardAlgorithm v-for="algorithm in element.data" :description="algorithm.algorithm">
+        <CardAlgorithm @click="changeShow" v-for="algorithm in element.data" :description="algorithm.algorithm">
             <div class="oll-algorithm-image">
                 <div v-for="piece in algorithm.image" class="oll-algorithm-image__piece" :class="color(piece)"></div>
             </div>
         </CardAlgorithm>
     </AlgorithmSection>
 
-    <RepresentationAlgorithm></RepresentationAlgorithm>
+    <RepresentationAlgorithm :show="show" @changeShow="changeShow"></RepresentationAlgorithm>
 </template>
 
 <script setup>
@@ -36,7 +36,12 @@ import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
+
+const show = ref(false);
+const changeShow = () => {
+    show.value = !show.value;
+}
 
 /* Método que llena los datos de la tienda del tocSidebar */
 const { tocSidebarDataFill } = useTocSidebarStore();
