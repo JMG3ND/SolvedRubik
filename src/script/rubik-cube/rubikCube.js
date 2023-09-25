@@ -7,7 +7,7 @@ export class RubikCube {
         this._cube = new THREE.Group();
         this._pieces = [];
         this._algorithmSecuence = [];
-        this._speedAnimation = 400;
+        this._speedAnimation = 200;
 
         this.createPiece();
         this.addPieces();
@@ -158,13 +158,13 @@ export class RubikCube {
                 case "l":
                     if (position.x !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
                     break;
-                case "X":
+                case "X": case "x":
                     this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
                     break;
-                case "Y":
+                case "Y": case "y":
                     this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
                     break;
-                case "Z":
+                case "Z": case "z":
                     this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
                     break;
             }

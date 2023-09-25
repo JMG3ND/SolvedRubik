@@ -2,9 +2,12 @@
     <Teleport to="body">
         <div v-if="show" class="representation-algorithm">
             <div class="representation-algorithm__container">
-                <button @click="$emit('changeShow')" class="representation-algorithm__button-close">X</button>
-                <RubikCube>
-
+                <button @click="$emit('changeShow'); indexCharacter = 0"
+                    class="representation-algorithm__button-close">X</button>
+                <RubikCube v-slot="slotProps">
+                    <p style="color: white;">{{ algorithm }}</p>
+                    <button @click="slotProps.rubikcube.secuence(anterior())">&lt;</button>
+                    <button @click="slotProps.rubikcube.secuence(siguiente())">></button>
                 </RubikCube>
             </div>
         </div>
@@ -14,8 +17,29 @@
 <script setup>
 import RubikCube from './RubikCube.vue';
 
-defineProps(["show"]);
+const props = defineProps(["show", "algorithm", "algorithmArray"]);
 defineEmits(["changeShow"]);
+
+let indexCharacter = 0;
+function siguiente() {
+    if (indexCharacter < props.algorithmArray.length) {
+        indexCharacter++;
+        return props.algorithmArray[indexCharacter - 1];
+    } else {
+        return "";
+    }
+}
+function anterior() {
+    if (indexCharacter > 0) {
+        indexCharacter--;
+        let string = props.algorithmArray[indexCharacter];
+        string.includes("'") ? string = string.replace(/'/g, '') : string = string + "'";
+        return string;
+    } else {
+        return "";
+    }
+}
+
 </script>
 
 <style lang="scss">
