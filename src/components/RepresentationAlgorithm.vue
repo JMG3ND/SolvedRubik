@@ -1,13 +1,17 @@
 <template>
-    <Teleport to="body">
+    <Teleport to="header">
         <div v-if="show" class="representation-algorithm">
             <div class="representation-algorithm__container">
                 <button @click="$emit('changeShow'); indexCharacter = 0"
                     class="representation-algorithm__button-close">X</button>
                 <RubikCube v-slot="slotProps">
-                    <p style="color: white;">{{ algorithm }}</p>
-                    <button @click="slotProps.rubikcube.secuence(anterior())">&lt;</button>
-                    <button @click="slotProps.rubikcube.secuence(siguiente())">></button>
+                    <div class="representation-algorithm__controls-container">
+                        <button class="representation-algorithm__button"
+                            @click="slotProps.rubikcube.secuence(previusMovement())">&lt;</button>
+                        <p style="color: white;">{{ algorithm }}</p>
+                        <button class="representation-algorithm__button"
+                            @click="slotProps.rubikcube.secuence(nextMovement())">></button>
+                    </div>
                 </RubikCube>
             </div>
         </div>
@@ -20,8 +24,10 @@ import RubikCube from './RubikCube.vue';
 const props = defineProps(["show", "algorithm", "algorithmArray"]);
 defineEmits(["changeShow"]);
 
+//El indexCharacter determina cual es el código que determina el movimiento actual del cubo
+//por los métodos siguientes y anterior
 let indexCharacter = 0;
-function siguiente() {
+function nextMovement() {
     if (indexCharacter < props.algorithmArray.length) {
         indexCharacter++;
         return props.algorithmArray[indexCharacter - 1];
@@ -29,7 +35,7 @@ function siguiente() {
         return "";
     }
 }
-function anterior() {
+function previusMovement() {
     if (indexCharacter > 0) {
         indexCharacter--;
         let string = props.algorithmArray[indexCharacter];
@@ -72,6 +78,37 @@ function anterior() {
         right: 10px;
         padding: 1rem 1.2rem;
         border-radius: 50%;
+    }
+
+    &__button {
+        padding: 1rem;
+    }
+
+    &__controls-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .representation-algorithm {
+        &__container {
+            width: 80%;
+            height: 80%;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .representation-algorithm {
+        &__container {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
     }
 }
 </style>

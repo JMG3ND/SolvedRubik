@@ -1,7 +1,9 @@
 <template>
     <div class="rubik-cube">
         <div class="rubik-cube__canvas" ref="canvas"></div>
-        <slot :rubikcube="rubikcube"></slot>
+        <div class="rubik-cube__controls-container">
+            <slot :rubikcube="rubikcube"></slot>
+        </div>
     </div>
 </template>
 
@@ -59,6 +61,11 @@ onUnmounted(() => {
         top: 25%;
         bottom: 1000px;
     }
+
+    &__controls-container {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 @media screen and (max-width: 850px) {
@@ -66,7 +73,7 @@ onUnmounted(() => {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 8rem;
 
         &__canvas {
             position: sticky;

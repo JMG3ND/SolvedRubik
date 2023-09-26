@@ -7,11 +7,11 @@ export class RubikCube {
         this._cube = new THREE.Group();
         this._pieces = [];
         this._algorithmSecuence = [];
-        this._speedAnimation = 200;
+        this._speedAnimation = 200; //Velociad de la animación
 
         this.createPiece();
         this.addPieces();
-        this.createControlsCube();
+        //this.createControlsCube(); //controles con telado
 
         const animate = () => {
             TWEEN.update();
@@ -183,6 +183,7 @@ export class RubikCube {
         this._algorithmSecuence.push(character);
         if (this._algorithmSecuence.length === 1) this.recursive();
     }
+
 
     get cube() {
         return this._cube;
