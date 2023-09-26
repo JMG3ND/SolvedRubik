@@ -56,7 +56,6 @@ export class Ambient {
         this._renderer.render(this._scene, this._camera);
     }
 
-
     get scene() {
         return this._scene;
     }

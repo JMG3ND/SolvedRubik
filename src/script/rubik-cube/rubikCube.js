@@ -6,10 +6,12 @@ export class RubikCube {
     constructor() {
         this._cube = new THREE.Group();
         this._pieces = [];
+        this._algorithmSecuence = [];
+        this._speedAnimation = 200; //Velociad de la animación
 
         this.createPiece();
         this.addPieces();
-        this.createControlsCube();
+        //this.createControlsCube(); //controles con telado
 
         const animate = () => {
             TWEEN.update();
@@ -90,7 +92,7 @@ export class RubikCube {
         const end = { rotation: Math.PI / (1 * angle) };
 
         const tween = new TWEEN.Tween(start)
-            .to(end, 500)
+            .to(end, this._speedAnimation)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(({ rotation }) => {
 
@@ -156,18 +158,32 @@ export class RubikCube {
                 case "l":
                     if (position.x !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
                     break;
-                case "X":
+                case "X": case "x":
                     this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
                     break;
-                case "Y":
+                case "Y": case "y":
                     this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
                     break;
-                case "Z":
+                case "Z": case "z":
                     this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
                     break;
             }
         });
     }
+    recursive() {
+        if (this._algorithmSecuence.length >= 1) {
+            this.rotateTarget(this._algorithmSecuence[0]);
+            setTimeout(() => {
+                this._algorithmSecuence.shift();
+                this.recursive();
+            }, this._speedAnimation + 50);
+        }
+    }
+    secuence(character) {
+        this._algorithmSecuence.push(character);
+        if (this._algorithmSecuence.length === 1) this.recursive();
+    }
+
 
     get cube() {
         return this._cube;

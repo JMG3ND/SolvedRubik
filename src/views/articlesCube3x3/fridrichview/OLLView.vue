@@ -20,20 +20,46 @@
     </CardArticle>
 
     <AlgorithmSection class="identifier-section" v-for="element in sectionArray" :id="element.id" :title="element.title">
-        <CardAlgorithm v-for="algorithm in element.data" :description="algorithm.algorithm">
+        <CardAlgorithm @click="changeShow(algorithm.algorithm)" v-for="algorithm in element.data"
+            :description="algorithm.algorithm">
             <div class="oll-algorithm-image">
                 <div v-for="piece in algorithm.image" class="oll-algorithm-image__piece" :class="color(piece)"></div>
             </div>
         </CardAlgorithm>
     </AlgorithmSection>
+
+    <RepresentationAlgorithm :algorithmArray="algorithmArray" :algorithm="actualAlgorithm" :show="show"
+        @changeShow="changeShow"></RepresentationAlgorithm>
 </template>
 
 <script setup>
+import RepresentationAlgorithm from '@/components/RepresentationAlgorithm.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
-import { onMounted } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
+
+const show = ref(false);
+const actualAlgorithm = ref("");
+const algorithmArray = ref([]);
+const changeShow = (algorithm) => {
+    show.value = !show.value;
+    show.value ? actualAlgorithm.value = algorithm : actualAlgorithm.value = "";
+}
+
+watchEffect(() => {
+    algorithmArray.value = convertirStringAArray(actualAlgorithm.value);
+})
+
+function convertirStringAArray(str) {
+    // Utilizamos una expresión regular para dividir el string en partes
+    const partes = str.match(/[A-Za-z]'?2*|'/g);
+    if (!partes) {
+        return [];
+    }
+    return partes;
+}
 
 /* Método que llena los datos de la tienda del tocSidebar */
 const { tocSidebarDataFill } = useTocSidebarStore();
