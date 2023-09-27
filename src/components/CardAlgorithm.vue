@@ -49,11 +49,19 @@ onBeforeUnmount(() => window.removeEventListener("resize", changeWith))
     max-width: 200px;
     border-radius: 10px;
     width: 100%;
+    position: relative;
+    transform: translateX(0);
+    transition: transform 0.1s ease-in-out;
+    cursor: pointer;
 
     background-color: $dark-baground-color-z-index-2;
 
     body.light & {
         background-color: $light-baground-color-z-index-2;
+    }
+
+    &:hover {
+        transform: translate(5px, -5px);
     }
 
     &__image-container {
