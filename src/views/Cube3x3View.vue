@@ -49,11 +49,12 @@ const showSidebar = () => sidebarShow.value = !sidebarShow.value;
 
 //Evento para ocultar y mostrar el sidebar cuando se arrastra el dedo de forma horizontal
 let startX = 0; //Posición inicial del toque en la pantalla
+let startY = 0; //Posición inicial del toque en Y
 const handleTouchMove = event => {
     const touch = event.touches[0];
     const deltaX = touch.clientX - startX;
-
-    if (deltaX > 50 && !sidebarShow.value) {
+    const deltaY = touch.clientY - startY;
+    if (deltaX > 80 && Math.abs(deltaY) < 20 && !sidebarShow.value) {
         // Si se arrastra hacia la derecha y el sidebar está cerrado, abrirlo
         sidebarShow.value = true;
     }
@@ -62,6 +63,7 @@ const handleTouchMove = event => {
 const handleTouchStart = event => {
     const touch = event.touches[0];
     startX = touch.clientX;
+    startY = touch.clientY;
 }
 
 onMounted(() => {

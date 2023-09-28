@@ -50,7 +50,6 @@ onBeforeUnmount(() => window.removeEventListener("resize", changeWith))
     border-radius: 10px;
     width: 100%;
     position: relative;
-    transform: translateX(0);
     transition: transform 0.1s ease-in-out;
     cursor: pointer;
 
@@ -61,7 +60,7 @@ onBeforeUnmount(() => window.removeEventListener("resize", changeWith))
     }
 
     &:hover {
-        transform: translate(5px, -5px);
+        transform: scale(1.05);
     }
 
     &__image-container {
