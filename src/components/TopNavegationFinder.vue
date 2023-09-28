@@ -1,13 +1,13 @@
-<script setup>
-
-</script>
-
 <template>
   <form class="finder" action="">
     <input class="finder__input" type="text" placeholder="Buscar...">
     <button class="finder__send"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></button>
   </form>
 </template>
+
+<script setup>
+
+</script>
 
 <style lang="scss">
 @import '@/assets/_colors-theme.scss';
