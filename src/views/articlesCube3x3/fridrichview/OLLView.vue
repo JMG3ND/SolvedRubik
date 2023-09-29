@@ -424,7 +424,7 @@ const sectionArray = [
                     c, c, r,
                     b, b, c,
                 ],
-                algorithm: "R' U' R y' x' R U' R F R U R'",
+                algorithm: "R' U' R y' x' R U' R' F R U R' x",
             },
             {
                 image: [
