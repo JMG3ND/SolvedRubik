@@ -7,7 +7,9 @@ export class RubikCube {
         this._cube = new THREE.Group();
         this._pieces = [];
         this._algorithmSecuence = [];
+        this._enabledAnimation = true;
         this._speedAnimation = 200; //Velociad de la animación
+        this._animationDelay = 50;
 
         this.createPiece();
         this.addPieces();
@@ -92,7 +94,7 @@ export class RubikCube {
         const end = { rotation: Math.PI / (1 * angle) };
 
         const tween = new TWEEN.Tween(start)
-            .to(end, this._speedAnimation)
+            .to(end, this._speedAnimation * this._enabledAnimation)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(({ rotation }) => {
 
@@ -158,6 +160,12 @@ export class RubikCube {
                 case "l":
                     if (position.x !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
                     break;
+                case "f":
+                    if (position.z !== -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
+                    break;
+                case "b":
+                    if (position.z !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, -direction));
+                    break;
                 case "X": case "x":
                     this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
                     break;
@@ -176,14 +184,18 @@ export class RubikCube {
             setTimeout(() => {
                 this._algorithmSecuence.shift();
                 this.recursive();
-            }, this._speedAnimation + 50);
+            }, (this._speedAnimation + this._animationDelay) * this._enabledAnimation);
         }
     }
     secuence(character) {
         this._algorithmSecuence.push(character);
         if (this._algorithmSecuence.length === 1) this.recursive();
     }
-
+    configure(string = []) {
+        string.forEach(varlue => {
+            this.secuence(varlue)
+        });
+    }
 
     get cube() {
         return this._cube;

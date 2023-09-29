@@ -1,10 +1,10 @@
-<template>
+<template >
     <Teleport to="header">
-        <div v-if="show" class="representation-algorithm">
+        <div class="representation-algorithm">
             <div class="representation-algorithm__container">
                 <button @click="$emit('changeShow'); indexCharacter = 0"
                     class="representation-algorithm__button-close">X</button>
-                <RubikCube v-slot="slotProps">
+                <RubikCube v-slot="slotProps" :inverse-algorithm="[...algorithmArray].reverse()">
                     <div class="representation-algorithm__controls-container">
                         <button class="representation-algorithm__button"
                             @click="slotProps.rubikcube.secuence(previusMovement())">&lt;</button>

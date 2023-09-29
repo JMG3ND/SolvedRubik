@@ -12,10 +12,18 @@ import { Ambient } from '@/script/rubik-cube/ambient.js';
 import { RubikCube } from '@/script/rubik-cube/rubikCube.js';
 import { ref, onMounted, onUnmounted } from 'vue';
 
+const props = defineProps(['inverseAlgorithm']);
 let ambient, rubikcube = new RubikCube();
 
 //Se crea un contenedor de escena para el cubo
 const canvas = ref();
+
+function createInverseAlgorithm(array = []) {
+    array.forEach((element, index) => {
+        element.includes("'") ? array[index] = element.replace(/'/g, '') : array[index] = element + "'";
+    });
+    return array;
+}
 const changeWith = () => {
     if (canvas.value) {
         canvas.value.style.height = `${canvas.value.clientWidth}px`;
@@ -28,13 +36,13 @@ onMounted(() => {
     canvas.value.style.height = `${canvas.value.clientWidth}px`;
     ambient = new Ambient(canvas.value);
     ambient.scene.add(rubikcube.cube);
-
     function animate() {
         requestAnimationFrame(animate);
         ambient.renderer();
     }
     animate();
     window.addEventListener('resize', changeWith);
+    rubikcube.configure(createInverseAlgorithm(props.inverseAlgorithm));
 });
 onUnmounted(() => {
     window.removeEventListener('resize', changeWith);

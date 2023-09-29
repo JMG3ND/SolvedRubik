@@ -2,6 +2,14 @@ import * as THREE from 'three';
 
 export class RubikPiece {
     static number = 0;
+    static colors = {
+        red: 0xff012d,
+        orange: 0xff5500,
+        yellow: 0xcacd00,
+        white: 0xdceae1,
+        blue: 0x0094c6,
+        green: 0x0aaa0a
+    }
     constructor(x, y, z) {
         this._id = ++RubikPiece.number;
         this._piece = new THREE.Mesh();
@@ -19,7 +27,7 @@ export class RubikPiece {
     addColorBox(x, y, z) {
         if (x != 0) {
             const geometryColorBox_x = new THREE.BoxGeometry(0.05, 0.9, 0.9);
-            const materialColorBox_x = new THREE.MeshBasicMaterial({ color: x == 1 ? 0xff012d : 0xff5500 });
+            const materialColorBox_x = new THREE.MeshBasicMaterial({ color: x == 1 ? RubikPiece.colors.red : RubikPiece.colors.orange });
             const colorBox_x = new THREE.Mesh(geometryColorBox_x, materialColorBox_x);
             colorBox_x.position.x += 0.5 * x;
             this.piece.add(colorBox_x);
@@ -27,7 +35,7 @@ export class RubikPiece {
 
         if (y != 0) {
             const geometryColorBox_y = new THREE.BoxGeometry(0.9, 0.05, 0.9);
-            const materialColorBox_y = new THREE.MeshBasicMaterial({ color: y == 1 ? 0xcacd00 : 0xdceae1 });
+            const materialColorBox_y = new THREE.MeshBasicMaterial({ color: y == 1 ? RubikPiece.colors.yellow : RubikPiece.colors.white });
             const colorBox_y = new THREE.Mesh(geometryColorBox_y, materialColorBox_y);
             colorBox_y.position.y += 0.5 * y;
             this.piece.add(colorBox_y);
@@ -35,7 +43,7 @@ export class RubikPiece {
 
         if (z != 0) {
             const geometryColorBox_z = new THREE.BoxGeometry(0.9, 0.9, 0.05);
-            const materialColorBox_z = new THREE.MeshBasicMaterial({ color: z == 1 ? 0x0094c6 : 0x0aaa0a });
+            const materialColorBox_z = new THREE.MeshBasicMaterial({ color: z == 1 ? RubikPiece.colors.blue : RubikPiece.colors.green });
             const colorBox_z = new THREE.Mesh(geometryColorBox_z, materialColorBox_z);
             colorBox_z.position.z += 0.5 * z;
             this.piece.add(colorBox_z);

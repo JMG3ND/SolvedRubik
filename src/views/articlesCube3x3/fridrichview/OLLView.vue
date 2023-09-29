@@ -28,8 +28,9 @@
         </CardAlgorithm>
     </AlgorithmSection>
 
-    <RepresentationAlgorithm :algorithmArray="algorithmArray" :algorithm="actualAlgorithm" :show="show"
-        @changeShow="changeShow"></RepresentationAlgorithm>
+    <RepresentationAlgorithm v-if="show" :algorithmArray="convertirStringAArray(actualAlgorithm)"
+        :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
+    </RepresentationAlgorithm>
 </template>
 
 <script setup>
@@ -38,19 +39,14 @@ import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
-import { ref, onMounted, watchEffect } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const show = ref(false);
-const actualAlgorithm = ref("");
-const algorithmArray = ref([]);
+let actualAlgorithm = "";
 const changeShow = (algorithm) => {
     show.value = !show.value;
-    show.value ? actualAlgorithm.value = algorithm : actualAlgorithm.value = "";
+    show.value ? actualAlgorithm = algorithm : actualAlgorithm = "";
 }
-
-watchEffect(() => {
-    algorithmArray.value = convertirStringAArray(actualAlgorithm.value);
-})
 
 function convertirStringAArray(str) {
     // Utilizamos una expresión regular para dividir el string en partes
@@ -244,7 +240,7 @@ const sectionArray = [
                     c, c, c,
                     l, b, b,
                 ],
-                algorithm: "F R U R' U' R U R' U' F'",
+                algorithm: "f R U R' U' R U R' U' f'",
             },
             {
                 image: [
