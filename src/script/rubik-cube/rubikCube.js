@@ -9,7 +9,7 @@ export class RubikCube {
         this._algorithmSecuence = [];
         this._enabledAnimation = true;
         this._speedAnimation = 200; //Velociad de la animación
-        this._animationDelay = 50;
+        this._animationDelay = 20;
 
         this.createPiece();
         this.addPieces();
