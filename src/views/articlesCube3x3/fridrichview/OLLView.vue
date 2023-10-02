@@ -432,7 +432,7 @@ const sectionArray = [
                     c, c, r,
                     l, c, b,
                 ],
-                algorithm: "R U R' U R' F R F' R U2' R'",
+                algorithm: "R U R' U R' F R F' R U2 R'",
             },
         ]
     },

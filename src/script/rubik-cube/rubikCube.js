@@ -10,6 +10,8 @@ export class RubikCube {
         this._enabledAnimation = true;
         this._speedAnimation = 200; //Velociad de la animación
         this._resolveFn;
+        this._cantPiece = 0;
+        this._compareCantPiece = 0;
 
         this.createPiece();
         this.addPieces();
@@ -88,16 +90,16 @@ export class RubikCube {
         }
         document.addEventListener('keydown', onKeyDown, false);
     }
-    rotateFace(piece, angle, vector, resolve) {
+    rotateFace(piece, angle, vector) {
         const start = { rotation: 0 };
         const preview = { rotation: 0 };
         const end = { rotation: Math.PI / (1 * angle) };
+        this._cantPiece++;
 
         const tween = new TWEEN.Tween(start)
             .to(end, this._speedAnimation * this._enabledAnimation)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(({ rotation }) => {
-
                 piece.position.applyAxisAngle(vector, rotation - preview.rotation);
                 piece.rotateOnWorldAxis(vector, rotation - preview.rotation);
                 preview.rotation = rotation;
@@ -105,7 +107,13 @@ export class RubikCube {
             .onComplete(() => {
                 (async () => {
                     await this.adjustXYZPosition(piece);
-                    this._resolveFn();
+                    this._compareCantPiece++;
+                    if (this._compareCantPiece == this._cantPiece) {
+                        this._resolveFn();
+                        this._resolveFn = undefined;
+                        this._compareCantPiece = 0;
+                        this._cantPiece = 0;
+                    }
                 })();
             })
         tween.start();
@@ -125,9 +133,8 @@ export class RubikCube {
             const firstcharacter = character[0];
             const direction = character[1] === "'" ? 1 : -1;
             const angle = character[1] === "2" ? 1 : 2;
-            this._pieces.forEach((piece) => {
+            this._pieces.forEach(piece => {
                 const position = piece.piece.position;
-
                 switch (firstcharacter) {
                     case "F":
                         if (position.z === 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
@@ -196,8 +203,10 @@ export class RubikCube {
     }
     secuence(character) {
         this._enabledAnimation = true;
-        this._algorithmSecuence.push(character);
-        if (this._algorithmSecuence.length === 1) this.recursive();
+        if (character != '' && character) {
+            this._algorithmSecuence.push(character);
+            if (this._algorithmSecuence.length === 1) this.recursive();
+        }
     }
     configure(array = []) {
         this._enabledAnimation = false;
