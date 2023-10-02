@@ -9,7 +9,7 @@ export class RubikCube {
         this._algorithmSecuence = [];
         this._enabledAnimation = true;
         this._speedAnimation = 200; //Velociad de la animación
-        this._animationDelay = 20;
+        this._resolveFn;
 
         this.createPiece();
         this.addPieces();
@@ -88,7 +88,7 @@ export class RubikCube {
         }
         document.addEventListener('keydown', onKeyDown, false);
     }
-    rotateFace(piece, angle, vector) {
+    rotateFace(piece, angle, vector, resolve) {
         const start = { rotation: 0 };
         const preview = { rotation: 0 };
         const end = { rotation: Math.PI / (1 * angle) };
@@ -103,98 +103,106 @@ export class RubikCube {
                 preview.rotation = rotation;
             })
             .onComplete(() => {
-                this.adjustXYZPosition(piece);
+                (async () => {
+                    await this.adjustXYZPosition(piece);
+                    this._resolveFn();
+                })();
             })
         tween.start();
     }
-    adjustXYZPosition(piece) {
-        const x = piece.position.x, y = piece.position.y, z = piece.position.z;
-        piece.position.x = parseFloat(x.toFixed(0));
-        piece.position.y = parseFloat(y.toFixed(0));
-        piece.position.z = parseFloat(z.toFixed(0));
+    async adjustXYZPosition(piece) {
+        return new Promise(resolve => {
+            const x = piece.position.x, y = piece.position.y, z = piece.position.z;
+            piece.position.x = parseFloat(x.toFixed(0));
+            piece.position.y = parseFloat(y.toFixed(0));
+            piece.position.z = parseFloat(z.toFixed(0));
+            resolve();
+        })
     }
-    rotateTarget(character) {
-        const firstcharacter = character[0];
-        const direction = character[1] === "'" ? 1 : -1;
-        const angle = character[1] === "2" ? 1 : 2;
-        this._pieces.forEach((piece) => {
-            const position = piece.piece.position;
+    async rotateTarget(character) {
+        return new Promise((resolve) => {
+            this._resolveFn = resolve;
+            const firstcharacter = character[0];
+            const direction = character[1] === "'" ? 1 : -1;
+            const angle = character[1] === "2" ? 1 : 2;
+            this._pieces.forEach((piece) => {
+                const position = piece.piece.position;
 
-            switch (firstcharacter) {
-                case "F":
-                    if (position.z === 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
-                    break;
-                case "B":
-                    if (position.z === -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, -direction));
-                    break;
-                case "R":
-                    if (position.x === 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
-                    break;
-                case "L":
-                    if (position.x === -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
-                    break;
-                case "U":
-                    if (position.y === 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
-                    break;
-                case "D":
-                    if (position.y === -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, -direction, 0));
-                    break;
-                case "M":
-                    if (position.x === 0) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
-                    break;
-                case "E":
-                    if (position.y === 0) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, -direction, 0));
-                    break;
-                case "S":
-                    if (position.z === 0) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
-                    break;
-                case "u":
-                    if (position.y !== -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
-                    break;
-                case "d":
-                    if (position.y !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, -direction, 0));
-                    break;
-                case "r":
-                    if (position.x !== -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
-                    break;
-                case "l":
-                    if (position.x !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
-                    break;
-                case "f":
-                    if (position.z !== -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
-                    break;
-                case "b":
-                    if (position.z !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, -direction));
-                    break;
-                case "X": case "x":
-                    this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
-                    break;
-                case "Y": case "y":
-                    this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
-                    break;
-                case "Z": case "z":
-                    this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
-                    break;
-            }
-        });
+                switch (firstcharacter) {
+                    case "F":
+                        if (position.z === 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
+                        break;
+                    case "B":
+                        if (position.z === -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, -direction));
+                        break;
+                    case "R":
+                        if (position.x === 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
+                        break;
+                    case "L":
+                        if (position.x === -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
+                        break;
+                    case "U":
+                        if (position.y === 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
+                        break;
+                    case "D":
+                        if (position.y === -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, -direction, 0));
+                        break;
+                    case "M":
+                        if (position.x === 0) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
+                        break;
+                    case "E":
+                        if (position.y === 0) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, -direction, 0));
+                        break;
+                    case "S":
+                        if (position.z === 0) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
+                        break;
+                    case "u":
+                        if (position.y !== -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
+                        break;
+                    case "d":
+                        if (position.y !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, -direction, 0));
+                        break;
+                    case "r":
+                        if (position.x !== -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
+                        break;
+                    case "l":
+                        if (position.x !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(-direction, 0, 0));
+                        break;
+                    case "f":
+                        if (position.z !== -1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
+                        break;
+                    case "b":
+                        if (position.z !== 1) this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, -direction));
+                        break;
+                    case "X": case "x":
+                        this.rotateFace(piece.piece, angle, new THREE.Vector3(direction, 0, 0));
+                        break;
+                    case "Y": case "y":
+                        this.rotateFace(piece.piece, angle, new THREE.Vector3(0, direction, 0));
+                        break;
+                    case "Z": case "z":
+                        this.rotateFace(piece.piece, angle, new THREE.Vector3(0, 0, direction));
+                        break;
+                }
+            });
+        })
     }
-    recursive() {
+    async recursive() {
         if (this._algorithmSecuence.length >= 1) {
-            this.rotateTarget(this._algorithmSecuence[0]);
-            setTimeout(() => {
-                this._algorithmSecuence.shift();
-                this.recursive();
-            }, (this._speedAnimation + this._animationDelay) * this._enabledAnimation);
+            await this.rotateTarget(this._algorithmSecuence[0]);
+            this._algorithmSecuence.shift();
+            this.recursive();
         }
     }
     secuence(character) {
+        this._enabledAnimation = true;
         this._algorithmSecuence.push(character);
         if (this._algorithmSecuence.length === 1) this.recursive();
     }
-    configure(string = []) {
-        string.forEach(varlue => {
-            this.secuence(varlue)
-        });
+    configure(array = []) {
+        this._enabledAnimation = false;
+        this._algorithmSecuence = array;
+        this.recursive();
     }
 
     get cube() {
