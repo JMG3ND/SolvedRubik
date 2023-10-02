@@ -46,6 +46,7 @@ onMounted(() => {
 });
 onUnmounted(() => {
     window.removeEventListener('resize', changeWith);
+    ambient.scene.clear();
 })
 
 </script>

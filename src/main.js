@@ -23,6 +23,8 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import App from './App.vue';
 import router from './router';
@@ -40,6 +42,8 @@ library.add(faYoutube);
 library.add(faWhatsapp);
 library.add(faList);
 library.add(faCircleExclamation);
+library.add(faArrowRight);
+library.add(faArrowLeft);
 
 const app = createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon);

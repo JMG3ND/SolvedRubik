@@ -7,10 +7,14 @@
                 <RubikCube v-slot="slotProps" :inverse-algorithm="[...algorithmArray].reverse()">
                     <div class="representation-algorithm__controls-container">
                         <button class="representation-algorithm__button"
-                            @click="slotProps.rubikcube.secuence(previusMovement())">&lt;</button>
+                            @click="slotProps.rubikcube.secuence(previusMovement())">
+                            <font-awesome-icon icon="fa-solid fa-arrow-left" />
+                        </button>
                         <p style="color: white;">{{ algorithm }}</p>
                         <button class="representation-algorithm__button"
-                            @click="slotProps.rubikcube.secuence(nextMovement())">></button>
+                            @click="slotProps.rubikcube.secuence(nextMovement())">
+                            <font-awesome-icon icon="fa-solid fa-arrow-right" />
+                        </button>
                     </div>
                 </RubikCube>
             </div>
@@ -45,10 +49,11 @@ function previusMovement() {
         return "";
     }
 }
-
 </script>
 
 <style lang="scss">
+@import '@/assets/_colors-theme.scss';
+
 .representation-algorithm {
     display: flex;
     align-items: center;
@@ -70,6 +75,10 @@ function previusMovement() {
         width: 50%;
         height: 50%;
         background-color: rgba(0, 0, 0, 0.635);
+
+        body.light & {
+            background-color: rgba(54, 54, 54, 0.783);
+        }
     }
 
     &__button-close {
@@ -78,16 +87,32 @@ function previusMovement() {
         right: 10px;
         padding: 1rem 1.2rem;
         border-radius: 50%;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: red;
+        }
     }
 
     &__button {
-        padding: 1rem;
+        font-size: xx-large;
+        scale: 2;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        transition: scale 100ms;
+
+        &:hover {
+            scale: 2.5;
+        }
+
     }
 
     &__controls-container {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
         height: 100%;
         width: 100%;
     }
