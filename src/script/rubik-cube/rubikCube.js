@@ -166,9 +166,15 @@ export class RubikCube {
     }
     secuence(character) {
         this._enabledAnimation = true;
-        if (this._movements.includes(character) && character) {
-            this._algorithmSecuence.push(character);
-            if (this._algorithmSecuence.length === 1) this.recursive();
+        try {
+            if (this._movements.includes(character) && character) {
+                this._algorithmSecuence.push(character);
+                if (this._algorithmSecuence.length === 1) this.recursive();
+            } else {
+                new Error("Movimiento inválido");
+            }
+        } catch (e) {
+            console.log(e);
         }
     }
     configure(array = []) {
