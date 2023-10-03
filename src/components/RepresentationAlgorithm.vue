@@ -10,7 +10,11 @@
                             @click="slotProps.rubikcube.secuence(previusMovement())">
                             <font-awesome-icon icon="fa-solid fa-arrow-left" />
                         </button>
-                        <p style="color: white;">{{ algorithm }}</p>
+                        <div class="representation-algorithm__algorithm-container">
+                            <span v-for="element, index in algorithmArray" :class="changeCharacterFocus(index)"
+                                class="representation-algorithm__character-container">
+                                {{ element }} </span>
+                        </div>
                         <button class="representation-algorithm__button"
                             @click="slotProps.rubikcube.secuence(nextMovement())">
                             <font-awesome-icon icon="fa-solid fa-arrow-right" />
@@ -24,9 +28,19 @@
 
 <script setup>
 import RubikCube from './RubikCube.vue';
+import { ref, computed } from 'vue'
 
 const props = defineProps(["show", "algorithm", "algorithmArray"]);
 defineEmits(["changeShow"]);
+
+//Cambio de color en función del focus del caracter del algoritmo
+const characterFocus = ref(0);
+const changeCharacterFocus = (index) => {
+    if (characterFocus.value == index)
+        return 'representation-algorithm__character-container--focus';
+    else
+        return '';
+}
 
 //El indexCharacter determina cual es el código que determina el movimiento actual del cubo
 //por los métodos siguientes y anterior
@@ -34,6 +48,7 @@ let indexCharacter = 0;
 function nextMovement() {
     if (indexCharacter < props.algorithmArray.length) {
         indexCharacter++;
+        characterFocus.value++;
         return props.algorithmArray[indexCharacter - 1];
     } else {
         return "";
@@ -42,8 +57,11 @@ function nextMovement() {
 function previusMovement() {
     if (indexCharacter > 0) {
         indexCharacter--;
+        characterFocus.value--;
         let string = props.algorithmArray[indexCharacter];
-        string.includes("'") ? string = string.replace(/'/g, '') : string = string + "'";
+        if (string.includes("'")) {
+            string = string.replace(/'/g, '');
+        } else if (!string.includes('2')) string = string + "'";
         return string;
     } else {
         return "";
@@ -65,6 +83,25 @@ function previusMovement() {
     bottom: 0;
 
     background-color: rgba(85, 85, 85, 0.635);
+
+    &__algorithm-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 0.5rem;
+    }
+
+    &__character-container {
+        font-size: large;
+        transition: scale 100ms ease-in-out;
+
+        &--focus {
+            background-color: rgb(92, 92, 92);
+            padding: 2%;
+            border-radius: 5px;
+            scale: 1.5;
+        }
+    }
 
     &__container {
         position: relative;
