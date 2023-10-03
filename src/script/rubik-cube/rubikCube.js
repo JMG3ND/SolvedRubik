@@ -171,10 +171,10 @@ export class RubikCube {
                 this._algorithmSecuence.push(character);
                 if (this._algorithmSecuence.length === 1) this.recursive();
             } else {
-                new Error("Movimiento inválido");
+                throw new Error(character + " no es un movimiento válido");
             }
         } catch (e) {
-            console.log(e);
+            console.error("Error al insertar secuencia", e);
         }
     }
     configure(array = []) {
