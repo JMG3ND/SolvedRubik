@@ -35,12 +35,7 @@ defineEmits(["changeShow"]);
 
 //Cambio de color en función del focus del caracter del algoritmo
 const characterFocus = ref(0);
-const changeCharacterFocus = (index) => {
-    if (characterFocus.value == index)
-        return 'representation-algorithm__character-container--focus';
-    else
-        return '';
-}
+const changeCharacterFocus = (index) => characterFocus.value == index ? 'representation-algorithm__character-container--focus' : '';
 
 //El indexCharacter determina cual es el código que determina el movimiento actual del cubo
 //por los métodos siguientes y anterior

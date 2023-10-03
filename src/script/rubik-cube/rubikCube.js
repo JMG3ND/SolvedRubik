@@ -171,7 +171,8 @@ export class RubikCube {
                 this._algorithmSecuence.push(character);
                 if (this._algorithmSecuence.length === 1) this.recursive();
             } else {
-                throw new Error(character + " no es un movimiento válido");
+                if (character != '')
+                    throw new Error(character + " no es un movimiento válido");
             }
         } catch (e) {
             console.error("Error al insertar secuencia", e);
