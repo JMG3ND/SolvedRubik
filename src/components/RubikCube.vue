@@ -10,10 +10,11 @@
 <script setup>
 import { Ambient } from '@/script/rubik-cube/ambient.js';
 import { RubikCube } from '@/script/rubik-cube/rubikCube.js';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, onBeforeMount } from 'vue';
 
-const props = defineProps(['inverseAlgorithm']);
-let ambient, rubikcube = new RubikCube(true);
+const props = defineProps(['inverseAlgorithm', 'tipe']);
+let ambient, rubikcube;
+
 
 //Se crea un contenedor de escena para el cubo
 const canvas = ref();
@@ -31,7 +32,21 @@ const changeWith = () => {
         ambient.resizeRenderer(canvas.value);
     }
 }
-
+onBeforeMount(() => {
+    switch (props.tipe) {
+        case 'oll':
+            rubikcube = new RubikCube(true);
+            break;
+        case 'f2l':
+            rubikcube = new RubikCube(false, true);
+            break;
+        case 'pll':
+            rubikcube = new RubikCube();
+            break;
+        default:
+            rubikcube = new RubikCube();
+    }
+})
 onMounted(() => {
     canvas.value.style.height = `${canvas.value.clientWidth}px`;
     ambient = new Ambient(canvas.value);

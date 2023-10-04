@@ -28,7 +28,7 @@
         </CardAlgorithm>
     </AlgorithmSection>
 
-    <RepresentationAlgorithm v-if="show" :algorithmArray="convertirStringAArray(actualAlgorithm)"
+    <RepresentationAlgorithm v-if="show" tipe="oll" :algorithmArray="convertirStringAArray(actualAlgorithm)"
         :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
     </RepresentationAlgorithm>
 </template>
@@ -41,6 +41,7 @@ import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
 import { ref, onMounted } from 'vue';
 
+//Variables que muestra y oculta el panel del algoritmo
 const show = ref(false);
 let actualAlgorithm = "";
 const changeShow = (algorithm) => {

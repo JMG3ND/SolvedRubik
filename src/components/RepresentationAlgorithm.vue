@@ -5,7 +5,7 @@
                 <button @click="$emit('changeShow'); indexCharacter = 0" class="representation-algorithm__button-close">
                     <font-awesome-icon icon="fa-solid fa-xmark" />
                 </button>
-                <RubikCube v-slot="slotProps" :inverse-algorithm="[...algorithmArray].reverse()">
+                <RubikCube v-slot="slotProps" :tipe="tipe" :inverse-algorithm="[...algorithmArray].reverse()">
                     <div class="representation-algorithm__controls-container">
                         <button class="representation-algorithm__button"
                             @click="slotProps.rubikcube.secuence(previusMovement())">
@@ -31,7 +31,7 @@
 import RubikCube from './RubikCube.vue';
 import { ref } from 'vue'
 
-const props = defineProps(["show", "algorithm", "algorithmArray"]);
+const props = defineProps(["show", "algorithm", "algorithmArray", "tipe"]);
 defineEmits(["changeShow"]);
 
 //Cambio de color en función del focus del caracter del algoritmo

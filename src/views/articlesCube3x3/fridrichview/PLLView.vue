@@ -25,7 +25,8 @@
     </CardArticle>
 
     <AlgorithmSection class="identifier-section" v-for="element in sectionArray" :id="element.id" :title="element.title">
-        <CardAlgorithm v-for="algorithm in element.data" :title="algorithm.title" :description="algorithm.algorithm">
+        <CardAlgorithm @click="changeShow(algorithm.algorithm)" v-for="algorithm in element.data" :title="algorithm.title"
+            :description="algorithm.algorithm">
             <div class="pll-algoritmo-image">
                 <div v-for=" in 9" class="pll-algoritmo-image__piece"></div>
                 <div v-for="row in algorithm.image" class="pll-algoritmo-image__arrow-container"
@@ -35,15 +36,37 @@
             </div>
         </CardAlgorithm>
     </AlgorithmSection>
+
+    <RepresentationAlgorithm v-if="show" tipe="pll" :algorithmArray="convertirStringAArray(actualAlgorithm)"
+        :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
+    </RepresentationAlgorithm>
 </template>
 
 <script setup>
+import RepresentationAlgorithm from '@/components/RepresentationAlgorithm.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import ArrowAnimate from '@/components/ArrowAnimate.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
+
+//Variables que muestra y oculta el panel del algoritmo
+const show = ref(false);
+let actualAlgorithm = "";
+const changeShow = (algorithm) => {
+    show.value = !show.value;
+    show.value ? actualAlgorithm = algorithm : actualAlgorithm = "";
+}
+
+function convertirStringAArray(str) {
+    // Utilizamos una expresión regular para dividir el string en partes en función de los espacios que existen en str
+    const partes = str.match(/[A-Za-z]'?2*|'/g);
+    if (!partes) {
+        return [];
+    }
+    return partes;
+}
 
 /* Método que llena los datos de la tienda del tocSidebar */
 const { tocSidebarDataFill } = useTocSidebarStore();

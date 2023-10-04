@@ -12,10 +12,11 @@ export class RubikPiece {
         green: 0x0aaa0a,
         grey: 0x858585
     }
-    constructor(x, y, z, oll = false) {
+    constructor(x, y, z, oll = false, f2l = false) {
         this._id = ++RubikPiece.number;
         this._piece = new THREE.Mesh();
         this._oll = oll;
+        this._f2l = f2l;
         this.addPrincipalBox();
         this.addColorBox(x, y, z);
         this.definePositionBox(x, y, z);
@@ -31,7 +32,7 @@ export class RubikPiece {
         if (x != 0) {
             const geometryColorBox_x = new THREE.BoxGeometry(0.05, 0.9, 0.9);
             let materialColorBox_x;
-            if (this._oll && y == 1) {
+            if ((this._oll && y == 1) || (this._f2l && y == 1)) {
                 materialColorBox_x = new THREE.MeshBasicMaterial({ color: RubikPiece.colors.grey });
             } else {
                 materialColorBox_x = new THREE.MeshBasicMaterial({ color: x == 1 ? RubikPiece.colors.red : RubikPiece.colors.orange });
@@ -43,7 +44,12 @@ export class RubikPiece {
 
         if (y != 0) {
             const geometryColorBox_y = new THREE.BoxGeometry(0.9, 0.05, 0.9);
-            const materialColorBox_y = new THREE.MeshBasicMaterial({ color: y == 1 ? RubikPiece.colors.yellow : RubikPiece.colors.white });
+            let materialColorBox_y;
+            if (this._f2l && y == 1) {
+                materialColorBox_y = new THREE.MeshBasicMaterial({ color: RubikPiece.colors.grey });
+            } else {
+                materialColorBox_y = new THREE.MeshBasicMaterial({ color: y == 1 ? RubikPiece.colors.yellow : RubikPiece.colors.white });
+            }
             const colorBox_y = new THREE.Mesh(geometryColorBox_y, materialColorBox_y);
             colorBox_y.position.y += 0.5 * y;
             this.piece.add(colorBox_y);
@@ -52,7 +58,7 @@ export class RubikPiece {
         if (z != 0) {
             const geometryColorBox_z = new THREE.BoxGeometry(0.9, 0.9, 0.05);
             let materialColorBox_z;
-            if (this._oll && y == 1) {
+            if (this._oll && y == 1 || this._f2l && y == 1) {
                 materialColorBox_z = new THREE.MeshBasicMaterial({ color: RubikPiece.colors.grey });
             } else {
                 materialColorBox_z = new THREE.MeshBasicMaterial({ color: z == 1 ? RubikPiece.colors.blue : RubikPiece.colors.green });

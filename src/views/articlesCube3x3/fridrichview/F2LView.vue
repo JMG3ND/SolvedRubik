@@ -10,18 +10,41 @@
     </CardArticle>
 
     <AlgorithmSection v-for="item in sectionArray" class="identifier-section" :id="item.id" :title="item.title">
-        <CardAlgorithm v-for="algorithm in item.data" :description="algorithm.algorithm">
+        <CardAlgorithm @click="changeShow(algorithm.algorithm)" v-for="algorithm in item.data"
+            :description="algorithm.algorithm">
             <img width="150" height="120" :src="algorithm.image" alt="Imágen de algoritmo F2L">
         </CardAlgorithm>
     </AlgorithmSection>
+
+    <RepresentationAlgorithm v-if="show" tipe="f2l" :algorithmArray="convertirStringAArray(actualAlgorithm)"
+        :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
+    </RepresentationAlgorithm>
 </template>
 
 <script setup>
+import RepresentationAlgorithm from '@/components/RepresentationAlgorithm.vue';
 import CardAlgorithm from '@/components/CardAlgorithm.vue';
 import CardArticle from '@/components/CardArticle.vue';
 import AlgorithmSection from '@/components/AlgorithmSection.vue';
 import { useTocSidebarStore } from '@/stores/tocSidebarStore';
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
+
+//Variables que muestra y oculta el panel del algoritmo
+const show = ref(false);
+let actualAlgorithm = "";
+const changeShow = (algorithm) => {
+    show.value = !show.value;
+    show.value ? actualAlgorithm = algorithm : actualAlgorithm = "";
+}
+
+function convertirStringAArray(str) {
+    // Utilizamos una expresión regular para dividir el string en partes en función de los espacios que existen en str
+    const partes = str.match(/[A-Za-z]'?2*|'/g);
+    if (!partes) {
+        return [];
+    }
+    return partes;
+}
 
 //sección con imágen
 const sectionArray = [
