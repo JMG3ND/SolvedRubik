@@ -240,7 +240,7 @@ const sectionArray = [
             },
             {
                 image: "/F2L/esquina-inf-arista-mid-4.png",
-                algorithm: "R U' R' U R' U' R F' U F"
+                algorithm: "R U' R' U R' U' R F' U F U' R' U R"
             },
             {
                 image: "/F2L/esquina-inf-arista-mid-5.png",
