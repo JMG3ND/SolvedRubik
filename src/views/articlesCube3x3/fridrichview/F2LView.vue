@@ -104,7 +104,7 @@ const sectionArray = [
             },
             {
                 image: "/F2L/blanco-en-lateral-8.png",
-                algorithm: "U' R U R' U' R U2 R"
+                algorithm: "U' R U R' U' R U2 R'"
             },
             {
                 image: "/F2L/blanco-en-lateral-9.png",

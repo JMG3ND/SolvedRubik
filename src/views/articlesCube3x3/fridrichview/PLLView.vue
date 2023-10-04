@@ -126,7 +126,7 @@ const sectionArray = [
             {
                 title: "E",
                 image: [[a, 0], [a, 180], [b, 0], [b, 180]],
-                algorithm: "X' R U' R' D R U R' D' R U R' D R U' R' D'",
+                algorithm: "x U R' U' L U R U' r2 U' R U L U' R' U x",
             }
         ]
     },
