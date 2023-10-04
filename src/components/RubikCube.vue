@@ -13,7 +13,7 @@ import { RubikCube } from '@/script/rubik-cube/rubikCube.js';
 import { ref, onMounted, onUnmounted, onBeforeMount } from 'vue';
 
 const props = defineProps(['inverseAlgorithm', 'tipe']);
-let ambient, rubikcube;
+let ambient, rubikcube, animationId;
 
 
 //Se crea un contenedor de escena para el cubo
@@ -52,7 +52,7 @@ onMounted(() => {
     ambient = new Ambient(canvas.value);
     ambient.scene.add(rubikcube.cube);
     function animate() {
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
         ambient.renderer();
     }
     animate();
@@ -61,7 +61,9 @@ onMounted(() => {
 });
 onUnmounted(() => {
     window.removeEventListener('resize', changeWith);
-    ambient.scene.clear();
+    cancelAnimationFrame(animationId)
+    ambient = null;
+    rubikcube = null;
 })
 
 </script>
