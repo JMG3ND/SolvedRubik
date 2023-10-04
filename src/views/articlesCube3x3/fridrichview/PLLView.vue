@@ -59,13 +59,10 @@ const changeShow = (algorithm) => {
     show.value ? actualAlgorithm = algorithm : actualAlgorithm = "";
 }
 
+// Utilizamos una expresión regular para dividir el string en partes en función de los espacios que existen en str
 function convertirStringAArray(str) {
-    // Utilizamos una expresión regular para dividir el string en partes en función de los espacios que existen en str
     const partes = str.match(/[A-Za-z]'?2*|'/g);
-    if (!partes) {
-        return [];
-    }
-    return partes;
+    return partes ? partes : [];
 }
 
 /* Método que llena los datos de la tienda del tocSidebar */
