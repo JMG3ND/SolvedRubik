@@ -2,8 +2,9 @@
     <Teleport to="header">
         <div class="representation-algorithm">
             <div class="representation-algorithm__container">
-                <button @click="$emit('changeShow'); indexCharacter = 0"
-                    class="representation-algorithm__button-close">X</button>
+                <button @click="$emit('changeShow'); indexCharacter = 0" class="representation-algorithm__button-close">
+                    <font-awesome-icon icon="fa-solid fa-xmark" />
+                </button>
                 <RubikCube v-slot="slotProps" :inverse-algorithm="[...algorithmArray].reverse()">
                     <div class="representation-algorithm__controls-container">
                         <button class="representation-algorithm__button"
@@ -115,15 +116,22 @@ function previusMovement() {
 
     &__button-close {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 1rem 1.2rem;
-        border-radius: 50%;
+        font-size: xx-large;
+        top: 20px;
+        right: 20px;
         border: none;
+        padding: 0.3rem 0.6rem;
+        border-radius: 50%;
+        background-color: $dark-button;
+
+        body.light & {
+            background-color: $light-button;
+        }
+
         cursor: pointer;
 
         &:hover {
-            background-color: red;
+            background-color: rgb(255, 100, 100);
         }
     }
 

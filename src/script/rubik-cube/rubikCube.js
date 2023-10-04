@@ -3,7 +3,7 @@ import * as TWEEN from '@tweenjs/tween.js';
 import { RubikPiece } from './rubikPiece';
 
 export class RubikCube {
-    constructor() {
+    constructor(oll = false) {
         this._cube = new THREE.Group();
         this._pieces = [];
         this._algorithmSecuence = [];
@@ -19,6 +19,7 @@ export class RubikCube {
             "d", "d'", "d2", "f", "f'", "f2", "x", "x'", "x2", "X", "X'", "X2",
             "Y", "Y'", "Y2", "y", "y'", "y2", "Z", "Z'", "Z2", "z", "z'", "z2",
         ];
+        this._oll = oll;
 
         this.createPiece();
         this.addPieces();
@@ -37,7 +38,7 @@ export class RubikCube {
             for (let y of positions) {
                 for (let z of positions) {
                     if (x === 0 && y === 0 && z === 0) continue;
-                    this._pieces.push(new RubikPiece(x, y, z));
+                    this._pieces.push(new RubikPiece(x, y, z, this._oll));
                 }
             }
         }

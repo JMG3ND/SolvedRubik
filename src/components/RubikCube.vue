@@ -13,7 +13,7 @@ import { RubikCube } from '@/script/rubik-cube/rubikCube.js';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps(['inverseAlgorithm']);
-let ambient, rubikcube = new RubikCube();
+let ambient, rubikcube = new RubikCube(true);
 
 //Se crea un contenedor de escena para el cubo
 const canvas = ref();

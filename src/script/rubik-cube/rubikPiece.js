@@ -1,3 +1,4 @@
+import { faL } from '@fortawesome/free-solid-svg-icons';
 import * as THREE from 'three';
 
 export class RubikPiece {
@@ -8,11 +9,13 @@ export class RubikPiece {
         yellow: 0xcacd00,
         white: 0xdceae1,
         blue: 0x0094c6,
-        green: 0x0aaa0a
+        green: 0x0aaa0a,
+        grey: 0x858585
     }
-    constructor(x, y, z) {
+    constructor(x, y, z, oll = false) {
         this._id = ++RubikPiece.number;
         this._piece = new THREE.Mesh();
+        this._oll = oll;
         this.addPrincipalBox();
         this.addColorBox(x, y, z);
         this.definePositionBox(x, y, z);
@@ -27,7 +30,12 @@ export class RubikPiece {
     addColorBox(x, y, z) {
         if (x != 0) {
             const geometryColorBox_x = new THREE.BoxGeometry(0.05, 0.9, 0.9);
-            const materialColorBox_x = new THREE.MeshBasicMaterial({ color: x == 1 ? RubikPiece.colors.red : RubikPiece.colors.orange });
+            let materialColorBox_x;
+            if (this._oll && y == 1) {
+                materialColorBox_x = new THREE.MeshBasicMaterial({ color: RubikPiece.colors.grey });
+            } else {
+                materialColorBox_x = new THREE.MeshBasicMaterial({ color: x == 1 ? RubikPiece.colors.red : RubikPiece.colors.orange });
+            }
             const colorBox_x = new THREE.Mesh(geometryColorBox_x, materialColorBox_x);
             colorBox_x.position.x += 0.5 * x;
             this.piece.add(colorBox_x);
@@ -43,7 +51,12 @@ export class RubikPiece {
 
         if (z != 0) {
             const geometryColorBox_z = new THREE.BoxGeometry(0.9, 0.9, 0.05);
-            const materialColorBox_z = new THREE.MeshBasicMaterial({ color: z == 1 ? RubikPiece.colors.blue : RubikPiece.colors.green });
+            let materialColorBox_z;
+            if (this._oll && y == 1) {
+                materialColorBox_z = new THREE.MeshBasicMaterial({ color: RubikPiece.colors.grey });
+            } else {
+                materialColorBox_z = new THREE.MeshBasicMaterial({ color: z == 1 ? RubikPiece.colors.blue : RubikPiece.colors.green });
+            }
             const colorBox_z = new THREE.Mesh(geometryColorBox_z, materialColorBox_z);
             colorBox_z.position.z += 0.5 * z;
             this.piece.add(colorBox_z);

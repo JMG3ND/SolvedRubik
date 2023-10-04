@@ -25,6 +25,7 @@ import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 import App from './App.vue';
 import router from './router';
@@ -44,6 +45,7 @@ library.add(faList);
 library.add(faCircleExclamation);
 library.add(faArrowRight);
 library.add(faArrowLeft);
+library.add(faXmark);
 
 const app = createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon);
