@@ -82,9 +82,11 @@ function previusMovement() {
 
     &__algorithm-container {
         display: flex;
-        align-items: center;
-        justify-content: space-around;
+        justify-content: center;
         gap: 0.5rem;
+        width: 50%;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
     &__character-container {
