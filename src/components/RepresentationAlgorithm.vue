@@ -29,7 +29,7 @@
 
 <script setup>
 import RubikCube from './RubikCube.vue';
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps(["show", "algorithm", "algorithmArray"]);
 defineEmits(["changeShow"]);
