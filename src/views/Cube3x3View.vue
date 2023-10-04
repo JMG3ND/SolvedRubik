@@ -68,12 +68,12 @@ const handleTouchStart = event => {
 
 onMounted(() => {
     //Añade el evento touchstart para controlar el sidebar con el dedo al montar elcomponente
-    addEventListener('touchstart', handleTouchStart);
+    addEventListener('touchstart', handleTouchStart, { passive: true });
 });
 
 onBeforeUnmount(() => {
     //Remueve el evento touchstart al desmontar el componente
-    removeEventListener('touchstart', handleTouchStart);
+    removeEventListener('touchstart', handleTouchStart, { passive: true });
 })
 </script>
 

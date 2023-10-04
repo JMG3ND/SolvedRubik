@@ -74,10 +74,6 @@ import cube2x2 from '@/assets/images/home-page-article/cubo-dos-por-dos.png';
 import cube3x3 from '@/assets/images/home-page-article/cubo-tres-por-tres.png';
 import cube4x4 from '@/assets/images/home-page-article/cubo-cuatro-por-cuatro.png';
 import cube5x5 from '@/assets/images/home-page-article/cubo-cinco-por-cinco.png';
-import { onMounted } from 'vue';
-
-//Hace scroll cuando carga el componente
-onMounted(() => window.scrollTo({ top: 0 }));
 </script>
 
 <style lang="scss">
