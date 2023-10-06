@@ -1,5 +1,4 @@
 <template >
-    <Teleport to="header">
         <div class="representation-algorithm">
             <div class="representation-algorithm__container">
                 <button @click="$emit('changeShow'); indexCharacter = 0" class="representation-algorithm__button-close">
@@ -24,7 +23,6 @@
                 </RubikCube>
             </div>
         </div>
-    </Teleport>
 </template>
 
 <script setup>

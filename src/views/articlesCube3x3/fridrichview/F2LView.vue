@@ -16,9 +16,13 @@
         </CardAlgorithm>
     </AlgorithmSection>
 
-    <RepresentationAlgorithm v-if="show" tipe="f2l" :algorithmArray="convertirStringAArray(actualAlgorithm)"
-        :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
-    </RepresentationAlgorithm>
+    <Teleport to="header">
+        <Transition>
+            <RepresentationAlgorithm v-if="show" tipe="f2l" :algorithmArray="convertirStringAArray(actualAlgorithm)"
+                :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
+            </RepresentationAlgorithm>
+        </Transition>
+    </Teleport>
 </template>
 
 <script setup>
@@ -263,3 +267,7 @@ onMounted(() => {
     tocSidebarDataFill(GlobalSectionArray, '.identifier-section');
 });
 </script>
+
+<style scoped lang="scss">
+@use '@/assets/animation/representation-algorithm.scss';
+</style>

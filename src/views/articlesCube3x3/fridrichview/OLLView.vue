@@ -28,9 +28,13 @@
         </CardAlgorithm>
     </AlgorithmSection>
 
-    <RepresentationAlgorithm v-if="show" tipe="oll" :algorithmArray="convertirStringAArray(actualAlgorithm)"
-        :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
-    </RepresentationAlgorithm>
+    <Teleport to="header">
+        <Transition>
+            <RepresentationAlgorithm v-if="show" tipe="oll" :algorithmArray="convertirStringAArray(actualAlgorithm)"
+                :algorithm="actualAlgorithm" :show="show" @changeShow="changeShow">
+            </RepresentationAlgorithm>
+        </Transition>
+    </Teleport>
 </template>
 
 <script setup>
@@ -639,7 +643,8 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+@use '@/assets/animation/representation-algorithm.scss';
 %extend-piece {
     content: '';
     position: absolute;
