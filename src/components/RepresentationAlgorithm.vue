@@ -92,10 +92,14 @@ function previusMovement() {
         transition: scale 100ms ease-in-out;
 
         &--focus {
-            background-color: rgb(92, 92, 92);
             padding: 2%;
             border-radius: 5px;
             scale: 1.5;
+            background-color: rgb(92, 92, 92);
+
+            body.light & {
+                background-color: rgb(201, 201, 201);
+            }
         }
     }
 
@@ -110,7 +114,7 @@ function previusMovement() {
         background-color: rgba(0, 0, 0, 0.635);
 
         body.light & {
-            background-color: rgba(54, 54, 54, 0.783);
+            background-color: rgba(173, 173, 173, 0.783);
         }
     }
 
@@ -122,14 +126,16 @@ function previusMovement() {
         border: none;
         padding: 0.3rem 0.6rem;
         border-radius: 50%;
+        cursor: pointer;
+        
         background-color: $dark-button;
-
         body.light & {
             background-color: $light-button;
+
+            &:hover {
+                background-color: rgb(255, 100, 100);
+            }
         }
-
-        cursor: pointer;
-
         &:hover {
             background-color: rgb(255, 100, 100);
         }
